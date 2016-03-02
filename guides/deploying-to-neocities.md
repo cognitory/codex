@@ -1,5 +1,5 @@
 ---
-title: Styling Pages w/ CSS
+title: Deploying to Neocities
 description: TODO
 dependencies: [ ]
 ---

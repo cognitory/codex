@@ -1,5 +1,5 @@
 ---
-title: Styling Pages w/ CSS
+title: Deploying to s3
 description: TODO
 dependencies: [ ]
 ---
