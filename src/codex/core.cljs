@@ -97,7 +97,7 @@
       :index (index-view))]])
 
 (defn init []
-  (seed!)
+  (fetch!)
   (pushy/start! (pushy/pushy secretary/dispatch!
                              (fn [x] (when (secretary/locate-route x) x))))
   (r/render-component [app-view] (.-body js/document)))
