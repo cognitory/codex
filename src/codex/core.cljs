@@ -18,18 +18,18 @@
     {:response-format :json
      :keywords? true
      :handler (fn [files]
-                (swap! app-state assoc :guides
-                       (->> files
-                            (map (fn [f]
-                                   {:key (string/replace-first (f :name) #"\.md" "")
-                                    :file (f :name)}))
-                            (key-by :key))))})
+                (doseq [file files]
+                  (GET (str SITE_URL (file :path))
+                    {:handler (fn [content]
+                                (let [key (string/replace-first (file :name) #"\.md" "")]
+                                  (swap! app-state assoc-in [:guides key] {:content content})))})))})
+
   (GET (str REPO_URL "contents/tldrs")
     {:response-format :json
      :keywords? true
      :handler (fn [files]
-                (swap! app-state assoc :tldrs
-                       (->> files
-                            (map (fn [f]
-                                   {:key (string/replace-first (f :name) #"\.md" "")
-                                    :file (f :name)})))))}))
+                (doseq [file files]
+                  (GET (str SITE_URL (file :path))
+                    {:handler (fn [content]
+                                (let [key (string/replace-first (file :name) #"\.md" "")]
+                                  (swap! app-state assoc-in [:tldrs key] {:content content})))})))}))
