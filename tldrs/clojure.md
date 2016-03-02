@@ -14,3 +14,4 @@ https://en.wikibooks.org/wiki/Clojure_Programming/By_Example
 https://github.com/gigasquid/wonderland-clojure-katas
 http://clojurekoans.com/
 https://github.com/clojure-cookbook/clojure-cookbook
+https://learnxinyminutes.com/docs/clojure/
