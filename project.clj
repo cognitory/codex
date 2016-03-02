@@ -1,6 +1,7 @@
 (defproject codex "0.0.1"
   :dependencies [[org.clojure/clojurescript "1.7.228"]
-                 [cljs-ajax "0.5.3"]]
+                 [cljs-ajax "0.5.3"]
+                 [re-frame "0.7.0-alpha-3"]]
 
   :plugins [[lein-cljsbuild "1.1.2"]
             [lein-figwheel "0.5.0-6"]]
