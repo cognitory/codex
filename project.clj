@@ -1,8 +1,9 @@
 (defproject codex "0.0.1"
-  :dependencies [[org.clojure/clojurescript "1.7.145"]]
+  :dependencies [[org.clojure/clojurescript "1.7.228"]
+                 [cljs-ajax "0.5.3"]]
 
-  :plugins [[lein-cljsbuild "1.0.6"]
-            [lein-figwheel "0.5.0-1"]]
+  :plugins [[lein-cljsbuild "1.1.2"]
+            [lein-figwheel "0.5.0-6"]]
 
   :clean-targets ^{:protect false}
   ["resources/public/js/dev"]
