@@ -14,13 +14,13 @@
 (defonce REPO_URL "https://api.github.com/repos/cognitory/codex/")
 (defonce SITE_URL "http://cognitory.github.io/codex/")
 
-(defroute index-path "/" []
+(defroute index-path "/codex" []
   (swap! app-state assoc :page {:type :index}))
 
-(defroute guide-path "/guides/:id" [id]
+(defroute guide-path "/codex/guides/:id" [id]
   (swap! app-state assoc :page {:type :guide :id id}))
 
-(defroute tldr-path "/tldrs/:id" [id]
+(defroute tldr-path "/codex/tldrs/:id" [id]
   (swap! app-state assoc :page {:type :tldr :id id}))
 
 
@@ -97,6 +97,7 @@
       :index (index-view))]])
 
 (defn init []
+  (seed!)
   (pushy/start! (pushy/pushy secretary/dispatch!
                              (fn [x] (when (secretary/locate-route x) x))))
   (r/render-component [app-view] (.-body js/document)))

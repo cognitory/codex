@@ -1,5 +1,6 @@
 (defproject codex "0.0.1"
-  :dependencies [[org.clojure/clojurescript "1.7.228"]
+  :dependencies [[org.clojure/clojure "1.7.0"]
+                 [org.clojure/clojurescript "1.7.228"]
                  [cljs-ajax "0.5.3"]
                  [re-frame "0.7.0-alpha-3"]
                  [secretary "1.2.3"]
@@ -19,15 +20,15 @@
                 :source-paths ["src"]
                 :compiler {:main codex.core
                            :asset-path "/js/dev"
-                           :output-to "resources/public/js/codex.js"
+                           :output-to "resources/public/js/dev.js"
                            :output-dir "resources/public/js/dev"
                            :verbose true}}
                {:id "release"
                 :source-paths ["src"]
                 :compiler {:main codex.core
-                           :asset-path "/js/prod"
+                           :asset-path "/codex/resources/public/js/release"
                            :output-to "resources/public/js/codex.js"
-                           :output-dir "resources/public/js/prod"
+                           :output-dir "resources/public/js/release"
                            :optimizations :advanced
                            :pretty-print false }}]}
 

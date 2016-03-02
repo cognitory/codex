@@ -1,3 +1,5 @@
+resources/public/js/dev.js
 resources/public/js/dev/**
+resources/public/js/release/**
 *.log
 target/**
