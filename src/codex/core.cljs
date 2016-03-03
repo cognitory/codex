@@ -72,7 +72,7 @@
   (let [id (get-in @app-state [:page :id])
         tldr (get-in @app-state [:tldrs id])]
     [:div
-     [:h1 (tldr :id)]
+     [:h1 (or (tldr :title) (tldr :id))]
      [:div {:style {:whitespace "pre"}}
       (tldr :content)]]))
 
@@ -80,7 +80,7 @@
   (let [id (get-in @app-state [:page :id])
         guide (get-in @app-state [:guides id])]
    [:div
-    [:h1 (guide :id)]
+    [:h1 (or (guide :title) (guide :id))]
     [:div {:style {:white-space "pre-wrap"}}
      (guide :content)]]))
 
