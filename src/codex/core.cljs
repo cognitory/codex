@@ -73,14 +73,16 @@
         tldr (get-in @app-state [:tldrs id])]
     [:div
      [:h1 (tldr :id)]
-     [:p (tldr :content)]]))
+     [:div {:style {:whitespace "pre"}}
+      (tldr :content)]]))
 
 (defn guide-view []
   (let [id (get-in @app-state [:page :id])
         guide (get-in @app-state [:guides id])]
    [:div
     [:h1 (guide :id)]
-    [:p (guide :content)]]))
+    [:div {:style {:white-space "pre-wrap"}}
+     (guide :content)]]))
 
 (defn index-view []
   [:div
@@ -88,29 +90,47 @@
 
 (defn app-view []
   [:div
-   [:h1 [:a {:href (index-path)} "Codex"]]
-   [:div.sidebar
+   [:div.sidebar {:style {:width "20%"
+                          :position "absolute"
+                          :top 0
+                          :bottom 0
+                          :left 0}}
+    [:h1 [:a {:href (index-path)} "Codex"]]
     [:h2 "Guides"]
     [:div.guides
-     (for [[_ guide] (@app-state :guides)]
+     (for [guide (->> (@app-state :guides)
+                      vals
+                      (remove (fn [g] (empty? (g :content)))))]
        [:a {:key (guide :id)
-            :href (guide-path guide)} (guide :id)]) ]
+            :style {:display "block"}
+            :href (guide-path guide)}
+        (guide :id)]) ]
     [:h2 "TLDRs"]
     [:div.tldrs
-     (for [[_ tldr] (@app-state :tldrs)]
+     (for [tldr (->> (@app-state :tldrs)
+                     vals
+                     (remove (fn [t] (empty? (t :content)))))]
        [:a {:key (tldr :id)
-            :href (tldr-path tldr)} (tldr :id)])]]
-   [:div.main
+            :style {:display "block"}
+            :href (tldr-path tldr)}
+        (tldr :id)])]]
+   [:div.main {:style {:width "80%"
+                       :position "absolute"
+                       :top 0
+                       :bottom 0
+                       :right 0}}
     (case (get-in @app-state [:page :type])
       :tldr (tldr-view)
       :guide (guide-view)
       :index (index-view))]])
 
+(defonce once
+  (do
+    (fetch!)
+    (pushy/start! (pushy/pushy secretary/dispatch!
+                               (fn [x] (when (secretary/locate-route x) x))))))
+
 (defn init []
-  (fetch!)
-  (pushy/start! (pushy/pushy secretary/dispatch!
-                             (fn [x] (when (secretary/locate-route x) x))))
   (r/render-component [app-view] (.-body js/document)))
 
-(defonce once
-  (do (init)))
+(init)
