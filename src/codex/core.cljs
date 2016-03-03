@@ -79,7 +79,11 @@
      [:h2 "Resources"]
      [:ul.resources
       (for [link (:resources tldr)]
-        [:li [:a {:href link} link] ])]]))
+        [:li [:a {:href link} link] ])]
+     [:h2 "Related"]
+     [:ul.resources
+      (for [id (:related tldr)]
+        [:li [:a {:href (tldr-path {:id id})} id]])]]))
 
 (defn guide-view []
   (let [id (get-in @app-state [:page :id])
