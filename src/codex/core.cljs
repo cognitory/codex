@@ -100,7 +100,7 @@
     [:div.guides
      (for [guide (->> (@app-state :guides)
                       vals
-                      (remove (fn [g] (empty? (g :content)))))]
+                      (remove (fn [g] (string/blank? (g :content)))))]
        [:a {:key (guide :id)
             :style {:display "block"}
             :href (guide-path guide)}
@@ -109,7 +109,7 @@
     [:div.tldrs
      (for [tldr (->> (@app-state :tldrs)
                      vals
-                     (remove (fn [t] (empty? (t :content)))))]
+                     (remove (fn [t] (string/blank? (t :content)))))]
        [:a {:key (tldr :id)
             :style {:display "block"}
             :href (tldr-path tldr)}
