@@ -114,7 +114,9 @@
     [:div.tldrs
      (for [tldr (->> (@app-state :tldrs)
                      vals
-                     (remove (fn [t] (string/blank? (t :content)))))]
+                     (remove (fn [t] (and
+                                       (empty? (t :resources))
+                                       (string/blank? (t :content))))))]
        [:a {:key (tldr :id)
             :style {:display "block"}
             :href (tldr-path tldr)}
