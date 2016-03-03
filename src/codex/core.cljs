@@ -3,9 +3,17 @@
             [clojure.string :as string]
             [reagent.core :as r]
             [secretary.core :as secretary :include-macros true :refer-macros [defroute]]
-            [pushy.core :as pushy]))
+            [pushy.core :as pushy]
+            cljsjs.js-yaml))
 
 (enable-console-print!)
+
+(defn tee [x]
+  (println x) x)
+
+(defn keyword-keys [m]
+  (reduce (fn [memo [k v]]
+            (assoc memo (keyword k) v)) {} m))
 
 (defonce app-state (r/atom {:page {:type :index}
                             :groups {}
@@ -22,6 +30,12 @@
 (defroute tldr-path "/codex/tldrs/:id" [id]
   (swap! app-state assoc :page {:type :tldr :id id}))
 
+(defn parse-content [raw-content]
+  (let [parts (string/split raw-content "---")]
+    (if (>= (count parts) 3)
+      (assoc (keyword-keys (js->clj (js/jsyaml.safeLoad (parts 1)))) :content (parts 2))
+      {:content raw-content})))
+
 (defn fetch! []
   (GET (str REPO_URL "contents/guides")
     {:response-format :json
@@ -29,10 +43,9 @@
      :handler (fn [files]
                 (doseq [file files]
                   (GET (file :download_url)
-                    {:handler (fn [content]
+                    {:handler (fn [raw-content]
                                 (let [id (string/replace-first (file :name) #"\.md" "")]
-                                  (swap! app-state assoc-in [:guides id] {:id id
-                                                                          :content content})))})))})
+                                  (swap! app-state assoc-in [:guides id] (assoc (parse-content raw-content) :id id))))})))})
 
   (GET (str REPO_URL "contents/tldrs")
     {:response-format :json
@@ -40,10 +53,9 @@
      :handler (fn [files]
                 (doseq [file files]
                   (GET (file :download_url)
-                    {:handler (fn [content]
+                    {:handler (fn [raw-content]
                                 (let [id (string/replace-first (file :name) #"\.md" "")]
-                                  (swap! app-state assoc-in [:tldrs id] {:id id
-                                                                         :content content})))})))}))
+                                  (swap! app-state assoc-in [:tldrs id] (assoc (parse-content raw-content) :id id))))})))}))
 
 (defn seed! []
   (swap! app-state assoc
