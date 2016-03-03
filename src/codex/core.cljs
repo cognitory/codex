@@ -77,9 +77,9 @@
      [:div {:style {:whitespace "pre"}}
       (tldr :content)]
      [:h2 "Resources"]
-     [:div.resources
+     [:ul.resources
       (for [link (:resources tldr)]
-        [:a {:href link} link])]]))
+        [:li [:a {:href link} link] ])]]))
 
 (defn guide-view []
   (let [id (get-in @app-state [:page :id])
