@@ -1,1 +1,4 @@
-http://www.jmarshall.com/easy/http/
+---
+resources:
+ - http://www.jmarshall.com/easy/http/
+---

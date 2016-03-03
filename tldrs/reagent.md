@@ -1,7 +1,7 @@
 ---
 title: Reagent
 related: [ clojurescript ]
+resources:
+ - http://reagent-project.github.io/
+ - http://cljsfiddle.com/
 ---
-
-http://reagent-project.github.io/
-http://cljsfiddle.com/

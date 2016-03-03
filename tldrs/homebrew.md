@@ -1,1 +1,4 @@
-http://brew.sh/
+---
+resources:
+ - http://brew.sh/
+---

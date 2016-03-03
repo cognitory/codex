@@ -1,1 +1,4 @@
-https://github.com/jonase/kibit
+---
+resources:
+ - https://github.com/jonase/kibit
+---

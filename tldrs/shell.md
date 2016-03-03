@@ -1,1 +1,4 @@
-https://www.codecademy.com/learn/learn-the-command-line
+---
+resources:
+ - https://www.codecademy.com/learn/learn-the-command-line
+---
