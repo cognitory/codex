@@ -12,7 +12,6 @@
                             :tldrs {}}))
 
 (defonce REPO_URL "https://api.github.com/repos/cognitory/codex/")
-(defonce SITE_URL "http://cognitory.github.io/codex/")
 
 (defroute index-path "/codex" []
   (swap! app-state assoc :page {:type :index}))
@@ -23,14 +22,13 @@
 (defroute tldr-path "/codex/tldrs/:id" [id]
   (swap! app-state assoc :page {:type :tldr :id id}))
 
-
 (defn fetch! []
   (GET (str REPO_URL "contents/guides")
     {:response-format :json
      :keywords? true
      :handler (fn [files]
                 (doseq [file files]
-                  (GET (str SITE_URL (file :path))
+                  (GET (file :download_url)
                     {:handler (fn [content]
                                 (let [id (string/replace-first (file :name) #"\.md" "")]
                                   (swap! app-state assoc-in [:guides id] {:id id
@@ -41,7 +39,7 @@
      :keywords? true
      :handler (fn [files]
                 (doseq [file files]
-                  (GET (str SITE_URL (file :path))
+                  (GET (file :download_url)
                     {:handler (fn [content]
                                 (let [id (string/replace-first (file :name) #"\.md" "")]
                                   (swap! app-state assoc-in [:tldrs id] {:id id
