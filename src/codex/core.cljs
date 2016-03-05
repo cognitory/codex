@@ -4,7 +4,8 @@
             [reagent.core :as r]
             [secretary.core :as secretary :include-macros true :refer-macros [defroute]]
             [pushy.core :as pushy]
-            cljsjs.js-yaml))
+            [markdown.core :as md]
+            [cljsjs.js-yaml]))
 
 (enable-console-print!)
 
@@ -90,8 +91,8 @@
         guide (get-in @app-state [:guides id])]
    [:div
     [:h1 (or (:title guide) (:id guide))]
-    [:div {:style {:white-space "pre-wrap"}}
-     (guide :content)]]))
+    [:div {:style {:white-space "pre-wrap"}
+           :dangerouslySetInnerHTML {:__html (md/md->html (guide :content))}}]]))
 
 (defn index-view []
   [:div
