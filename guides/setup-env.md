@@ -20,23 +20,30 @@ May want to read [[Working in the Shell]]
 
 ## install homebrew
 
-`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```bash
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
 
 [[tldrs/homebrew]]
 
 
 ## install oh-my-zsh
 
-`sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```bash
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
 
 [[tldrs/oh-my-zsh]]
 
 
 ## install lein
 
-`brew install lein
+```clojure
+brew install lein
+```
 
 [[tldrs/lein]]
+
 
 
 
