@@ -3,3 +3,5 @@ resources/public/js/dev/**
 resources/public/js/release/**
 *.log
 target/**
+.lein-repl-history
+.nrepl-port
