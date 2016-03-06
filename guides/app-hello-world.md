@@ -20,6 +20,12 @@ Create a folder for the project:
 mkdir app0
 ```
 
+Go into that folder:
+
+```sh
+cd app0
+```
+
 Create a `src` folder and an `app` folder inside of it:
 
 ```sh
