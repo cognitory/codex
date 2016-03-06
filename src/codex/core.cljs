@@ -21,6 +21,10 @@
                             :tldrs {}}))
 
 (defonce REPO_URL "https://api.github.com/repos/cognitory/codex/")
+(defonce CONTENT_URL
+  (if (not= js/window.location.hostname "localhost")
+    "/resources/public/"
+    "/"))
 
 (defroute index-path "/codex" []
   (swap! app-state assoc :page {:type :index}))
@@ -43,7 +47,7 @@
      :keywords? true
      :handler (fn [files]
                 (doseq [file files]
-                  (GET (str "./" (file :path))
+                  (GET (str CONTENT_URL (file :path))
                     {:handler (fn [raw-content]
                                 (let [id (string/replace-first (file :name) #"\.md" "")]
                                   (swap! app-state assoc-in [:guides id] (assoc (parse-content raw-content) :id id))))})))})
@@ -53,7 +57,7 @@
      :keywords? true
      :handler (fn [files]
                 (doseq [file files]
-                  (GET (str "./" (file :path))
+                  (GET (str CONTENT_URL (file :path))
                     {:handler (fn [raw-content]
                                 (let [id (string/replace-first (file :name) #"\.md" "")]
                                   (swap! app-state assoc-in [:tldrs id] (assoc (parse-content raw-content) :id id))))})))}))
