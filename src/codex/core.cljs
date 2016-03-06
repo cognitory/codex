@@ -3,9 +3,9 @@
             [clojure.string :as string]
             [reagent.core :as r]
             [secretary.core :as secretary :include-macros true :refer-macros [defroute]]
-            [pushy.core :as pushy]
             [markdown.core :as md]
-            [cljsjs.js-yaml]))
+            [cljsjs.js-yaml]
+            [codex.router :as router]))
 
 (enable-console-print!)
 
@@ -26,13 +26,13 @@
     "/"
     "https://raw.githubusercontent.com/cognitory/codex/gh-pages/"))
 
-(defroute index-path "/codex" []
+(defroute index-path "/" []
   (swap! app-state assoc :page {:type :index}))
 
-(defroute guide-path "/codex/guides/:id" [id]
+(defroute guide-path "/guides/:id" [id]
   (swap! app-state assoc :page {:type :guide :id id}))
 
-(defroute tldr-path "/codex/tldrs/:id" [id]
+(defroute tldr-path "/tldrs/:id" [id]
   (swap! app-state assoc :page {:type :tldr :id id}))
 
 (defn parse-content [raw-content]
@@ -80,7 +80,7 @@
     [:div
      [:h1 (or (:title tldr) (:id tldr))]
      [:div {:style {:whitespace "pre"}}
-      (tldr :content)]
+      (:content tldr)]
      [:h2 "Resources"]
      [:ul.resources
       (for [link (:resources tldr)]
@@ -112,7 +112,7 @@
     [:h1 (or (:title guide) (:id guide))]
     [:div {:style {:white-space "pre-wrap"}
            :dangerouslySetInnerHTML
-           {:__html (md/md->html (guide :content)
+           {:__html (md/md->html (:content guide)
                                  :custom-transformers [linkify])}}]]))
 
 (defn index-view []
@@ -150,15 +150,10 @@
       :guide (guide-view)
       :index (index-view))]])
 
-(defonce history
-  (pushy/pushy secretary/dispatch!
-               (fn [x]
-                 (when (secretary/locate-route x) x))))
-
 (defonce once
   (do
     (fetch!)
-    (pushy/start! history)))
+    (router/init!)))
 
 (defn init []
   (r/render-component [app-view] (.-body js/document)))

@@ -4,7 +4,6 @@
                  [cljs-ajax "0.5.3"]
                  [re-frame "0.7.0-alpha-3"]
                  [secretary "1.2.3"]
-                 [kibu/pushy "0.3.6"]
                  [cljsjs/js-yaml "3.3.1-0"]
                  [markdown-clj "0.9.86"]]
 
