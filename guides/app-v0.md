@@ -239,7 +239,9 @@ Add a `header-view` and factor out `restaurants-view`:
    (restaurants-view)])
 ```
 
-TODO: Explain why we added `:key` to the `li`
+You can see we added `:key` to the map for our `:li` tag in the for loop.
+We do this so that React, the underlying system that handles actually displaying things can differentiate each list element.
+Why this is important will be explained later :)
 
 # Implementing Our Sort Toggle
 
