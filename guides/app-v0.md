@@ -263,7 +263,14 @@ Create an app-state atom:
 (defonce app-state (r/atom {:sort :rating}))
 ```
 
-TODO: explain purpose of this, explain atom, explain why `defonce`
+An `atom` is a piece of data that controls access to some other data and allows it to be updated.
+In this case, the atom is wrapping the map `{:sort :rating}`.
+We will use this atom to have application state that will update as we change things.
+
+`defonce` is like the `def` we used previously, except it only happens once.
+We do this so when the app gets reloaded when changes are made to the code, the state won't get overridden back to the initial value.
+To see this, try changing the `defonce` to a def, do some things in the app, then make a change to your code and save.
+You should see that figwheel will reload the app and your app will go back to its initial state.
 
 Change our sort-by to use the value of `:sort` from `app-state`:
 
