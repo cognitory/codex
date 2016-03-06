@@ -136,7 +136,7 @@
 (defonce history
   (pushy/pushy secretary/dispatch!
                (fn [x]
-                 (when (secretary/locate-route-value x) x))))
+                 (when (secretary/locate-route x) x))))
 
 (defonce once
   (do
