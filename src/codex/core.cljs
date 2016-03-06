@@ -22,9 +22,9 @@
 
 (defonce REPO_URL "https://api.github.com/repos/cognitory/codex/")
 (defonce CONTENT_URL
-  (if (not= js/window.location.hostname "localhost")
-    "/resources/public/"
-    "/"))
+  (if (= js/window.location.hostname "localhost")
+    "/"
+    "https://raw.githubusercontent.com/cognitory/codex/gh-pages/"))
 
 (defroute index-path "/codex" []
   (swap! app-state assoc :page {:type :index}))
