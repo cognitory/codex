@@ -1,57 +1,35 @@
+Before setting up your environment, you may want to read [[Working in the Shell]].
 
-## download a text editor
+## Download a text editor
 
-if you already have a preferred text editor (ex. sublime), use that; otherwise, download Atom:
+If you already have a preferred [[tldrs/text-editor|text editor]], use that; otherwise, download [[tldrs/atom-editor|Atom]] from `https://atom.io`
 
-https://atom.io/
+## Install system programs
 
-[[tldrs/text-editor]]
-[[tldrs/atom-editor]]
+Inside a [[tldrs/terminal]] window, do the following:
 
+Install `[[tldrs/homebrew]]`:
 
-## open terminal
-
-open Terminal.app (through Spotlight, or by going to Applications)
-
-May want to read [[Working in the Shell]]
-
-[[tldrs/shell]]
-
-
-## install homebrew
-
-```bash
+```sh
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-[[tldrs/homebrew]]
+Install `[[tldrs/oh-my-zsh]]`:
 
-
-## install oh-my-zsh
-
-```bash
+```sh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
 
-[[tldrs/oh-my-zsh]]
+Install `rlwrap`:
 
-
-## install rlwrap
-
-```bash
+```sh
 brew install rlwrap
 ```
 
+Install `[[tldrs/lein]]`:
 
-## install lein
-
-```clojure
+```sh
 brew install lein
 ```
 
-[[tldrs/lein]]
-
-
-
-
-
+While installing `[[lein]]` you may be asked to first download and install `[[java]]` on your system.
