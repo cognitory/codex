@@ -57,9 +57,16 @@ Inside of of `core.cljs` add the following below `(enable-console-print!)`:
 
 The square brackets `[ ... ]` are used to create a *vector*, which is an ordered list of things. For example, here is a vector of a few numbers: `[ 1 3 5 6 7 ]`.
 
-Our restaurant vector is a list of maps. A *map* is created by using brackets `{ ... }`. A map contains multiple *keys* and *values*, with each *key* corresponding to some *value* -- you can think of it like a dictionary, where words are keys and their definitions are values. Or a phonebook (names = keys, numbers = values).
+Our restaurant vector is a list of maps.
+A *map* is created by using brackets `{ ... }`.
+A map contains multiple *keys* and *values*, with each *key* corresponding to some *value* -- you can think of it like a dictionary, where words are keys and their definitions are values, or a phonebook (names = keys, numbers = values).
 
-In our restaurant vector, each map represents a restaurant. Each of these contains the `:name`, `:address`, `:image`, `:rating` and `:price-range` keys, with either strings or numbers as values.
+We can look up a value from a map by doing `(some-map :my-key)`.
+For example, if we had `(def my-map {:name "Canoe" :rating 3.9})` then `(my-map :name)` would give `"Canoe"`.
+If the key we're looking up is a *keyword* -- i.e. it starts with a colon, like `:name:` and `:rating` above -- then we can also use the opposite order for looking up, like `(:rating my-map)` to get `9.3`.
+
+In our restaurant vector, each map represents a restaurant.-
+Each of these contains the `:name`, `:address`, `:image`, `:rating` and `:price-range` keys, with either strings or numbers as values.
 
 Let's get these restaurants showing!
 
