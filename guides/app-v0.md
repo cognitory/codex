@@ -63,7 +63,7 @@ A map contains multiple *keys* and *values*, with each *key* corresponding to so
 
 We can look up a value from a map by doing `(some-map :my-key)`.
 For example, if we had `(def my-map {:name "Canoe" :rating 3.9})` then `(my-map :name)` would give `"Canoe"`.
-If the key we're looking up is a *keyword* -- i.e. it starts with a colon, like `:name:` and `:rating` above -- then we can also use the opposite order for looking up, like `(:rating my-map)` to get `9.3`.
+If the key we're looking up is a *keyword* -- i.e. it starts with a colon, like `:name` and `:rating` above -- then we can also use the opposite order for looking up, like `(:rating my-map)` to get `9.3`.
 
 In our restaurant vector, each map represents a restaurant.-
 Each of these contains the `:name`, `:address`, `:image`, `:rating` and `:price-range` keys, with either strings or numbers as values.
