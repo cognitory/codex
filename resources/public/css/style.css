@@ -17,11 +17,14 @@ p code {
 }
 
 pre code {
+  font-size: 0.85em;
   background: #2B2852;
   color: white;
   padding: 0.5em 0.75em;
   display: inline-block;
-  margin: 0 1em;
+  margin: 0 1em 1em 0;
+  max-width: 100%;
+  overflow: scroll;
 }
 
 code.sh:before {
@@ -30,12 +33,16 @@ code.sh:before {
 
 h1, h2, h3 {
   font-weight: bold;
+  margin-top: 1em;
 }
 h1 {
   font-size: 1.8em;
 }
 h2 {
   font-size: 1.5em;
+}
+em {
+  font-style: italic;
 }
 
 p {
@@ -49,6 +56,8 @@ p {
   left: 0;
 }
 .main {
+  max-width: 100%;
+  overflow: hidden;
 }
 .sidebar, .main {
   padding: 1em;
