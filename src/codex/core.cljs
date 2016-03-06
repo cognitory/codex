@@ -25,6 +25,10 @@
   (if (= js/window.location.hostname "localhost")
     "/"
     "https://raw.githubusercontent.com/cognitory/codex/gh-pages/"))
+(defonce RESOURCE_URL
+  (if (= js/window.location.hostname "localhost")
+    "/"
+    (str CONTENT_URL "resources/public/")))
 
 (defroute index-path "/" []
   (swap! app-state assoc :page {:type :index}))
@@ -42,7 +46,7 @@
       {:content raw-content})))
 
 (defn fetch! []
-  (GET (str CONTENT_URL "resources/public/guides.json" #_REPO_URL #_"contents/guides")
+  (GET (str RESOURCE_URL "guides.json" )
     {:response-format :json
      :keywords? true
      :handler (fn [files]
@@ -51,7 +55,8 @@
                     {:handler (fn [raw-content]
                                 (let [id (string/replace-first (file :name) #"\.md" "")]
                                   (swap! app-state assoc-in [:guides id] (assoc (parse-content raw-content) :id id))))})))})
-  (GET (str CONTENT_URL "resources/public/tldrs.json" #_REPO_URL #_"contents/tldrs")
+
+  (GET (str RESOURCE_URL "tldrs.json")
     {:response-format :json
      :keywords? true
      :handler (fn [files]
