@@ -99,10 +99,10 @@ It has two parts: What we're going to loop over and what we're going to do on ea
 
 Above, the "what we're going to loop over" is `[r restaurants]`.
 This says we will be going over each element in the collection named `restaurants` and we will call the element we're currently looking at `r`.
-In Clojure, we call this a "binding form".
+In Clojure, we call this a *binding form*.
 
-The "what we're going to do for each thing" part, often called the "loop body" above is the `[:li [:div.name (r :name)] [:div.address (r :address)]]`.
-You can see that the variable `r` which we declared above in the "binding form" is being used in the body.
+The "what we're going to do for each thing" part, often called the *loop body* above is the `[:li [:div.name (r :name)] [:div.address (r :address)]]`.
+You can see that the variable `r` which we declared above in the *binding form* is being used in the body.
 
 Reagent will take this vector and convert it to the corresponding *HTML*, which the browser understands how to display. The corresponding HTML to the above is:
 
@@ -121,8 +121,24 @@ Reagent will take this vector and convert it to the corresponding *HTML*, which 
 </div>
 ```
 
-TODO: explain `div`, `ul`, `li`, `class=`, nested tree structure of HTML (and Hiccup in clojure)
+In the above HTML, we see three types of elements -- `div`, `ul`, and `li` -- and one attribute, `class`.
+HTML elements in general look like `<tag attribute="some value" other-attribute="other value">....</tag>`.
+The `...` part can be more HTML, text, or nothing.
 
+
+We are using a Clojure style called "Hiccup" to represent HTML using vectors.
+The above example in Hiccup would look like `[:tag {:attribute "some value" :other-attribute "other value"} ...]`.
+This is a slightly more compact way of representing the HTML that also lets us use nice Clojure functions to manipulate the HTML we will be generating.
+
+Next, let's add a little helper function to get the image link for a particular restaurant.
+
+```clojure
+(defn id->image [id]
+  (str "https://s3-media2.fl.yelpcdn.com/bphoto/" id))
+```
+
+This is defining a function called `id->image` that takes one argument called `id`.
+We then use the `str` function to attach that id to the end of the url that will give us a link to the appropriate image.
 
 Add in other information:
 
@@ -223,7 +239,9 @@ Add a `header-view` and factor out `restaurants-view`:
    (restaurants-view)])
 ```
 
-TODO: Explain why we added `:key` to the `li`
+You can see we added `:key` to the map for our `:li` tag in the for loop.
+We do this so that React, the underlying system that handles actually displaying things can differentiate each list element.
+Why this is important will be explained later :)
 
 # Implementing Our Sort Toggle
 
@@ -245,7 +263,14 @@ Create an app-state atom:
 (defonce app-state (r/atom {:sort :rating}))
 ```
 
-TODO: explain purpose of this, explain atom, explain why `defonce`
+An `atom` is a piece of data that controls access to some other data and allows it to be updated.
+In this case, the atom is wrapping the map `{:sort :rating}`.
+We will use this atom to have application state that will update as we change things.
+
+`defonce` is like the `def` we used previously, except it only happens once.
+We do this so when the app gets reloaded when changes are made to the code, the state won't get overridden back to the initial value.
+To see this, try changing the `defonce` to a def, do some things in the app, then make a change to your code and save.
+You should see that figwheel will reload the app and your app will go back to its initial state.
 
 Change our sort-by to use the value of `:sort` from `app-state`:
 
