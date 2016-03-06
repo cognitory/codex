@@ -132,7 +132,7 @@ We are using a Clojure style called "Hiccup" to represent HTML using vectors.
 The above example in Hiccup would look like `[:tag {:attribute "some value" :other-attribute "other value"} ...]`.
 This is a slightly more compact way of representing the HTML that also lets us use nice Clojure functions to manipulate the HTML we will be generating.
 
-Next, let's add a little helper function to get the image link for a particular restaurant.
+Next, let's add a little helper function to get the image link for a particular restaurant. Add the following above `(def restaurants ...)`:
 
 ```clojure
 (defn id->image [id]
