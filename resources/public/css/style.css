@@ -1,0 +1,29 @@
+@import url(https://fonts.googleapis.com/css?family=Alegreya|Source+Code+Pro);
+
+body {
+  font-family: "Alegreya";
+  line-height: 1.5;
+}
+
+code {
+  font-family: "Source Code Pro";
+  border-radius: 5px;
+}
+
+p code {
+  background: #eee;
+  padding: 0.1em 0.25em;
+  display: inline-block;
+}
+
+pre code {
+  background: black;
+  color: white;
+  padding: 0.5em 0.75em;
+  display: inline-block;
+  margin: 0 1em;
+}
+
+code.sh:before {
+  content: "> ";
+}
