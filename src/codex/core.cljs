@@ -100,11 +100,7 @@
 
 (defn app-view []
   [:div
-   [:div.sidebar {:style {:width "20%"
-                          :position "absolute"
-                          :top 0
-                          :bottom 0
-                          :left 0}}
+   [:div.sidebar
     [:h1 [:a {:href (index-path)} "Codex"]]
     [:h2 "Guides"]
     [:div.guides
@@ -126,11 +122,8 @@
             :style {:display "block"}
             :href (tldr-path tldr)}
         (tldr :id)])]]
-   [:div.main {:style {:width "80%"
-                       :position "absolute"
-                       :top 0
-                       :bottom 0
-                       :right 0}}
+   [:div.main {:style {:max-width "40em"
+                       :margin "0 auto"}}
     (case (get-in @app-state [:page :type])
       :tldr (tldr-view)
       :guide (guide-view)
