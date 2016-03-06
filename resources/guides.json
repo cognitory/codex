@@ -50,32 +50,32 @@
   {
     "name": "app-hello-world.md",
     "path": "guides/app-hello-world.md",
-    "sha": "8ceb81d4116e128186a67afbf5202e5773f59623",
-    "size": 2427,
+    "sha": "8b6f2d8bdf31438972500e7c0af3ac7f5ba7327a",
+    "size": 2468,
     "url": "https://api.github.com/repos/cognitory/codex/contents/guides/app-hello-world.md?ref=gh-pages",
     "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/app-hello-world.md",
-    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/8ceb81d4116e128186a67afbf5202e5773f59623",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/8b6f2d8bdf31438972500e7c0af3ac7f5ba7327a",
     "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/app-hello-world.md",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/cognitory/codex/contents/guides/app-hello-world.md?ref=gh-pages",
-      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/8ceb81d4116e128186a67afbf5202e5773f59623",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/8b6f2d8bdf31438972500e7c0af3ac7f5ba7327a",
       "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/app-hello-world.md"
     }
   },
   {
     "name": "app-v0.md",
     "path": "guides/app-v0.md",
-    "sha": "7e81009c833703dc6a3ed2403574150ad084a394",
-    "size": 15262,
+    "sha": "e049204c18d6cf5e8ae7d845c868e5d6db793827",
+    "size": 17315,
     "url": "https://api.github.com/repos/cognitory/codex/contents/guides/app-v0.md?ref=gh-pages",
     "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/app-v0.md",
-    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/7e81009c833703dc6a3ed2403574150ad084a394",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e049204c18d6cf5e8ae7d845c868e5d6db793827",
     "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/app-v0.md",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/cognitory/codex/contents/guides/app-v0.md?ref=gh-pages",
-      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/7e81009c833703dc6a3ed2403574150ad084a394",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e049204c18d6cf5e8ae7d845c868e5d6db793827",
       "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/app-v0.md"
     }
   },
@@ -466,16 +466,16 @@
   {
     "name": "setup-env.md",
     "path": "guides/setup-env.md",
-    "sha": "b83ad07a57758d1eff307374746191874fd5b599",
-    "size": 838,
+    "sha": "a9c49e19bf738381366a83019eea1a446e6c715a",
+    "size": 945,
     "url": "https://api.github.com/repos/cognitory/codex/contents/guides/setup-env.md?ref=gh-pages",
     "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/setup-env.md",
-    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/b83ad07a57758d1eff307374746191874fd5b599",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/a9c49e19bf738381366a83019eea1a446e6c715a",
     "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/setup-env.md",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/cognitory/codex/contents/guides/setup-env.md?ref=gh-pages",
-      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/b83ad07a57758d1eff307374746191874fd5b599",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/a9c49e19bf738381366a83019eea1a446e6c715a",
       "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/setup-env.md"
     }
   },
@@ -608,4 +608,3 @@
     }
   }
 ]
-
