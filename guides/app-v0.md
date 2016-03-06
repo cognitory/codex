@@ -121,10 +121,14 @@ Reagent will take this vector and convert it to the corresponding *HTML*, which 
 </div>
 ```
 
-In the above HTML, we see three types of elements: `div`, `ul`, and `li`.
+In the above HTML, we see three types of elements -- `div`, `ul`, and `li` -- and one attribute, `class`.
 HTML elements in general look like `<tag attribute="some value" other-attribute="other value">....</tag>`.
+The `...` part can be more HTML, text, or nothing.
+
+
 We are using a Clojure style called "Hiccup" to represent HTML using vectors.
 The above example in Hiccup would look like `[:tag {:attribute "some value" :other-attribute "other value"} ...]`.
+This is a slightly more compact way of representing the HTML that also lets us use nice Clojure functions to manipulate the HTML we will be generating.
 
 Next, let's add a little helper function to get the image link for a particular restaurant.
 
