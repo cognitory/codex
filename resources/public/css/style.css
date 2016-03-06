@@ -17,7 +17,7 @@ p code {
 }
 
 pre code {
-  background: black;
+  background: #2B2852;
   color: white;
   padding: 0.5em 0.75em;
   display: inline-block;
