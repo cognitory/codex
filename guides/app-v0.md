@@ -17,7 +17,7 @@ demo of what we're going to build:
 
 Let's start by displaying a list of restaurants. To do that, we first need information about a few restaurants. We will create a 'vector' of 'maps', each map containing information about a restaurant.
 
-Add the following below `(enable-console-print!)`
+Add the following below `(enable-console-print!)` in your `core.cljs` file.
 
 ```clojure
 (def restaurants
