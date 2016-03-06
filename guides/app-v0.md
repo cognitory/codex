@@ -4,7 +4,8 @@ description: TODO
 dependencies: [ setup-env ]
 ---
 
-what we're going to build:
+demo of what we're going to build:
+  [Rustyspoon Demo](http://cognitory.github.io/rustyspoon/index.html)
 
  - set up your system: [[guides/setup-env]]
 
