@@ -14,4 +14,5 @@ resources:
  - http://clojurekoans.com/
  - https://github.com/clojure-cookbook/clojure-cookbook
  - https://learnxinyminutes.com/docs/clojure/
+ - https://github.com/google/clojure-turtle
 ---

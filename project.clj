@@ -4,8 +4,8 @@
                  [cljs-ajax "0.5.3"]
                  [re-frame "0.7.0-alpha-3"]
                  [secretary "1.2.3"]
-                 [kibu/pushy "0.3.6"]
-                 [cljsjs/js-yaml "3.3.1-0"]]
+                 [cljsjs/js-yaml "3.3.1-0"]
+                 [markdown-clj "0.9.86"]]
 
   :plugins [[lein-cljsbuild "1.1.2"]
             [lein-figwheel "0.5.0-6"]]
@@ -13,7 +13,8 @@
   :clean-targets ^{:protect false}
   ["resources/public/js/dev"]
 
-  :figwheel {:server-port 3450}
+  :figwheel {:server-port 3450
+             :css-dirs ["resources/public/css"]}
 
   :cljsbuild {:builds
               [{:id "dev"

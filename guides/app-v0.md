@@ -4,6 +4,462 @@ description: TODO
 dependencies: [ setup-env ]
 ---
 
-TODO walkthrough of build a search as you type client-side only app w/ re-frame and reagent
+demo of what we're going to build:
+  [Rustyspoon Demo](http://cognitory.github.io/rustyspoon/index.html)
+
+ - set up your system: [[guides/setup-env]]
+
+ - set up the start of your application: [[guides/app-hello-world]]
 
 
+
+# Making a List of Restaurants to Display
+
+Let's start by displaying a list of restaurants. To do that, we first need information about a few restaurants. We will create a 'vector' of 'hashes', each hash containing information about a restaurant.
+
+Add the following below `(enable-console-print!)`
+
+```clojure
+(def restaurants
+  [{:name "Byblos"
+    :address "11 Duncan Street"
+    :image "kgXfBW9csGml_ZicwCB5Xg/ls.jpg"
+    :rating 4.5
+    :price-range 3 }
+   {:name "George"
+    :address "111 Queen St. E"
+    :image "gH783lm_UYR8b78s3Ul5Rg/ls.jpg"
+    :rating 4.4
+    :price-range 4 }
+   {:name "Kaiju"
+    :address "384 Yonge St."
+    :image "WQvsAGnWJcjUQQH3DMw8gA/ls.jpg"
+    :rating 4.3
+    :price-range 1 }
+   {:name "Richmond Station"
+    :address "1 Richmond St West"
+    :image "AGtyni4gZtoWSRz_U0Axwg/ls.jpg"
+    :rating 4.2
+    :price-range 3 }
+   {:name "Banh Mi Boys"
+    :address "392 Queen St. West"
+    :image "S1JS93tjQLqSwXMeWz0z7g/ls.jpg"
+    :rating 4.0
+    :price-range 1 }
+   {:name "Canoe"
+    :address "66 Wellington St."
+    :image "g0lZAilNKqlfQTNLUtWp3Q/ls.jpg"
+    :rating 3.9
+    :price-range 4 }])
+```
+
+`def` is used to gives names to things that we will use later. Here, we define a list of restaurants using `(def restaurants ...)`
+
+The square brackets `[ ... ]` are used to create a *vector*, which is an ordered list of things. For example, here is a vector of a few numbers: `[ 1 3 5 6 7 ]`.
+
+Our restaurant vector is a list of hashes. A *hash* is created by using brackets `{ ... }`. A hash contains multiple *keys* and *values*, with each *key* corresponding to some *value* -- you can think of it like a dictionary, where words are keys and their definitions are values. Or a phonebook (names = keys, numbers = values).
+
+In our restaurant vector, each hash represents a restaurant. Each of these contains the `:name`, `:address`, `:image`, `:rating` and `:price-range` keys, with either strings or numbers as values.
+
+Let's get these restaurants showing!
+
+Replace your `(defn app-view ...)` with the following:
+
+```clojure
+(defn app-view []
+  [:div
+   [:ul
+    (for [r restaurants]
+      [:li
+       [:div.name (r :name)]
+       [:div.address (r :address)]])]])
+```
+
+Save the file. Your browser should immediately update and show a list of restaurants, each with a name and address.
+
+`(defn app-view ...)` defines a *function* called `app-view`. A function is like a mini program that can take in various inputs and, manipulate those inputs, and return an output. For example, the following function will squares an number passed into it: `(defn square [x] (* x x))` This function can be used in other parts of our program by writing: `(square 3)`
+
+Our `app-view` function takes no inputs (the `[]` has nothing inside) and will return a data structure similar to:
+
+```clojure
+[:div
+  [:ul
+    [:li
+      [:div.name "Byblos]
+      [:div.address "11 Duncan Street"]]
+    [:li
+      [:div.name "George"]
+      [:div.address "111 Queen St. E"]]
+```
+
+This structure is a vector with many nested *keywords* and vectors.
+
+TODO: explain `for`
+
+Reagent will take this vector and convert it to the corresponding *HTML*, which the browser understands how to display. The corresponding HTML to the above is:
+
+```html
+<div>
+  <ul>
+    <li>
+      <div class='name'>Byblos</div>
+      <div class='address'>11 Duncan Street</div>
+    </li>
+    <li>
+      <div class='name'>George</div>
+      <div class='address'>111 Queen St. E</div>
+    </li>
+  </ul>
+</div>
+```
+
+TODO: explain `div`, `ul`, `li`, `class=`, nested tree structure of HTML (and Hiccup in clojure)
+
+
+Add in other information:
+
+```clojure
+(defn app-view []
+  [:div
+   [:ul
+    (for [r restaurants]
+      [:li
+       [:img {:src (id->image (r :image))}]
+       [:div.name (r :name)]
+       [:div.address (r :address)]
+       [:div.rating (r :rating)]
+       [:div.price-range (r :price-range)]])]])
+```
+
+Style:
+
+```clojure
+(defn app-view []
+  [:div
+   [:ul {:style {:margin 0
+                 :padding 0
+                 :list-style "none"}}
+    (for [r restaurants]
+      (let [h "5em"]
+        [:li {:style {:height h
+                      :margin-bottom "1em"}}
+         [:img {:src (id->image (r :image))
+                :style {:width h
+                        :height h
+                        :float "left"
+                        :margin-right "0.5em"}}]
+         [:div.name {:style {:font-weight "bold"}} (r :name)]
+         [:div.address (r :address)]
+         [:div.rating (r :rating)]
+         [:div.price-range {:style {:color "green"}}
+          (repeat (r :price-range) "$")]]))]])
+```
+
+Factor out `restaurant-view`:
+
+```clojure
+(defn restaurant-view [r]
+  (let [h "5em"]
+    [:div {:style {:height h
+                   :margin-bottom "1em"}}
+     [:img {:src (id->image (r :image))
+            :style {:width h
+                    :height h
+                    :float "left"
+                    :margin-right "0.5em"}}]
+     [:div.name {:style {:font-weight "bold"}} (r :name)]
+     [:div.address (r :address)]
+     [:div.rating (r :rating)]
+     [:div.price-range {:style {:color "green"}}
+      (repeat (r :price-range) "$")]]))
+
+(defn app-view []
+  [:div
+   [:ul {:style {:margin 0
+                 :padding 0
+                 :list-style "none"}}
+    (for [r restaurants]
+      [:li {:style {:margin-bottom "1em"}}
+       (restaurant-view r)])]])
+```
+
+# Creating Our Header w/ Search Field and Filter Buttons
+
+Add a `header-view` and factor out `restaurants-view`:
+
+```clojure
+(defn header-view []
+  [:div.header
+   [:input.search {:placeholder "Search"}]
+   [:div.price-range
+    [:button "$"]
+    [:button "$$"]
+    [:button "$$$"]
+    [:button "$$$$"]]
+   [:div.sort
+    [:button "Name"]
+    [:button "Rating"]]])
+
+(defn restaurants-view []
+  [:ul {:style {:margin 0
+                :padding 0
+                :list-style "none"}}
+   (for [r restaurants]
+     [:li {:style {:margin-bottom "1em"}
+           :key (r :name)}
+      (restaurant-view r)])])
+
+(defn app-view []
+  [:div
+   (header-view)
+   (restaurants-view)])
+```
+
+TODO: Explain why we added `:key` to the `li`
+
+# Implementing Our Sort Toggle
+
+Sort our restaurants by rating:
+
+```clojure
+(defn restaurants-view []
+  [:ul {:style {:margin 0
+                :padding 0
+                :list-style "none"}}
+   (for [r (sort-by :rating restaurants)]
+     [:li {:style {:margin-bottom "1em"}}
+      (restaurant-view r)])])
+```
+
+Create an app-state atom:
+
+```clojure
+(defonce app-state (r/atom {:sort :rating}))
+```
+
+TODO: explain purpose of this, explain atom, explain why `defonce`
+
+Change our sort-by to use the value of `:sort` from `app-state`:
+
+```clojure
+(defn restaurants-view []
+  [:ul {:style {:margin 0
+                :padding 0
+                :list-style "none"}}
+   (let [sort-key (@app-state :sort)]
+     (for [r (sort-by sort-key restaurants)]
+       [:li {:style {:margin-bottom "1em"}}
+        (restaurant-view r)]))])
+```
+
+Change `app-state` `:sort` by clicking on header buttons:
+
+```clojure
+[:div.sort
+    [:button {:onClick (fn [_]
+                         (swap! app-state assoc :sort :name))}
+             "Name"]
+    [:button {:onClick (fn [_]
+                         (swap! app-state assoc :sort :rating))}
+             "Rating"]]
+```
+
+Change display of sort buttons depending on if they are clicked or not:
+
+```clojure
+(let [current-sort (@app-state :sort)]
+     [:div.sort
+      [:button {:style (if (= :name current-sort)
+                         {:background "red"}
+                         {:background "gray"})
+                :onClick (fn [_]
+                           (swap! app-state assoc :sort :name))}
+               "Name"]
+      [:button {:style (if (= :rating current-sort)
+                         {:background "red"}
+                         {:background "gray"})
+                :onClick (fn [_]
+                           (swap! app-state assoc :sort :rating))}
+               "Rating"]])
+```
+
+
+# Implement Price Range Filtering
+
+Add `:price-ranges` to the `app-state` atom:
+
+```clojure
+(defonce app-state (r/atom {:sort :rating
+                            :price-ranges #{1 2 3 4}}))
+```
+
+
+Only show restaurants in the price range:
+
+```clojure
+(defn restaurants-view []
+  [:ul {:style {:margin 0
+                :padding 0
+                :list-style "none"}}
+   (let [sort-key (@app-state :sort)
+         price-ranges (@app-state :price-ranges)]
+     (for [r (->> restaurants
+                  (filter (fn [r] (contains? price-ranges (r :price-range))))
+                  (sort-by sort-key))]
+       [:li {:style {:margin-bottom "1em"}
+             :key (r :name)}
+        (restaurant-view r)]))])
+```
+
+TODO: add a way to test this / see the effect immediately
+(Change the initial state of atom to #{1} and refresh)
+
+Make buttons change the `:price-ranges` state and display different based on the state:
+
+```clojure
+(defn header-view []
+  [:div.header
+   [:input.search {:placeholder "Search"}]
+   (let [price-ranges (@app-state :price-ranges)]
+     [:div.price-range
+      (let [active? (contains? price-ranges 1)]
+        [:button {:style (if active?
+                           {:background "red"}
+                           {:background "gray"})
+                  :onClick (fn [_]
+                             (if active?
+                               (swap! app-state #(assoc %1 :price-ranges (disj (%1 :price-ranges) 1)))
+                               (swap! app-state #(assoc %1 :price-ranges (conj (%1 :price-ranges) 1)))))}
+         "$"])
+      (let [active? (contains? price-ranges 2)]
+        [:button {:style (if active?
+                           {:background "red"}
+                           {:background "gray"})
+                  :onClick (fn [_]
+                             (if active?
+                               (swap! app-state #(assoc %1 :price-ranges (disj (%1 :price-ranges) 2)))
+                               (swap! app-state #(assoc %1 :price-ranges (conj (%1 :price-ranges) 2)))))}
+         "$$"])
+      (let [active? (contains? price-ranges 3)]
+        [:button {:style (if active?
+                           {:background "red"}
+                           {:background "gray"})
+                  :onClick (fn [_]
+                             (if active?
+                               (swap! app-state #(assoc %1 :price-ranges (disj (%1 :price-ranges) 3)))
+                               (swap! app-state #(assoc %1 :price-ranges (conj (%1 :price-ranges) 3)))))}
+         "$$$"])
+      (let [active? (contains? price-ranges 4)]
+        [:button {:style (if active?
+                           {:background "red"}
+                           {:background "gray"})
+                  :onClick (fn [_]
+                             (if active?
+                               (swap! app-state #(assoc %1 :price-ranges (disj (%1 :price-ranges) 4)))
+                               (swap! app-state #(assoc %1 :price-ranges (conj (%1 :price-ranges) 4)))))}
+         "$$$$"])])
+   (let [current-sort (@app-state :sort)]
+     [:div.sort
+      [:button {:style (if (= :name current-sort)
+                         {:background "red"}
+                         {:background "gray"})
+                :onClick (fn [_]
+                           (swap! app-state assoc :sort :name))} "Name"]
+      [:button {:style (if (= :rating current-sort)
+                         {:background "red"}
+                         {:background "gray"})
+                :onClick (fn [_]
+                           (swap! app-state assoc :sort :rating))} "Rating"]])])
+```
+
+Refactor the filter buttons:
+
+```clojure
+(defn header-view []
+  [:div.header
+   [:input.search {:placeholder "Search"}]
+
+   (let [price-ranges [1 2 3 4]
+         current-price-ranges (@app-state :price-ranges)]
+     [:div.price-range
+      (for [price-range price-ranges]
+        (let [active? (contains? current-price-ranges price-range)]
+          [:button {:style (if active?
+                             {:background "red"}
+                             {:background "gray"})
+                    :onClick (fn [_]
+                               (if active?
+                                 (swap! app-state #(assoc %1 :price-ranges (disj (%1 :price-ranges) price-range)))
+                                 (swap! app-state #(assoc %1 :price-ranges (conj (%1 :price-ranges) price-range)))))}
+           (repeat price-range "$")]))])
+
+   (let [current-sort (@app-state :sort)]
+     [:div.sort
+      [:button {:style (if (= :name current-sort)
+                         {:background "red"}
+                         {:background "gray"})
+                :onClick (fn [_]
+                           (swap! app-state assoc :sort :name))} "Name"]
+      [:button {:style (if (= :rating current-sort)
+                         {:background "red"}
+                         {:background "gray"})
+                :onClick (fn [_]
+                           (swap! app-state assoc :sort :rating))} "Rating"]])])
+```
+
+# Implementing Search
+
+Make typing in search field change `:query` in `app-state`:
+
+```clojure
+(defonce app-state (r/atom {:sort :rating
+                            :price-ranges #{1 2 3 4}
+                            :query ""}))
+```
+
+```clojure
+[:input.search {:on-change (fn [e]
+                                (swap! app-state assoc :query (.. e -target -value)))
+                   :placeholder "Search"}]
+```
+
+```clojure
+(defn restaurants-view []
+  [:ul {:style {:margin 0
+                :padding 0
+                :list-style "none"}}
+   (let [sort-key (@app-state :sort)
+         price-ranges (@app-state :price-ranges)
+         query (@app-state :query)]
+     (for [r (->> restaurants
+                  (filter (fn [r] (contains? price-ranges (r :price-range))))
+                  (filter (fn [r] (clojure.string/includes? (r :name) query)))
+                  (sort-by sort-key))]
+       [:li {:style {:margin-bottom "1em"}
+             :key (r :name)}
+        (restaurant-view r)]))])
+```
+
+# Refactor to use Transactions
+
+# Refactor to use Subscriptions
+
+# Move CSS Into a Seperate File
+
+# Make Selecting a Restaraunt Show Its Page
+
+# Allow Creating of a New Restaurant
+
+# Pull Restaurants from a Database
+
+# Add New Restaurants to a Database
+
+# Can Leave Comments (+ save to database)
+
+# Users can Register and Login
+
+# Users Can Rate Restaurants
+
+# Users Have Profiles
+
+# URLs for different pages

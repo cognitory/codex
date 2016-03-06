@@ -3,8 +3,9 @@
             [clojure.string :as string]
             [reagent.core :as r]
             [secretary.core :as secretary :include-macros true :refer-macros [defroute]]
-            [pushy.core :as pushy]
-            cljsjs.js-yaml))
+            [markdown.core :as md]
+            [cljsjs.js-yaml]
+            [codex.router :as router]))
 
 (enable-console-print!)
 
@@ -20,14 +21,18 @@
                             :tldrs {}}))
 
 (defonce REPO_URL "https://api.github.com/repos/cognitory/codex/")
+(defonce CONTENT_URL
+  (if (= js/window.location.hostname "localhost")
+    "/"
+    "https://raw.githubusercontent.com/cognitory/codex/gh-pages/"))
 
-(defroute index-path "/codex" []
+(defroute index-path "/" []
   (swap! app-state assoc :page {:type :index}))
 
-(defroute guide-path "/codex/guides/:id" [id]
+(defroute guide-path "/guides/:id" [id]
   (swap! app-state assoc :page {:type :guide :id id}))
 
-(defroute tldr-path "/codex/tldrs/:id" [id]
+(defroute tldr-path "/tldrs/:id" [id]
   (swap! app-state assoc :page {:type :tldr :id id}))
 
 (defn parse-content [raw-content]
@@ -42,7 +47,7 @@
      :keywords? true
      :handler (fn [files]
                 (doseq [file files]
-                  (GET (file :download_url)
+                  (GET (str CONTENT_URL (file :path))
                     {:handler (fn [raw-content]
                                 (let [id (string/replace-first (file :name) #"\.md" "")]
                                   (swap! app-state assoc-in [:guides id] (assoc (parse-content raw-content) :id id))))})))})
@@ -52,7 +57,7 @@
      :keywords? true
      :handler (fn [files]
                 (doseq [file files]
-                  (GET (file :download_url)
+                  (GET (str CONTENT_URL (file :path))
                     {:handler (fn [raw-content]
                                 (let [id (string/replace-first (file :name) #"\.md" "")]
                                   (swap! app-state assoc-in [:tldrs id] (assoc (parse-content raw-content) :id id))))})))}))
@@ -75,7 +80,7 @@
     [:div
      [:h1 (or (:title tldr) (:id tldr))]
      [:div {:style {:whitespace "pre"}}
-      (tldr :content)]
+      (:content tldr)]
      [:h2 "Resources"]
      [:ul.resources
       (for [link (:resources tldr)]
@@ -85,13 +90,30 @@
       (for [id (:related tldr)]
         [:li [:a {:href (tldr-path {:id id})} id]])]]))
 
+(defn linkify [text state]
+  [(string/replace text
+                   #"\[\[(tldrs|guides)/([a-z\-]*)(?:\|(.*?))?\]\]"
+                   (fn [[_ type id title]]
+                     (let [type (keyword type)
+                           url (case type
+                                 :guides (guide-path {:id id})
+                                 :tldrs (tldr-path {:id id}))
+                           resource (get-in @app-state [type id])
+                           out-text (or title (:title resource) id)]
+                       (if resource
+                         (str "<a href='" url "''>" out-text "</a>")
+                         (str "<a class='dne'>" out-text "</a>")))))
+   state])
+
 (defn guide-view []
   (let [id (get-in @app-state [:page :id])
         guide (get-in @app-state [:guides id])]
    [:div
     [:h1 (or (:title guide) (:id guide))]
-    [:div {:style {:white-space "pre-wrap"}}
-     (guide :content)]]))
+    [:div {:style {:white-space "pre-wrap"}
+           :dangerouslySetInnerHTML
+           {:__html (md/md->html (:content guide)
+                                 :custom-transformers [linkify])}}]]))
 
 (defn index-view []
   [:div
@@ -99,11 +121,7 @@
 
 (defn app-view []
   [:div
-   [:div.sidebar {:style {:width "20%"
-                          :position "absolute"
-                          :top 0
-                          :bottom 0
-                          :left 0}}
+   [:div.sidebar
     [:h1 [:a {:href (index-path)} "Codex"]]
     [:h2 "Guides"]
     [:div.guides
@@ -125,11 +143,8 @@
             :style {:display "block"}
             :href (tldr-path tldr)}
         (tldr :id)])]]
-   [:div.main {:style {:width "80%"
-                       :position "absolute"
-                       :top 0
-                       :bottom 0
-                       :right 0}}
+   [:div.main {:style {:max-width "40em"
+                       :margin "0 auto"}}
     (case (get-in @app-state [:page :type])
       :tldr (tldr-view)
       :guide (guide-view)
@@ -138,8 +153,7 @@
 (defonce once
   (do
     (fetch!)
-    (pushy/start! (pushy/pushy secretary/dispatch!
-                               (fn [x] (when (secretary/locate-route x) x))))))
+    (router/init!)))
 
 (defn init []
   (r/render-component [app-view] (.-body js/document)))
