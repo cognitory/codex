@@ -36,6 +36,13 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 [[tldrs/oh-my-zsh]]
 
 
+## install rlwrap
+
+```bash
+brew install rlwrap
+```
+
+
 ## install lein
 
 ```clojure
