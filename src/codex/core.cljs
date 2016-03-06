@@ -136,11 +136,15 @@
       :guide (guide-view)
       :index (index-view))]])
 
+(defonce history
+  (pushy/pushy secretary/dispatch!
+               (fn [x]
+                 (when (secretary/locate-route-value x) x))))
+
 (defonce once
   (do
     (fetch!)
-    (pushy/start! (pushy/pushy secretary/dispatch!
-                               (fn [x] (when (secretary/locate-route x) x))))))
+    (pushy/start! history)))
 
 (defn init []
   (r/render-component [app-view] (.-body js/document)))
