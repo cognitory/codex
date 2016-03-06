@@ -126,6 +126,16 @@ HTML elements in general look like `<tag attribute="some value" other-attribute=
 We are using a Clojure style called "Hiccup" to represent HTML using vectors.
 The above example in Hiccup would look like `[:tag {:attribute "some value" :other-attribute "other value"} ...]`.
 
+Next, let's add a little helper function to get the image link for a particular restaurant.
+
+```clojure
+(defn id->image [id]
+  (str "https://s3-media2.fl.yelpcdn.com/bphoto/" id))
+```
+
+This is defining a function called `id->image` that takes one argument called `id`.
+We then use the `str` function to attach that id to the end of the url that will give us a link to the appropriate image.
+
 Add in other information:
 
 ```clojure
