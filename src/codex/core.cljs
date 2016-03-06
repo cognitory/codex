@@ -42,7 +42,7 @@
       {:content raw-content})))
 
 (defn fetch! []
-  (GET (str REPO_URL "contents/guides")
+  (GET (str CONTENT_URL "resources/guides.json" #_REPO_URL #_"contents/guides")
     {:response-format :json
      :keywords? true
      :handler (fn [files]
@@ -51,8 +51,7 @@
                     {:handler (fn [raw-content]
                                 (let [id (string/replace-first (file :name) #"\.md" "")]
                                   (swap! app-state assoc-in [:guides id] (assoc (parse-content raw-content) :id id))))})))})
-
-  (GET (str REPO_URL "contents/tldrs")
+  (GET (str CONTENT_URL "resources/tldrs.json" #_REPO_URL #_"contents/tldrs")
     {:response-format :json
      :keywords? true
      :handler (fn [files]

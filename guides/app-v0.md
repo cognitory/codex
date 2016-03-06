@@ -15,7 +15,7 @@ demo of what we're going to build:
 
 # Making a List of Restaurants to Display
 
-Let's start by displaying a list of restaurants. To do that, we first need information about a few restaurants. We will create a 'vector' of 'hashes', each hash containing information about a restaurant.
+Let's start by displaying a list of restaurants. To do that, we first need information about a few restaurants. We will create a 'vector' of 'maps', each map containing information about a restaurant.
 
 Add the following below `(enable-console-print!)`
 
@@ -57,9 +57,9 @@ Add the following below `(enable-console-print!)`
 
 The square brackets `[ ... ]` are used to create a *vector*, which is an ordered list of things. For example, here is a vector of a few numbers: `[ 1 3 5 6 7 ]`.
 
-Our restaurant vector is a list of hashes. A *hash* is created by using brackets `{ ... }`. A hash contains multiple *keys* and *values*, with each *key* corresponding to some *value* -- you can think of it like a dictionary, where words are keys and their definitions are values. Or a phonebook (names = keys, numbers = values).
+Our restaurant vector is a list of maps. A *map* is created by using brackets `{ ... }`. A map contains multiple *keys* and *values*, with each *key* corresponding to some *value* -- you can think of it like a dictionary, where words are keys and their definitions are values. Or a phonebook (names = keys, numbers = values).
 
-In our restaurant vector, each hash represents a restaurant. Each of these contains the `:name`, `:address`, `:image`, `:rating` and `:price-range` keys, with either strings or numbers as values.
+In our restaurant vector, each map represents a restaurant. Each of these contains the `:name`, `:address`, `:image`, `:rating` and `:price-range` keys, with either strings or numbers as values.
 
 Let's get these restaurants showing!
 
@@ -94,7 +94,15 @@ Our `app-view` function takes no inputs (the `[]` has nothing inside) and will r
 
 This structure is a vector with many nested *keywords* and vectors.
 
-TODO: explain `for`
+The `for` construct provides a way to do the same operation on a collection of data.
+It has two parts: What we're going to loop over and what we're going to do on each thing.
+
+Above, the "what we're going to loop over" is `[r restaurants]`.
+This says we will be going over each element in the collection named `restaurants` and we will call the element we're currently looking at `r`.
+In Clojure, we call this a "binding form".
+
+The "what we're going to do for each thing" part, often called the "loop body" above is the `[:li [:div.name (r :name)] [:div.address (r :address)]]`.
+You can see that the variable `r` which we declared above in the "binding form" is being used in the body.
 
 Reagent will take this vector and convert it to the corresponding *HTML*, which the browser understands how to display. The corresponding HTML to the above is:
 
