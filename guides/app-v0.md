@@ -94,7 +94,15 @@ Our `app-view` function takes no inputs (the `[]` has nothing inside) and will r
 
 This structure is a vector with many nested *keywords* and vectors.
 
-TODO: explain `for`
+The `for` construct provides a way to do the same operation on a collection of data.
+It has two parts: What we're going to loop over and what we're going to do on each thing.
+
+Above, the "what we're going to loop over" is `[r restaurants]`.
+This says we will be going over each element in the collection named `restaurants` and we will call the element we're currently looking at `r`.
+In Clojure, we call this a "binding form".
+
+The "what we're going to do for each thing" part, often called the "loop body" above is the `[:li [:div.name (r :name)] [:div.address (r :address)]]`.
+You can see that the variable `r` which we declared above in the "binding form" is being used in the body.
 
 Reagent will take this vector and convert it to the corresponding *HTML*, which the browser understands how to display. The corresponding HTML to the above is:
 
