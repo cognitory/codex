@@ -33,3 +33,10 @@ brew install leiningen
 ```
 
 While installing [[tldrs/lein]] you may be asked to first download and install [[tldrs/java]] on your system.
+
+
+Install java 1.8:
+
+http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+
