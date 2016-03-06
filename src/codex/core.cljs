@@ -43,7 +43,7 @@
      :keywords? true
      :handler (fn [files]
                 (doseq [file files]
-                  (GET (str "/" (file :path))
+                  (GET (str "./" (file :path))
                     {:handler (fn [raw-content]
                                 (let [id (string/replace-first (file :name) #"\.md" "")]
                                   (swap! app-state assoc-in [:guides id] (assoc (parse-content raw-content) :id id))))})))})
@@ -53,7 +53,7 @@
      :keywords? true
      :handler (fn [files]
                 (doseq [file files]
-                  (GET (str "/" (file :path))
+                  (GET (str "./" (file :path))
                     {:handler (fn [raw-content]
                                 (let [id (string/replace-first (file :name) #"\.md" "")]
                                   (swap! app-state assoc-in [:tldrs id] (assoc (parse-content raw-content) :id id))))})))}))
