@@ -29,7 +29,7 @@ brew install rlwrap
 Install [[tldrs/lein]]:
 
 ```sh
-brew install lein
+brew install leiningen
 ```
 
 While installing [[tldrs/lein]] you may be asked to first download and install [[tldrs/java]] on your system.
