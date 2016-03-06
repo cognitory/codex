@@ -1,0 +1,803 @@
+[
+  {
+    "name": "api.md",
+    "path": "tldrs/api.md",
+    "sha": "031cb1905cda2b4cf325a40b9b124707556419b8",
+    "size": 146,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/api.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/api.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/031cb1905cda2b4cf325a40b9b124707556419b8",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/api.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/api.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/031cb1905cda2b4cf325a40b9b124707556419b8",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/api.md"
+    }
+  },
+  {
+    "name": "atom-editor.md",
+    "path": "tldrs/atom-editor.md",
+    "sha": "2a7d154639fcb3a29924def8bd3191aeacd2db07",
+    "size": 39,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/atom-editor.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/atom-editor.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/2a7d154639fcb3a29924def8bd3191aeacd2db07",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/atom-editor.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/atom-editor.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/2a7d154639fcb3a29924def8bd3191aeacd2db07",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/atom-editor.md"
+    }
+  },
+  {
+    "name": "backend.md",
+    "path": "tldrs/backend.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/backend.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/backend.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/backend.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/backend.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/backend.md"
+    }
+  },
+  {
+    "name": "bdd.md",
+    "path": "tldrs/bdd.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/bdd.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/bdd.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/bdd.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/bdd.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/bdd.md"
+    }
+  },
+  {
+    "name": "cdn.md",
+    "path": "tldrs/cdn.md",
+    "sha": "966178f05980ffffc230c334766507cd02701173",
+    "size": 234,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/cdn.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/cdn.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/966178f05980ffffc230c334766507cd02701173",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/cdn.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/cdn.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/966178f05980ffffc230c334766507cd02701173",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/cdn.md"
+    }
+  },
+  {
+    "name": "clojure.md",
+    "path": "tldrs/clojure.md",
+    "sha": "a0a12c39f2242f749e493af0011ae398e91a8f79",
+    "size": 635,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/clojure.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/clojure.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/a0a12c39f2242f749e493af0011ae398e91a8f79",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/clojure.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/clojure.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/a0a12c39f2242f749e493af0011ae398e91a8f79",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/clojure.md"
+    }
+  },
+  {
+    "name": "clojurescript.md",
+    "path": "tldrs/clojurescript.md",
+    "sha": "2e72c98f127dde0dbf2c9c63f24fc4fc37c691d7",
+    "size": 314,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/clojurescript.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/clojurescript.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/2e72c98f127dde0dbf2c9c63f24fc4fc37c691d7",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/clojurescript.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/clojurescript.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/2e72c98f127dde0dbf2c9c63f24fc4fc37c691d7",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/clojurescript.md"
+    }
+  },
+  {
+    "name": "cordova.md",
+    "path": "tldrs/cordova.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/cordova.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/cordova.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/cordova.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/cordova.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/cordova.md"
+    }
+  },
+  {
+    "name": "css.md",
+    "path": "tldrs/css.md",
+    "sha": "d324c88523550c2c9f57546132d97930beb57576",
+    "size": 171,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/css.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/css.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/d324c88523550c2c9f57546132d97930beb57576",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/css.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/css.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/d324c88523550c2c9f57546132d97930beb57576",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/css.md"
+    }
+  },
+  {
+    "name": "database.md",
+    "path": "tldrs/database.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/database.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/database.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/database.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/database.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/database.md"
+    }
+  },
+  {
+    "name": "debugging.md",
+    "path": "tldrs/debugging.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/debugging.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/debugging.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/debugging.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/debugging.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/debugging.md"
+    }
+  },
+  {
+    "name": "deploying.md",
+    "path": "tldrs/deploying.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/deploying.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/deploying.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/deploying.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/deploying.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/deploying.md"
+    }
+  },
+  {
+    "name": "domain.md",
+    "path": "tldrs/domain.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/domain.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/domain.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/domain.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/domain.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/domain.md"
+    }
+  },
+  {
+    "name": "electron.md",
+    "path": "tldrs/electron.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/electron.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/electron.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/electron.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/electron.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/electron.md"
+    }
+  },
+  {
+    "name": "figwheel.md",
+    "path": "tldrs/figwheel.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/figwheel.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/figwheel.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/figwheel.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/figwheel.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/figwheel.md"
+    }
+  },
+  {
+    "name": "frp.md",
+    "path": "tldrs/frp.md",
+    "sha": "225e17ae4cbbeb45a4843c65b06518c7d479d96c",
+    "size": 287,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/frp.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/frp.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/225e17ae4cbbeb45a4843c65b06518c7d479d96c",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/frp.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/frp.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/225e17ae4cbbeb45a4843c65b06518c7d479d96c",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/frp.md"
+    }
+  },
+  {
+    "name": "functional-programming.md",
+    "path": "tldrs/functional-programming.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/functional-programming.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/functional-programming.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/functional-programming.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/functional-programming.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/functional-programming.md"
+    }
+  },
+  {
+    "name": "git.md",
+    "path": "tldrs/git.md",
+    "sha": "40dad80890cf349a4816dd9dc4b4c667f8f2965b",
+    "size": 65,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/git.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/git.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/40dad80890cf349a4816dd9dc4b4c667f8f2965b",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/git.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/git.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/40dad80890cf349a4816dd9dc4b4c667f8f2965b",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/git.md"
+    }
+  },
+  {
+    "name": "github.md",
+    "path": "tldrs/github.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/github.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/github.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/github.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/github.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/github.md"
+    }
+  },
+  {
+    "name": "heroku.md",
+    "path": "tldrs/heroku.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/heroku.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/heroku.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/heroku.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/heroku.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/heroku.md"
+    }
+  },
+  {
+    "name": "homebrew.md",
+    "path": "tldrs/homebrew.md",
+    "sha": "5fc2a1f2a074c2deac80dc859691b20fa8f3a2c6",
+    "size": 38,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/homebrew.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/homebrew.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/5fc2a1f2a074c2deac80dc859691b20fa8f3a2c6",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/homebrew.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/homebrew.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/5fc2a1f2a074c2deac80dc859691b20fa8f3a2c6",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/homebrew.md"
+    }
+  },
+  {
+    "name": "html.md",
+    "path": "tldrs/html.md",
+    "sha": "37ba67b54d1e607b9643b6a9bbeb7a5f9408f73e",
+    "size": 130,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/html.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/html.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/37ba67b54d1e607b9643b6a9bbeb7a5f9408f73e",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/html.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/html.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/37ba67b54d1e607b9643b6a9bbeb7a5f9408f73e",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/html.md"
+    }
+  },
+  {
+    "name": "http.md",
+    "path": "tldrs/http.md",
+    "sha": "6fc55ae2b2dbe5b1fc536240eb32ab467c06085e",
+    "size": 58,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/http.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/http.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/6fc55ae2b2dbe5b1fc536240eb32ab467c06085e",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/http.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/http.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/6fc55ae2b2dbe5b1fc536240eb32ab467c06085e",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/http.md"
+    }
+  },
+  {
+    "name": "https.md",
+    "path": "tldrs/https.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/https.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/https.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/https.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/https.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/https.md"
+    }
+  },
+  {
+    "name": "javascript.md",
+    "path": "tldrs/javascript.md",
+    "sha": "f5701e46a37ce4607ec85ea279676cc93515907f",
+    "size": 115,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/javascript.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/javascript.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/f5701e46a37ce4607ec85ea279676cc93515907f",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/javascript.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/javascript.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/f5701e46a37ce4607ec85ea279676cc93515907f",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/javascript.md"
+    }
+  },
+  {
+    "name": "json.md",
+    "path": "tldrs/json.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/json.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/json.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/json.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/json.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/json.md"
+    }
+  },
+  {
+    "name": "kibit.md",
+    "path": "tldrs/kibit.md",
+    "sha": "933d11695269bb8e24bc00eaa681ba9a3f687502",
+    "size": 54,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/kibit.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/kibit.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/933d11695269bb8e24bc00eaa681ba9a3f687502",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/kibit.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/kibit.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/933d11695269bb8e24bc00eaa681ba9a3f687502",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/kibit.md"
+    }
+  },
+  {
+    "name": "leiningen.md",
+    "path": "tldrs/leiningen.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/leiningen.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/leiningen.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/leiningen.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/leiningen.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/leiningen.md"
+    }
+  },
+  {
+    "name": "linting.md",
+    "path": "tldrs/linting.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/linting.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/linting.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/linting.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/linting.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/linting.md"
+    }
+  },
+  {
+    "name": "lisp.md",
+    "path": "tldrs/lisp.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/lisp.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/lisp.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/lisp.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/lisp.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/lisp.md"
+    }
+  },
+  {
+    "name": "markdown.md",
+    "path": "tldrs/markdown.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/markdown.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/markdown.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/markdown.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/markdown.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/markdown.md"
+    }
+  },
+  {
+    "name": "neocities.md",
+    "path": "tldrs/neocities.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/neocities.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/neocities.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/neocities.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/neocities.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/neocities.md"
+    }
+  },
+  {
+    "name": "oauth.md",
+    "path": "tldrs/oauth.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/oauth.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/oauth.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/oauth.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/oauth.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/oauth.md"
+    }
+  },
+  {
+    "name": "oh-my-zsh.md",
+    "path": "tldrs/oh-my-zsh.md",
+    "sha": "8ec86845603e2e0b455f75a460d3adbb73ba35bc",
+    "size": 39,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/oh-my-zsh.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/oh-my-zsh.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/8ec86845603e2e0b455f75a460d3adbb73ba35bc",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/oh-my-zsh.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/oh-my-zsh.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/8ec86845603e2e0b455f75a460d3adbb73ba35bc",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/oh-my-zsh.md"
+    }
+  },
+  {
+    "name": "paredit.md",
+    "path": "tldrs/paredit.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/paredit.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/paredit.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/paredit.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/paredit.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/paredit.md"
+    }
+  },
+  {
+    "name": "pull-requests.md",
+    "path": "tldrs/pull-requests.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/pull-requests.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/pull-requests.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/pull-requests.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/pull-requests.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/pull-requests.md"
+    }
+  },
+  {
+    "name": "react.md",
+    "path": "tldrs/react.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/react.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/react.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/react.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/react.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/react.md"
+    }
+  },
+  {
+    "name": "reagent.md",
+    "path": "tldrs/reagent.md",
+    "sha": "94a7d6e9affa75467d58228a7529b4fee9bce588",
+    "size": 124,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/reagent.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/reagent.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/94a7d6e9affa75467d58228a7529b4fee9bce588",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/reagent.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/reagent.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/94a7d6e9affa75467d58228a7529b4fee9bce588",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/reagent.md"
+    }
+  },
+  {
+    "name": "refactoring.md",
+    "path": "tldrs/refactoring.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/refactoring.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/refactoring.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/refactoring.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/refactoring.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/refactoring.md"
+    }
+  },
+  {
+    "name": "reframe.md",
+    "path": "tldrs/reframe.md",
+    "sha": "8a11786f8a1e2cea94a98794b231dd5a12cc3349",
+    "size": 55,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/reframe.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/reframe.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/8a11786f8a1e2cea94a98794b231dd5a12cc3349",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/reframe.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/reframe.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/8a11786f8a1e2cea94a98794b231dd5a12cc3349",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/reframe.md"
+    }
+  },
+  {
+    "name": "regex.md",
+    "path": "tldrs/regex.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/regex.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/regex.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/regex.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/regex.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/regex.md"
+    }
+  },
+  {
+    "name": "repl.md",
+    "path": "tldrs/repl.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/repl.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/repl.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/repl.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/repl.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/repl.md"
+    }
+  },
+  {
+    "name": "s3.md",
+    "path": "tldrs/s3.md",
+    "sha": "9384bbf65abf7f6213ee1fe00ac42b1f1dc57f6b",
+    "size": 155,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/s3.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/s3.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/9384bbf65abf7f6213ee1fe00ac42b1f1dc57f6b",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/s3.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/s3.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/9384bbf65abf7f6213ee1fe00ac42b1f1dc57f6b",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/s3.md"
+    }
+  },
+  {
+    "name": "shell.md",
+    "path": "tldrs/shell.md",
+    "sha": "3044b856ef1f65bd41bd37987776fa3b9b87bdfc",
+    "size": 78,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/shell.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/shell.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/3044b856ef1f65bd41bd37987776fa3b9b87bdfc",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/shell.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/shell.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/3044b856ef1f65bd41bd37987776fa3b9b87bdfc",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/shell.md"
+    }
+  },
+  {
+    "name": "spa.md",
+    "path": "tldrs/spa.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/spa.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/spa.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/spa.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/spa.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/spa.md"
+    }
+  },
+  {
+    "name": "sql.md",
+    "path": "tldrs/sql.md",
+    "sha": "9243a5a4019258b06ce2c78d9c7a29f2086493b7",
+    "size": 131,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/sql.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/sql.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/9243a5a4019258b06ce2c78d9c7a29f2086493b7",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/sql.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/sql.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/9243a5a4019258b06ce2c78d9c7a29f2086493b7",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/sql.md"
+    }
+  },
+  {
+    "name": "tdd.md",
+    "path": "tldrs/tdd.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/tdd.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/tdd.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/tdd.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/tdd.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/tdd.md"
+    }
+  },
+  {
+    "name": "terminal.md",
+    "path": "tldrs/terminal.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/terminal.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/terminal.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/terminal.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/terminal.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/terminal.md"
+    }
+  },
+  {
+    "name": "text-editor.md",
+    "path": "tldrs/text-editor.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/text-editor.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/text-editor.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/text-editor.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/text-editor.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/text-editor.md"
+    }
+  },
+  {
+    "name": "zsh.md",
+    "path": "tldrs/zsh.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/zsh.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/zsh.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/zsh.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/zsh.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/zsh.md"
+    }
+  }
+]
+
