@@ -90,13 +90,30 @@
       (for [id (:related tldr)]
         [:li [:a {:href (tldr-path {:id id})} id]])]]))
 
+(defn linkify [text state]
+  [(string/replace text
+                   #"\[\[(tldrs|guides)/([a-z\-]*)(?:\|(.*?))?\]\]"
+                   (fn [[_ type id title]]
+                     (let [type (keyword type)
+                           url (case type
+                                 :guides (guide-path {:id id})
+                                 :tldrs (tldr-path {:id id}))
+                           resource (get-in @app-state [type id])
+                           out-text (or title (:title resource) id)]
+                       (if resource
+                         (str "<a href='" url "''>" out-text "</a>")
+                         (str "<a class='dne'>" out-text "</a>")))))
+   state])
+
 (defn guide-view []
   (let [id (get-in @app-state [:page :id])
         guide (get-in @app-state [:guides id])]
    [:div
     [:h1 (or (:title guide) (:id guide))]
     [:div {:style {:white-space "pre-wrap"}
-           :dangerouslySetInnerHTML {:__html (md/md->html (guide :content))}}]]))
+           :dangerouslySetInnerHTML
+           {:__html (md/md->html (guide :content)
+                                 :custom-transformers [linkify])}}]]))
 
 (defn index-view []
   [:div

@@ -53,3 +53,8 @@ p {
 .sidebar, .main {
   padding: 1em;
 }
+
+a.dne {
+  color: red;
+  text-decoration: underline;
+}
