@@ -35,8 +35,32 @@ brew install leiningen
 While installing [[tldrs/lein]] you may be asked to first download and install [[tldrs/java]] on your system.
 
 
-Install java 1.8:
+Install `java` 1.8:
 
 http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 
 
+
+# Instructions for Windows
+
+Install `java` 1.8:
+
+http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+Install `chocolatey`:
+
+https://chocolatey.org/
+
+Open cmd.exe in Administrator Mode
+
+Install `console2`:
+
+```sh
+choco install console2
+```
+
+Install `lein`:
+
+```sh
+choco install lein
+```
