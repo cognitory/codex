@@ -6,78 +6,27 @@ dependencies: [ setup-env ]
 
 First, make sure you have set up your system, as per: [[guides/setup-env]].
 
-Open a Terminal window
+Create a folder `rustyspoon` for our project someplace, for example, on your Desktop.
 
-Go to a folder where you will want your project to be:
+Open the project folder with your editor.
 
-```sh
-cd ~/Desktop
-```
-
-Create a folder for the project:
-
-```sh
-mkdir app0
-```
-
-Go into that folder:
-
-```sh
-cd app0
-```
-
-Create a `src` folder and an `app` folder inside of it:
-
-```sh
-mkdir -p src/app
-```
-
-Create a `resources` folder and a `public` folder inside of it:
-
-```sh
-mkdir -p resources/public
-```
-
-Create a file called `project.clj`:
-
-```sh
-touch project.clj
-```
-
-Create a `core.cljs` file inside of `./src/app`:
-
-```sh
-touch ./src/app/core.cljs
-```
-
-Create an `index.html` file inside of `./resources/public`:
-
-```sh
-touch ./resources/public/index.html
-```
-
-Open your project folder with your editor:
-
-```sh
-open ./ -a Atom
-```
-
-Check that your project folder structure looks like this:
+Create files and folders so that your project folder structure looks like this:
 
 ```misc
-project.clj
-resources
- public
-   index.html
-src
- app
-   core.cljs
+rustyspoon
+  project.clj
+  resources
+   public
+     index.html
+  src
+   rustyspoon
+     core.cljs
 ```
 
 Edit `project.clj` to have the following content:
 
 ```clojure
-(defproject app "0.0.1"
+(defproject rustyspoon "0.0.1"
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/clojurescript "1.7.228"]
                  [re-frame "0.7.0-alpha-3"]]
@@ -125,7 +74,13 @@ Edit `index.html` to have the following content:
 </html>
 ```
 
-Back in Terminal, run Figwheel:
+Open a Terminal window, and go to the folder you created:
+
+```sh
+cd ~/Desktop/rustyspoon
+```
+
+Run Figwheel:
 
 ```sh
 rlwrap lein figwheel
@@ -136,7 +91,5 @@ In Chrome, go to `http://localhost:3499`
 You should see the text `Hello Console!` on the page.
 
 In Chrome, do `View > Developer > Javascript Console`, which should bring up a console, and in the logs it should say `Hello Console!`.
-
-
 
 
