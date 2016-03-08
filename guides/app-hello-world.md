@@ -90,7 +90,7 @@ Edit `project.clj` to have the following content:
               [{:id "dev"
                 :figwheel true
                 :source-paths ["src"]
-                :compiler {:main app.core
+                :compiler {:main rustyspoon.core
                            :asset-path "/js/dev"
                            :output-to "resources/public/js/dev.js"
                            :output-dir "resources/public/js/dev"
@@ -100,7 +100,7 @@ Edit `project.clj` to have the following content:
 Edit `core.cljs` to have the following content:
 
 ```clojure
-(ns app.core
+(ns rustyspoon.core
   (:require [reagent.core :as r]))
 
 (enable-console-print!)
