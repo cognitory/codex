@@ -1,5 +1,6 @@
 (ns tour.steps
-  #?(:cljs (:require-macros [tour.steps :refer [deftour]])))
+  #?(:cljs (:require-macros [tour.steps :refer [deftour]]))
+  (:require [arborist.core :as a]))
 
 #?(:clj
 (defmacro deftour [tour-name & resources]
@@ -40,6 +41,18 @@
 (defmethod apply-action :add
   [current-state [resource _ [add]]]
   (update-in current-state [resource] conj add))
+
+(defmethod apply-action :before
+  [current-state [resource _ [sel insert]]]
+  )
+
+(defmethod apply-action :after
+  [current-state [resource _ [sel insert]]]
+  )
+
+(defmethod apply-action :replace
+  [current-state [resource _ [sel insert]]]
+  )
 
 (defn apply-step
   [current-state {:keys [name actions] :as step}]
