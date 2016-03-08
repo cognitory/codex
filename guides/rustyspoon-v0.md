@@ -294,15 +294,22 @@ Change our sort-by to use the value of `:sort` from `app-state`:
         (restaurant-view r)]))])
 ```
 
+Add a function to change the value of `:sort` in `app-state`:
+
+```clojure
+(defn set-sort! [sort]
+  (swap! app-state assoc :sort sort))
+```
+
 Change `app-state` `:sort` by clicking on header buttons:
 
 ```clojure
 [:div.sort
     [:button {:onClick (fn [_]
-                         (swap! app-state assoc :sort :name))}
+                         (set-sort! :name))}
              "Name"]
     [:button {:onClick (fn [_]
-                         (swap! app-state assoc :sort :rating))}
+                         (set-sort! :rating))}
              "Rating"]]
 ```
 
@@ -315,13 +322,13 @@ Change display of sort buttons depending on if they are clicked or not:
                          {:background "red"}
                          {:background "gray"})
                 :onClick (fn [_]
-                           (swap! app-state assoc :sort :name))}
+                           (set-sort! :name))}
                "Name"]
       [:button {:style (if (= :rating current-sort)
                          {:background "red"}
                          {:background "gray"})
                 :onClick (fn [_]
-                           (swap! app-state assoc :sort :rating))}
+                           (set-sort!))}
                "Rating"]])
 ```
 
@@ -356,6 +363,15 @@ Only show restaurants in the price range:
 TODO: add a way to test this / see the effect immediately
 (Change the initial state of atom to #{1} and refresh)
 
+Add a function to toggle the value of `:price-ranges` given a price-range:
+
+```clojure
+(defn toggle-price-range! [price-range]
+  (if (contains? (@app-state :price-ranges) price-range)
+    (swap! app-state #(assoc %1 :price-ranges (disj (%1 :price-ranges) price-range)))
+    (swap! app-state #(assoc %1 :price-ranges (conj (%1 :price-ranges) price-range)))))
+```
+
 Make buttons change the `:price-ranges` state and display different based on the state:
 
 ```clojure
@@ -369,36 +385,28 @@ Make buttons change the `:price-ranges` state and display different based on the
                            {:background "red"}
                            {:background "gray"})
                   :onClick (fn [_]
-                             (if active?
-                               (swap! app-state #(assoc %1 :price-ranges (disj (%1 :price-ranges) 1)))
-                               (swap! app-state #(assoc %1 :price-ranges (conj (%1 :price-ranges) 1)))))}
+                             (toggle-price-range! 1))}
          "$"])
       (let [active? (contains? price-ranges 2)]
         [:button {:style (if active?
                            {:background "red"}
                            {:background "gray"})
                   :onClick (fn [_]
-                             (if active?
-                               (swap! app-state #(assoc %1 :price-ranges (disj (%1 :price-ranges) 2)))
-                               (swap! app-state #(assoc %1 :price-ranges (conj (%1 :price-ranges) 2)))))}
+                             (toggle-price-range! 2))}
          "$$"])
       (let [active? (contains? price-ranges 3)]
         [:button {:style (if active?
                            {:background "red"}
                            {:background "gray"})
                   :onClick (fn [_]
-                             (if active?
-                               (swap! app-state #(assoc %1 :price-ranges (disj (%1 :price-ranges) 3)))
-                               (swap! app-state #(assoc %1 :price-ranges (conj (%1 :price-ranges) 3)))))}
+                             (toggle-price-range! 3))}
          "$$$"])
       (let [active? (contains? price-ranges 4)]
         [:button {:style (if active?
                            {:background "red"}
                            {:background "gray"})
                   :onClick (fn [_]
-                             (if active?
-                               (swap! app-state #(assoc %1 :price-ranges (disj (%1 :price-ranges) 4)))
-                               (swap! app-state #(assoc %1 :price-ranges (conj (%1 :price-ranges) 4)))))}
+                             (toggle-price-range! 4))}
          "$$$$"])])
    (let [current-sort (@app-state :sort)]
      [:div.sort
@@ -406,12 +414,12 @@ Make buttons change the `:price-ranges` state and display different based on the
                          {:background "red"}
                          {:background "gray"})
                 :onClick (fn [_]
-                           (swap! app-state assoc :sort :name))} "Name"]
+                           (set-sort! :name))} "Name"]
       [:button {:style (if (= :rating current-sort)
                          {:background "red"}
                          {:background "gray"})
                 :onClick (fn [_]
-                           (swap! app-state assoc :sort :rating))} "Rating"]])])
+                           (set-sort! :rating))} "Rating"]])])
 ```
 
 Refactor the filter buttons:
@@ -430,9 +438,7 @@ Refactor the filter buttons:
                              {:background "red"}
                              {:background "gray"})
                     :onClick (fn [_]
-                               (if active?
-                                 (swap! app-state #(assoc %1 :price-ranges (disj (%1 :price-ranges) price-range)))
-                                 (swap! app-state #(assoc %1 :price-ranges (conj (%1 :price-ranges) price-range)))))}
+                               (toggle-price-range! price-range))}
            (repeat price-range "$")]))])
 
    (let [current-sort (@app-state :sort)]
@@ -441,12 +447,12 @@ Refactor the filter buttons:
                          {:background "red"}
                          {:background "gray"})
                 :onClick (fn [_]
-                           (swap! app-state assoc :sort :name))} "Name"]
+                           (set-sort! :name))} "Name"]
       [:button {:style (if (= :rating current-sort)
                          {:background "red"}
                          {:background "gray"})
                 :onClick (fn [_]
-                           (swap! app-state assoc :sort :rating))} "Rating"]])])
+                           (set-sort! :name))} "Rating"]])])
 ```
 
 # Implementing Search
@@ -460,8 +466,13 @@ Make typing in search field change `:query` in `app-state`:
 ```
 
 ```clojure
+(defn set-query! [query]
+  (swap! app-state assoc :query query))
+```
+
+```clojure
 [:input.search {:on-change (fn [e]
-                                (swap! app-state assoc :query (.. e -target -value)))
+                                (set-query! (.. e -target -value)))
                    :placeholder "Search"}]
 ```
 
