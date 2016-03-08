@@ -17,14 +17,14 @@
       (let [[resource action & after] body]
         (assert (string? resource)
           (str "Step resource must be a string, got " (pr-str resource)))
-        (assert (contains? #{:add :before :replace :append} action)
+        (assert (contains? #{:add :before :replace :after} action)
           (str "Unknown action " action))
         (case action
           :add (do (assert (>= (count after) 1) "Missing argument for :add")
                    (recur (drop 1 after)
                           (conj steps [resource action (vec (take 1 after))])))
 
-          (:before :append :replace)
+          (:before :after :replace)
           (do (assert (>= (count after) 2)
                 (str "Missing argument(s) for " action))
               (recur (drop 2 after)

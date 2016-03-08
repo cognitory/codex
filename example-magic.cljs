@@ -65,10 +65,10 @@
   '(defn id->image [id]
      (str "https://s3-media2.fl.yelpcdn.com/bphoto/" id))
 
-  "core.cljs" :append '(defn app-view [:div [:ul (for (:li))]])
+  "core.cljs" :after '(defn app-view [:div [:ul (for (:li))]])
   '[:div.rating (r :rating)]
 
-  "core.cljs" :append '(defn app-view [:div [:ul (for (:li))]])
+  "core.cljs" :after '(defn app-view [:div [:ul (for (:li))]])
   '[:div.price-range (r :price-range)])
 
 (output-tour hello-world-tour)
