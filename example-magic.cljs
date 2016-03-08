@@ -1,8 +1,9 @@
+(require '[tour.steps :refer [deftour verify-step-body! add-step!]])
 
+(deftour hello-world-tour
+  "core.cljs")
 
-(defresource "core.cljs")
-
-(defstep "hello world"
+(add-step! hello-world-tour "hello world"
   "core.cljs" :add '(ns rustyspoon.core
                       (:require [reagent.core :as r]))
 
@@ -11,11 +12,11 @@
   "core.cljs" :add '(println "Hello Console!")
 
   "core.cljs" :add '(defn app-view []
-                     [:div "Hello World!"])
+                      [:div "Hello World!"])
 
   "core.cljs" :add '(r/render-component [app-view] (.-body js/document)))
 
-(defstep "define restaurants array"
+(add-step! hello-world-tour "define restaurants array"
   "core.cljs" :before '(defn app-view)
   '(def restaurants
      [{:name "Byblos"
@@ -49,7 +50,7 @@
        :rating 3.9
        :price-range 4 }]))
 
-(defstep "update app-view to show restaurants"
+(add-step! hello-world-tour "update app-view to show restaurants"
   "core.cljs" :replace '(defn app-view)
   '(defn app-view []
      [:div
@@ -59,7 +60,7 @@
           [:div.name (r :name)]
           [:div.address (r :address)]])]]))
 
-(defstep "show other restaurant info"
+(add-step! hello-world-tour "show other restaurant info"
   "core.cljs" :before '(def restaurants)
   '(defn id->image [id]
      (str "https://s3-media2.fl.yelpcdn.com/bphoto/" id))
@@ -70,3 +71,4 @@
   "core.cljs" :append '(defn app-view [:div [:ul (for (:li))]])
   '[:div.price-range (r :price-range)])
 
+(output-tour hello-world-tour)
