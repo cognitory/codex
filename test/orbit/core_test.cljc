@@ -25,5 +25,13 @@
                               (o/add "core.cljs"
                                 '(enable-console-print!))
                               (o/add "core.cljs"
-                                '(defn sq [x] (* x x)))))])))
-    ))
+                                '(defn sq [x] (* x x)))))]
+          (is (= 3 (count (orb :history))))
+          (is (= (last (orb :history))
+                 {:step "hello world"
+                  :resources
+                  {"core.cljs" '[(ns foo.core
+                                   (:require [foo.core :as f]))
+                                 (enable-console-print!)
+                                 (defn sq [x]
+                                   (* x x))]}})))))))
