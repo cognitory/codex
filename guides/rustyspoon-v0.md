@@ -1,5 +1,5 @@
 ---
-title: Building a Simple App
+title: Rustyspoon - Getting Started
 description: TODO
 dependencies: [ setup-env ]
 ---

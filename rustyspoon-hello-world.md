@@ -1,5 +1,5 @@
 ---
-title: Hello World App
+title: Rustyspoon - Hello World
 description: TODO
 dependencies: [ setup-env ]
 ---
