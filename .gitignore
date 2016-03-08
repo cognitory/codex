@@ -5,3 +5,5 @@ resources/public/js/release/**
 target/**
 .lein-repl-history
 .nrepl-port
+*-init.clj
+.lein-failures
