@@ -19,7 +19,7 @@
   :cljsbuild {:builds
               [{:id "dev"
                 :figwheel true
-                :source-paths ["src"]
+                :source-paths ["src" "test"]
                 :compiler {:main codex.core
                            :asset-path "/js/dev"
                            :output-to "resources/public/js/dev.js"
