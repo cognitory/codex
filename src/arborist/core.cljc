@@ -13,7 +13,7 @@
 
 (defn zipper
   [data]
-  (z/zipper coll? identity (fn [n c] (with-meta c n)) data))
+  (z/zipper coll? seq (fn [n c] (with-meta c n)) data))
 
 (defn follow-selector
   [data sel]
@@ -24,10 +24,10 @@
         (z/end? zp) nil
         (z/end? s) zp
 
-        (= (z/node zp) (z/node s))
-        (cond
-          (z/end? (z/next s)) zp
-          (coll? (z/node (z/next s))) (recur (z/down zp) (z/down s))
-          true (recur (z/next zp) (z/next s)))
+        (not= (z/node zp) (z/node s))
+        (recur (z/next zp) initial-sel)
 
-        true (recur (z/next zp) initial-sel)))))
+        (z/end? (z/next s)) zp
+        (coll? (z/node (z/next s))) (recur (-> zp z/rightmost z/down)
+                                           (-> s z/next z/down))
+        true (recur (z/next zp) (z/next s))))))
