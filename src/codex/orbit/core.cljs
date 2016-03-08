@@ -10,33 +10,29 @@
   {:resources {"resource-name" '()}
    :step "step name"})
 
-(defn- swap
+(defn- advance
   "helper function to modify last state by func and store in history"
   [orbit func]
-  (conj orbit :history (func (last (orbit :history)))))
+  (update-in orbit [:history] conj (func (last (orbit :history)))))
 
 (defn resource
   "creates a new resource"
   [orbit resource-name]
-  (swap orbit
+  (advance orbit
         (fn [state]
           (-> state
               (assoc :step (str "create " resource-name))
-              (assoc-in [:resources resource-name] '())))))
+              (assoc-in [:resources resource-name] [])))))
 
 (defn step
   "applies collection of txs "
-  [orbit step-name &txs]
-  (swap orbit
+  [orbit step-name & txs]
+  (advance orbit
         (fn [state]
-          (->> (assoc state :step step-name)
-               ; TODO apply each tx function in txs
-               ; apply comp txs
-               ))))
-
-
-
-
+          (->> state
+               (assoc :step step-name)
+               (update :resources
+                       #(reduce (fn [st tx] (tx st)) % txs))))))
 
 ; transactions
 
