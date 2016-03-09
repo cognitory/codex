@@ -5,7 +5,8 @@
             [secretary.core :as secretary :include-macros true :refer-macros [defroute]]
             [markdown.core :as md]
             [cljsjs.js-yaml]
-            [codex.router :as router]))
+            [codex.router :as router]
+            [codex.style :refer [styles]]))
 
 (enable-console-print!)
 
@@ -147,6 +148,7 @@
 (defn app-view []
   [:div
    [:h1.logo [:a {:href (index-path)} "(codex)"]]
+   [:style {:type "text/css"} styles]
    [:div.main {:style {:max-width "40em"
                        :margin "0 auto"}}
     (case (get-in @app-state [:page :type])
