@@ -33,7 +33,7 @@
                [:div.address (r :address)]])))))
 
 (deftest modifying-tree
-  (testing "can insert things after"
+  (testing "can append things"
     (let [sel '(defn app-view [:div [:ul (for (:li))]])
           data '[(ns foo)
                  (def foo {:x 1 :bar ["foo" "bar"]})
@@ -44,7 +44,7 @@
                        [:li
                         [:div.name (r :name)]
                         [:div.address (r :address)]])]])]]
-      (is (= (a/insert-after data sel '[:div.rating (r :rating)])
+      (is (= (a/append-at data sel '[:div.rating (r :rating)])
              '[(ns foo)
                (def foo {:x 1 :bar ["foo" "bar"]})
                (defn app-view []
@@ -55,6 +55,13 @@
                       [:div.name (r :name)]
                       [:div.address (r :address)]
                       [:div.rating (r :rating)]])]])]))))
+  (testing "can insert after"
+    (let [sel '(defn app-view)
+          data '[(ns foo) (defn app-view [x] (inc x))]]
+      (is (= (a/insert-after data sel '(println "okay!"))
+             '[(ns foo)
+               (defn app-view [x] (inc x))
+               (println "okay!")]))))
   (testing "can insert before"
     (let [sel '(defn app-view)
           data '[(ns foo)

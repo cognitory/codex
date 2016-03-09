@@ -41,10 +41,17 @@
                                            (-> s z/next z/down))
         true (recur (z/next zp) (z/next s))))))
 
-(defn insert-after
+(defn append-at
   [data sel to-insert]
   (-> (follow-selector data sel)
       z/rightmost
+      (z/insert-right to-insert)
+      z/root))
+
+(defn insert-after
+  [data sel to-insert]
+  (-> (follow-selector data sel)
+      z/up
       (z/insert-right to-insert)
       z/root))
 
