@@ -24,22 +24,29 @@
         (with-meta (meta n))))
     data))
 
+(defn right-colls
+  "Find all subtrees right of the current zipper location that are collections"
+  [z]
+  (loop [z z
+         r []]
+    (cond
+      (nil? z) r
+      (coll? (z/node z)) (recur (z/right z) (conj r (z/down z)))
+      true (recur (z/right z) r))))
+
 (defn matches-at?
   [z sz]
-  (println "z" z "sz" sz)
   (cond
-    (nil? z) true
-    (z/end? z) true
+    (or (nil? sz) (z/end? sz)) (z/prev z)
 
-    (nil? sz) nil
-    (z/end? sz) nil
+    (or (nil? z) (z/end? z)) nil
 
     (not-any? (comp coll? z/node) [z sz])
     (and (= (z/node z) (z/node sz))
       (recur (z/right z) (z/right sz)))
 
-    (every? (comp coll? z/node) [z sz])
-    (recur (z/down z) (z/down sz)) ))
+    (coll? (z/node sz))
+    (some #(matches-at? % (z/down sz)) (right-colls z))))
 
 (defn follow-selector
   [data sel]
@@ -50,13 +57,10 @@
         (z/end? zp) nil
         (z/end? s) zp
 
-        (not= (z/node zp) (z/node s))
-        (recur (z/next zp) initial-sel)
-
-        (z/end? (z/next s)) zp
-        (coll? (z/node (z/next s))) (recur (-> zp z/rightmost z/down)
-                                           (-> s z/next z/down))
-        true (recur (z/next zp) (z/next s))))))
+        true
+        (if-let [match (matches-at? zp s)]
+          match
+          (recur (z/next zp) initial-sel))))))
 
 (defn append-at
   [data sel to-insert]

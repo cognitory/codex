@@ -6,9 +6,12 @@
 
 (deftest matching-test
   (testing "can see if selector matches at location"
-    (let [zp (z/next (a/zipper '(defn foo [x] (inc x))))
+    (let [zp (z/next (a/zipper '(defn foo [x] (inc y))))
           s (z/next (a/zipper '(defn foo (inc))))]
-     (is (a/matches-at? zp s)))))
+     (is (some? (a/matches-at? zp s))))
+    (let [zp (z/next (a/zipper '(defn foo [x] inc x)))
+          s (z/next (a/zipper '(defn foo (inc))))]
+      (is (nil? (a/matches-at? zp s))))))
 
 (deftest selector-finding
   (testing "failing query"
@@ -69,7 +72,11 @@
                      [:li
                       [:div.name (r :name)]
                       [:div.address (r :address)]
-                      [:div.rating (r :rating)]])]])]))))
+                      [:div.rating (r :rating)]])]])])))
+    (testing "with a multi-branch query"
+      (let [data '[(foo [bar 1] [baz 2] [quux 3])]]
+        (is (= (a/append-at data '(foo [baz]) '[zzz 9])
+               '[(foo [bar 1] [baz 2 [zzz 9]] [quux 3])])))))
   (testing "can insert after"
     (let [sel '(defn app-view)
           data '[(ns foo) (defn app-view [x] (inc x))]]
