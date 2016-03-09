@@ -11,7 +11,10 @@
      (is (some? (a/matches-at? zp s))))
     (let [zp (z/next (a/zipper '(defn foo [x] inc x)))
           s (z/next (a/zipper '(defn foo (inc))))]
-      (is (nil? (a/matches-at? zp s))))))
+      (is (nil? (a/matches-at? zp s))))
+    (let [zp (z/next (a/zipper '(defn foo [x] (inc x))))
+          s (z/next (a/zipper '(defn foo (inc x))))]
+      (is (a/matches-at? zp s)))))
 
 (deftest selector-finding
   (testing "failing query"
@@ -115,4 +118,14 @@
              '[(ns foo)
               (enable-console-print!)
               (def stuff [{:a 1 :b 2} {:a 7 :b 12}])
-              (defn app-view [] [:div "hello"])])))))
+              (defn app-view [] [:div "hello"])]))))
+  (testing "can wrap things"
+    (let [sel '(defn app-view (inc x))
+          data '[(ns foo) (defn app-view [] (inc x))]]
+      (is (= (a/wrap-with data sel identity)
+             '[(ns foo) (defn app-view [] (inc x))]
+             ))
+      #_(is (= (a/wrap-with data sel (fn [e] (list '* e 2)))
+             '[(ns foo) (defn app-view [] (inc x))]
+             ))
+      )))
