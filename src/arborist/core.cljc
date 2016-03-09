@@ -47,3 +47,10 @@
       z/rightmost
       (z/insert-right to-insert)
       z/root))
+
+(defn insert-before
+  [data sel to-insert]
+  (-> (follow-selector data sel)
+      z/up
+      (z/insert-left to-insert)
+      z/root))
