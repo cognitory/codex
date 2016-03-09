@@ -1,155 +1,626 @@
 [
   {
     "name": "accepting-payments.md",
-    "path": "guides/accepting-payments.md"
+    "path": "guides/accepting-payments.md",
+    "sha": "935c6e7ffd4c783a34843b9f227ace18a25a95ab",
+    "size": 115,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/accepting-payments.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/accepting-payments.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/935c6e7ffd4c783a34843b9f227ace18a25a95ab",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/accepting-payments.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/accepting-payments.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/935c6e7ffd4c783a34843b9f227ace18a25a95ab",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/accepting-payments.md"
+    }
   },
   {
     "name": "adding-a-backend.md",
-    "path": "guides/adding-a-backend.md"
+    "path": "guides/adding-a-backend.md",
+    "sha": "0ca162ad964b1c5c50efbe2522d0f6bb0201a6f7",
+    "size": 75,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/adding-a-backend.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/adding-a-backend.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/0ca162ad964b1c5c50efbe2522d0f6bb0201a6f7",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/adding-a-backend.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/adding-a-backend.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/0ca162ad964b1c5c50efbe2522d0f6bb0201a6f7",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/adding-a-backend.md"
+    }
   },
   {
     "name": "analytics.md",
-    "path": "guides/analytics.md"
+    "path": "guides/analytics.md",
+    "sha": "5b2ef2de27eb8d8c0640c49511d0a908a3f69479",
+    "size": 80,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/analytics.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/analytics.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/5b2ef2de27eb8d8c0640c49511d0a908a3f69479",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/analytics.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/analytics.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/5b2ef2de27eb8d8c0640c49511d0a908a3f69479",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/analytics.md"
+    }
   },
   {
-    "name": "rustyspoon-hello-world.md",
-    "path": "guides/rustyspoon-hello-world.md"
-  },
-  {
-    "name": "rustyspoon-v0.md",
-    "path": "guides/rustyspoon-v0.md"
+    "name": "atom-editor.md",
+    "path": "guides/atom-editor.md",
+    "sha": "3a74fda53ca3202452493008f856c6bef70d3da2",
+    "size": 146,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/atom-editor.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/atom-editor.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/3a74fda53ca3202452493008f856c6bef70d3da2",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/atom-editor.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/atom-editor.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/3a74fda53ca3202452493008f856c6bef70d3da2",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/atom-editor.md"
+    }
   },
   {
     "name": "choosing-a-text-editor.md",
-    "path": "guides/choosing-a-text-editor.md"
+    "path": "guides/choosing-a-text-editor.md",
+    "sha": "1ae44d1c48b5cf223acd6cf54a982def16f22b89",
+    "size": 130,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/choosing-a-text-editor.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/choosing-a-text-editor.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/1ae44d1c48b5cf223acd6cf54a982def16f22b89",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/choosing-a-text-editor.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/choosing-a-text-editor.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/1ae44d1c48b5cf223acd6cf54a982def16f22b89",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/choosing-a-text-editor.md"
+    }
   },
   {
     "name": "chrome-devtools.md",
-    "path": "guides/chrome-devtools.md"
+    "path": "guides/chrome-devtools.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/chrome-devtools.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/chrome-devtools.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/chrome-devtools.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/chrome-devtools.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/chrome-devtools.md"
+    }
   },
   {
     "name": "clojure-cheatsheet.md",
-    "path": "guides/clojure-cheatsheet.md"
+    "path": "guides/clojure-cheatsheet.md",
+    "sha": "02aef96e5e8a94b40ca98460168726f366a90bcb",
+    "size": 1564,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/clojure-cheatsheet.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/clojure-cheatsheet.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/02aef96e5e8a94b40ca98460168726f366a90bcb",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/clojure-cheatsheet.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/clojure-cheatsheet.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/02aef96e5e8a94b40ca98460168726f366a90bcb",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/clojure-cheatsheet.md"
+    }
   },
   {
     "name": "cordova.md",
-    "path": "guides/cordova.md"
+    "path": "guides/cordova.md",
+    "sha": "541692bf2c9cad37682a3f1796f7c5fa9c67daae",
+    "size": 122,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/cordova.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/cordova.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/541692bf2c9cad37682a3f1796f7c5fa9c67daae",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/cordova.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/cordova.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/541692bf2c9cad37682a3f1796f7c5fa9c67daae",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/cordova.md"
+    }
   },
   {
     "name": "creating-an-api.md",
-    "path": "guides/creating-an-api.md"
+    "path": "guides/creating-an-api.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/creating-an-api.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/creating-an-api.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/creating-an-api.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/creating-an-api.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/creating-an-api.md"
+    }
   },
   {
     "name": "css.md",
-    "path": "guides/css.md"
+    "path": "guides/css.md",
+    "sha": "8b6b30c68b1b3718440a79a953f7b621b85399ad",
+    "size": 72,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/css.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/css.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/8b6b30c68b1b3718440a79a953f7b621b85399ad",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/css.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/css.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/8b6b30c68b1b3718440a79a953f7b621b85399ad",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/css.md"
+    }
   },
   {
     "name": "deploying-to-dropbox.md",
-    "path": "guides/deploying-to-dropbox.md"
+    "path": "guides/deploying-to-dropbox.md",
+    "sha": "c8e0904b678f3846f8631dd56b9aa33348f4e0c9",
+    "size": 72,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/deploying-to-dropbox.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/deploying-to-dropbox.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/c8e0904b678f3846f8631dd56b9aa33348f4e0c9",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/deploying-to-dropbox.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/deploying-to-dropbox.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/c8e0904b678f3846f8631dd56b9aa33348f4e0c9",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/deploying-to-dropbox.md"
+    }
   },
   {
     "name": "deploying-to-github-pages.md",
-    "path": "guides/deploying-to-github-pages.md"
+    "path": "guides/deploying-to-github-pages.md",
+    "sha": "a5f00e4add372cb7a819b55bc239ca71139b9898",
+    "size": 77,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/deploying-to-github-pages.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/deploying-to-github-pages.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/a5f00e4add372cb7a819b55bc239ca71139b9898",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/deploying-to-github-pages.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/deploying-to-github-pages.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/a5f00e4add372cb7a819b55bc239ca71139b9898",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/deploying-to-github-pages.md"
+    }
   },
   {
     "name": "deploying-to-heroku.md",
-    "path": "guides/deploying-to-heroku.md"
+    "path": "guides/deploying-to-heroku.md",
+    "sha": "65fd2e951753bc4a1bfc1d639cdb1db1866daee0",
+    "size": 71,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/deploying-to-heroku.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/deploying-to-heroku.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/65fd2e951753bc4a1bfc1d639cdb1db1866daee0",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/deploying-to-heroku.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/deploying-to-heroku.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/65fd2e951753bc4a1bfc1d639cdb1db1866daee0",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/deploying-to-heroku.md"
+    }
   },
   {
     "name": "deploying-to-neocities.md",
-    "path": "guides/deploying-to-neocities.md"
+    "path": "guides/deploying-to-neocities.md",
+    "sha": "926a5e582c2f4f30a27374c4b1ee68893dfa08c4",
+    "size": 74,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/deploying-to-neocities.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/deploying-to-neocities.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/926a5e582c2f4f30a27374c4b1ee68893dfa08c4",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/deploying-to-neocities.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/deploying-to-neocities.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/926a5e582c2f4f30a27374c4b1ee68893dfa08c4",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/deploying-to-neocities.md"
+    }
   },
   {
     "name": "deploying-to-s3.md",
-    "path": "guides/deploying-to-s3.md"
+    "path": "guides/deploying-to-s3.md",
+    "sha": "ffc0cc703ea4d0bffc8ead65ec0fbce0aebc8e0a",
+    "size": 67,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/deploying-to-s3.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/deploying-to-s3.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/ffc0cc703ea4d0bffc8ead65ec0fbce0aebc8e0a",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/deploying-to-s3.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/deploying-to-s3.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/ffc0cc703ea4d0bffc8ead65ec0fbce0aebc8e0a",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/deploying-to-s3.md"
+    }
   },
   {
     "name": "electron.md",
-    "path": "guides/electron.md"
+    "path": "guides/electron.md",
+    "sha": "ccfa032b8afc60beed1c0cfda6046be02c1c73f7",
+    "size": 131,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/electron.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/electron.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/ccfa032b8afc60beed1c0cfda6046be02c1c73f7",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/electron.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/electron.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/ccfa032b8afc60beed1c0cfda6046be02c1c73f7",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/electron.md"
+    }
   },
   {
     "name": "figuring-out-your-ip.md",
-    "path": "guides/figuring-out-your-ip.md"
+    "path": "guides/figuring-out-your-ip.md",
+    "sha": "319c09ca4c5187c7b355c15c7104657780b2ee58",
+    "size": 137,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/figuring-out-your-ip.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/figuring-out-your-ip.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/319c09ca4c5187c7b355c15c7104657780b2ee58",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/figuring-out-your-ip.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/figuring-out-your-ip.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/319c09ca4c5187c7b355c15c7104657780b2ee58",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/figuring-out-your-ip.md"
+    }
   },
   {
     "name": "firebase.md",
-    "path": "guides/firebase.md"
+    "path": "guides/firebase.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/firebase.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/firebase.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/firebase.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/firebase.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/firebase.md"
+    }
   },
   {
     "name": "git-workflow.md",
-    "path": "guides/git-workflow.md"
+    "path": "guides/git-workflow.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/git-workflow.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/git-workflow.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/git-workflow.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/git-workflow.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/git-workflow.md"
+    }
   },
   {
     "name": "how-the-web-works.md",
-    "path": "guides/how-the-web-works.md"
+    "path": "guides/how-the-web-works.md",
+    "sha": "b4337638a09b2d2073d4d0c705f7918f7ec7bead",
+    "size": 315,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/how-the-web-works.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/how-the-web-works.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/b4337638a09b2d2073d4d0c705f7918f7ec7bead",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/how-the-web-works.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/how-the-web-works.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/b4337638a09b2d2073d4d0c705f7918f7ec7bead",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/how-the-web-works.md"
+    }
   },
   {
     "name": "https.md",
-    "path": "guides/https.md"
+    "path": "guides/https.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/https.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/https.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/https.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/https.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/https.md"
+    }
   },
   {
     "name": "javascript-interop.md",
-    "path": "guides/javascript-interop.md"
+    "path": "guides/javascript-interop.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/javascript-interop.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/javascript-interop.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/javascript-interop.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/javascript-interop.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/javascript-interop.md"
+    }
   },
   {
     "name": "linting.md",
-    "path": "guides/linting.md"
+    "path": "guides/linting.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/linting.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/linting.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/linting.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/linting.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/linting.md"
+    }
   },
   {
     "name": "oauth.md",
-    "path": "guides/oauth.md"
+    "path": "guides/oauth.md",
+    "sha": "105a628999303de56aa888542c243f5c47d48a87",
+    "size": 137,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/oauth.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/oauth.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/105a628999303de56aa888542c243f5c47d48a87",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/oauth.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/oauth.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/105a628999303de56aa888542c243f5c47d48a87",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/oauth.md"
+    }
   },
   {
     "name": "paredit.md",
-    "path": "guides/paredit.md"
+    "path": "guides/paredit.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/paredit.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/paredit.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/paredit.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/paredit.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/paredit.md"
+    }
   },
   {
     "name": "responsive-layout.md",
-    "path": "guides/responsive-layout.md"
+    "path": "guides/responsive-layout.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/responsive-layout.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/responsive-layout.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/responsive-layout.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/responsive-layout.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/responsive-layout.md"
+    }
   },
   {
     "name": "routing.md",
-    "path": "guides/routing.md"
+    "path": "guides/routing.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/routing.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/routing.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/routing.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/routing.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/routing.md"
+    }
+  },
+  {
+    "name": "rustyspoon-hello-world.md",
+    "path": "guides/rustyspoon-hello-world.md",
+    "sha": "0b4b1b3aee878498d1263531e6602dacfa8cbfb1",
+    "size": 2036,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/rustyspoon-hello-world.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/rustyspoon-hello-world.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/0b4b1b3aee878498d1263531e6602dacfa8cbfb1",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/rustyspoon-hello-world.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/rustyspoon-hello-world.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/0b4b1b3aee878498d1263531e6602dacfa8cbfb1",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/rustyspoon-hello-world.md"
+    }
+  },
+  {
+    "name": "rustyspoon-v0.md",
+    "path": "guides/rustyspoon-v0.md",
+    "sha": "9f6c00c1a16059d13f97a26315672061331f2952",
+    "size": 17127,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/rustyspoon-v0.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/rustyspoon-v0.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/9f6c00c1a16059d13f97a26315672061331f2952",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/rustyspoon-v0.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/rustyspoon-v0.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/9f6c00c1a16059d13f97a26315672061331f2952",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/rustyspoon-v0.md"
+    }
   },
   {
     "name": "sending-emails.md",
-    "path": "guides/sending-emails.md"
+    "path": "guides/sending-emails.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/sending-emails.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/sending-emails.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/sending-emails.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/sending-emails.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/sending-emails.md"
+    }
   },
   {
     "name": "setup-env.md",
-    "path": "guides/setup-env.md"
+    "path": "guides/setup-env.md",
+    "sha": "acedf13a29bee3700a63737f7a79088e817a417c",
+    "size": 1267,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/setup-env.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/setup-env.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/acedf13a29bee3700a63737f7a79088e817a417c",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/setup-env.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/setup-env.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/acedf13a29bee3700a63737f7a79088e817a417c",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/setup-env.md"
+    }
   },
   {
     "name": "stories.md",
-    "path": "guides/stories.md"
+    "path": "guides/stories.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/stories.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/stories.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/stories.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/stories.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/stories.md"
+    }
   },
   {
     "name": "testing.md",
-    "path": "guides/testing.md"
+    "path": "guides/testing.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/testing.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/testing.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/testing.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/testing.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/testing.md"
+    }
   },
   {
     "name": "uploading-files.md",
-    "path": "guides/uploading-files.md"
+    "path": "guides/uploading-files.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/uploading-files.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/uploading-files.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/uploading-files.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/uploading-files.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/uploading-files.md"
+    }
   },
   {
     "name": "users.md",
-    "path": "guides/users.md"
+    "path": "guides/users.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/users.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/users.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/users.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/users.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/users.md"
+    }
   },
   {
     "name": "version-control.md",
-    "path": "guides/version-control.md"
+    "path": "guides/version-control.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/version-control.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/version-control.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/version-control.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/version-control.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/version-control.md"
+    }
   },
   {
     "name": "web-security.md",
-    "path": "guides/web-security.md"
+    "path": "guides/web-security.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/web-security.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/web-security.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/web-security.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/web-security.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/web-security.md"
+    }
   },
   {
     "name": "working-in-the-shell.md",
-    "path": "guides/working-in-the-shell.md"
+    "path": "guides/working-in-the-shell.md",
+    "sha": "7ffb9f5545d495b92fa2d082279f5b3e3f88772f",
+    "size": 53,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/working-in-the-shell.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/working-in-the-shell.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/7ffb9f5545d495b92fa2d082279f5b3e3f88772f",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/working-in-the-shell.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/working-in-the-shell.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/7ffb9f5545d495b92fa2d082279f5b3e3f88772f",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/working-in-the-shell.md"
+    }
   },
   {
     "name": "working-with-apis.md",
-    "path": "guides/working-with-apis.md"
+    "path": "guides/working-with-apis.md",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/working-with-apis.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/working-with-apis.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/working-with-apis.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/working-with-apis.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/working-with-apis.md"
+    }
   }
 ]
-
