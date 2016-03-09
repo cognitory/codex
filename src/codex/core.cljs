@@ -22,10 +22,12 @@
                             :tldrs {}}))
 
 (defonce REPO_URL "https://api.github.com/repos/cognitory/codex/")
+
 (defonce CONTENT_URL
   (if (= js/window.location.hostname "localhost")
     "/"
     "https://raw.githubusercontent.com/cognitory/codex/gh-pages/"))
+
 (defonce RESOURCE_URL
   (if (= js/window.location.hostname "localhost")
     "/"
