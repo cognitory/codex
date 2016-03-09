@@ -121,32 +121,32 @@
 
 (defn index-view []
   [:div
-   [:h1 "Index"]])
+   [:h1 "Index"]
+   [:div.guides
+    [:h2 "Guides"]
+    (for [guide (->> (@app-state :guides)
+                     vals
+                     (remove (fn [g] (string/blank? (g :content)))))]
+      [:a {:key (guide :id)
+           :style {:display "block"}
+           :href (guide-path guide)}
+       (guide :id)])]
+
+   [:div.tldrs
+    [:h2 "TLDRs"]
+    (for [tldr (->> (@app-state :tldrs)
+                    vals
+                    (remove (fn [t] (and
+                                      (empty? (t :resources))
+                                      (string/blank? (t :content))))))]
+      [:a {:key (tldr :id)
+           :style {:display "block"}
+           :href (tldr-path tldr)}
+       (tldr :id)])]])
 
 (defn app-view []
   [:div
-   [:div.sidebar
-    [:h1 [:a {:href (index-path)} "Codex"]]
-    [:h2 "Guides"]
-    [:div.guides
-     (for [guide (->> (@app-state :guides)
-                      vals
-                      (remove (fn [g] (string/blank? (g :content)))))]
-       [:a {:key (guide :id)
-            :style {:display "block"}
-            :href (guide-path guide)}
-        (guide :id)]) ]
-    [:h2 "TLDRs"]
-    [:div.tldrs
-     (for [tldr (->> (@app-state :tldrs)
-                     vals
-                     (remove (fn [t] (and
-                                       (empty? (t :resources))
-                                       (string/blank? (t :content))))))]
-       [:a {:key (tldr :id)
-            :style {:display "block"}
-            :href (tldr-path tldr)}
-        (tldr :id)])]]
+   [:h1.logo [:a {:href (index-path)} "(codex)"]]
    [:div.main {:style {:max-width "40em"
                        :margin "0 auto"}}
     (case (get-in @app-state [:page :type])
