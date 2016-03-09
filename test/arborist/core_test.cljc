@@ -8,7 +8,7 @@
   (testing "can see if selector matches at location"
     (let [zp (z/next (a/zipper '(defn foo [x] (inc y))))
           s (z/next (a/zipper '(defn foo (inc))))]
-     (is (some? (a/matches-at? zp s))))
+      (is (some? (a/matches-at? zp s))))
     (let [zp (z/next (a/zipper '(defn foo [x] inc x)))
           s (z/next (a/zipper '(defn foo (inc))))]
       (is (nil? (a/matches-at? zp s))))
@@ -116,14 +116,13 @@
                  (defn app-view [] [:div "hello"])]]
       (is (= (a/insert-before data sel '(def stuff [{:a 1 :b 2} {:a 7 :b 12}]))
              '[(ns foo)
-              (enable-console-print!)
-              (def stuff [{:a 1 :b 2} {:a 7 :b 12}])
-              (defn app-view [] [:div "hello"])]))))
+               (enable-console-print!)
+               (def stuff [{:a 1 :b 2} {:a 7 :b 12}])
+               (defn app-view [] [:div "hello"])]))))
   (testing "can wrap things"
     (let [sel '(defn app-view (inc x))
           data '[(ns foo) (defn app-view [] (inc x))]]
       (is (= (a/wrap-with data sel identity)
-             '[(ns foo) (defn app-view [] (inc x))]
-             ))
+             '[(ns foo) (defn app-view [] (inc x))]))
       (is (= (a/wrap-with data sel (fn [e] (list '* e 2)))
              '[(ns foo) (defn app-view [] (inc (* x 2)))])))))
