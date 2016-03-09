@@ -5,7 +5,7 @@
 
 #?(:cljs (enable-console-print!))
 
-(deftest steps-test
+(deftest resources-and-add
   (testing "can add resources as a step"
     (let [orb (-> (o/init)
                   (o/step "add-files"
@@ -35,3 +35,87 @@
                                  (enable-console-print!)
                                  (defn sq [x]
                                    (* x x))]}})))))))
+
+(deftest adding-things-steps
+  (let [orb (-> (o/init)
+                (o/step "setup stuff"
+                        (o/resource "core.cljs")
+                        (o/add "core.cljs"
+                          '(ns rustyspoon.core
+                             (:require [reagent.core :as r])))
+                        (o/add "core.cljs"
+                          '(enable-console-print!))
+                        (o/add "core.cljs"
+                          '(defn app-view []
+                             [:div "Hello world"])))
+                (o/step "add array"
+                        (o/before "core.cljs"
+                                  '(defn app-view)
+                                  '(def restaurants
+                                     [{:name "You Eat"
+                                       :address "1 Street St"
+                                       :rating -5}
+                                      {:name "Yes Yes Yes"
+                                       :address "55 Fancy Ave"
+                                       :rating 10.0}]))))]
+    (testing "can insert things before"
+      (is (= 3 (count (orb :history))))
+      (is (= (get-in orb [:history 1 :resources "core.cljs"])
+             '[(ns rustyspoon.core
+                 (:require [reagent.core :as r]))
+               (enable-console-print!)
+               (defn app-view [] [:div "Hello world"])]))
+      (is (= (get-in orb [:history 2 :resources "core.cljs"])
+             '[(ns rustyspoon.core
+                 (:require [reagent.core :as r]))
+               (enable-console-print!)
+               (def restaurants
+                 [{:name "You Eat"
+                   :address "1 Street St"
+                   :rating -5}
+                  {:name "Yes Yes Yes"
+                   :address "55 Fancy Ave"
+                   :rating 10.0}])
+               (defn app-view [] [:div "Hello world"])])))
+
+    (let [orb (-> orb
+                  (o/step "add another function"
+                          (o/after "core.cljs"
+                            '(defn app-view)
+                            '(println "Starting stuff!"))))]
+      (testing "can insert things after"
+        (is (= (get-in orb [:history 3 :resources "core.cljs"])
+               '[(ns rustyspoon.core
+                   (:require [reagent.core :as r]))
+                 (enable-console-print!)
+                 (def restaurants
+                   [{:name "You Eat"
+                     :address "1 Street St"
+                     :rating -5}
+                    {:name "Yes Yes Yes"
+                     :address "55 Fancy Ave"
+                     :rating 10.0}])
+                 (defn app-view [] [:div "Hello world"])
+                 (println "Starting stuff!")])))
+      (let [orb (-> orb
+                    (o/step "enhance view fn"
+                            (o/append "core.cljs"
+                              '(defn app-view [:div])
+                              '[:p "This is some stuff"])))]
+        (testing "can append things"
+          (is (= (get-in orb [:history 4 :resources "core.cljs"])
+                 '[(ns rustyspoon.core
+                     (:require [reagent.core :as r]))
+                   (enable-console-print!)
+                   (def restaurants
+                     [{:name "You Eat"
+                       :address "1 Street St"
+                       :rating -5}
+                      {:name "Yes Yes Yes"
+                       :address "55 Fancy Ave"
+                       :rating 10.0}])
+                   (defn app-view []
+                     [:div "Hello world"
+                      [:p "This is some stuff"]])
+                   (println "Starting stuff!")])))
+        ))))
