@@ -4,8 +4,19 @@
             [clojure.zip :as z]
             [arborist.core :as a]))
 
+(deftest matching-test
+  (testing "can see if selector matches at location"
+    (let [zp (z/next (a/zipper '(defn foo [x] (inc x))))
+          s (z/next (a/zipper '(defn foo (inc))))]
+     (is (a/matches-at? zp s)))))
+
 (deftest selector-finding
-  (testing "can search for things with zippers"
+  (testing "failing query"
+    (is (nil? (a/follow-selector '[(ns foo) (defn app-view [x] x)]
+                                 '(defn foobar))))
+    (is (nil? (a/follow-selector '[(ns foo) (defn app-view [x] (inc x))]
+                                 '(defn app-view (dec))))))
+  (testing "simple search"
     (let [sel '(defn app-view)
           data '[(ns foo)
                  (defn app-view [stuff] stuff)]]
@@ -16,8 +27,9 @@
                  (def foo {:x 1 :bar ["foo" "bar"]})
                  (defn app-view [stuff] stuff)]]
       (is (= (a/follow-selector data sel)
-             (-> (a/zipper data) z/down z/right z/right z/down z/next))))
-    (let [sel '(defn app-view [:div [:ul (for (:li))]])
+             (-> (a/zipper data) z/down z/right z/right z/down z/next)))))
+  (testing "nested query"
+    (let [sel '(defn app-view [:div [:ul (for [:li])]])
           data '[(ns foo)
                  (def foo {:x 1 :bar ["foo" "bar"]})
                  (defn app-view []
@@ -30,7 +42,10 @@
       (is (= (z/node (z/up (a/follow-selector data sel)))
              '[:li
                [:div.name (r :name)]
-               [:div.address (r :address)]])))))
+               [:div.address (r :address)]]))))
+  (testing "multi-branch query"
+    (let [data '[(foo [bar 1] [baz 2] [quux 3])]]
+      (is (some? (a/follow-selector data '(foo [baz])))))))
 
 (deftest modifying-tree
   (testing "can append things"

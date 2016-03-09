@@ -24,6 +24,23 @@
         (with-meta (meta n))))
     data))
 
+(defn matches-at?
+  [z sz]
+  (println "z" z "sz" sz)
+  (cond
+    (nil? z) true
+    (z/end? z) true
+
+    (nil? sz) nil
+    (z/end? sz) nil
+
+    (not-any? (comp coll? z/node) [z sz])
+    (and (= (z/node z) (z/node sz))
+      (recur (z/right z) (z/right sz)))
+
+    (every? (comp coll? z/node) [z sz])
+    (recur (z/down z) (z/down sz)) ))
+
 (defn follow-selector
   [data sel]
   (let [initial-sel (-> (zipper sel) z/leftmost z/down)]
