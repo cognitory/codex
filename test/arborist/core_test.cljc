@@ -6,9 +6,12 @@
 
 (deftest matching-test
   (testing "can see if selector matches at location"
-    (let [zp (z/next (a/zipper '(defn foo [x] (inc x))))
+    (let [zp (z/next (a/zipper '(defn foo [x] (inc y))))
           s (z/next (a/zipper '(defn foo (inc))))]
-     (is (a/matches-at? zp s)))))
+     (is (some? (a/matches-at? zp s))))
+    (let [zp (z/next (a/zipper '(defn foo [x] inc x)))
+          s (z/next (a/zipper '(defn foo (inc))))]
+      (is (nil? (a/matches-at? zp s))))))
 
 (deftest selector-finding
   (testing "failing query"

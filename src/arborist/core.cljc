@@ -24,22 +24,31 @@
         (with-meta (meta n))))
     data))
 
+(defn right-colls
+  "Find all subtrees right of the current zipper location that are collections"
+  [z]
+  (loop [z z
+         r []]
+    (cond
+      (nil? z) r
+      (coll? (z/node z)) (recur (z/right z) (conj r (z/down z)))
+      true (recur (z/right z) r))))
+
 (defn matches-at?
   [z sz]
-  (println "z" z "sz" sz)
   (cond
-    (nil? z) true
-    (z/end? z) true
+    (nil? sz) true
+    (z/end? sz) true
 
-    (nil? sz) nil
-    (z/end? sz) nil
+    (nil? z) nil
+    (z/end? z) nil
 
     (not-any? (comp coll? z/node) [z sz])
     (and (= (z/node z) (z/node sz))
       (recur (z/right z) (z/right sz)))
 
-    (every? (comp coll? z/node) [z sz])
-    (recur (z/down z) (z/down sz)) ))
+    (coll? (z/node sz))
+    (some #(matches-at? % (z/down sz)) (right-colls z))))
 
 (defn follow-selector
   [data sel]
