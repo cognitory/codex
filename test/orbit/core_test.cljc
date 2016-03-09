@@ -149,7 +149,7 @@
           (let [orb (-> orb
                         (o/step "wrap text"
                                 (o/wrap "core.cljs"
-                                        '(defn app/view [:div "Hello world"])
+                                        '(defn app-view [:div "Hello world"])
                                         (fn [e] [:h1 e]))))]
             (is (= (get-in orb [:history 5 :resources "core.cljs"])
                    '[(ns rustyspoon.core

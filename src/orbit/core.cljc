@@ -63,8 +63,7 @@
 
 (defn wrap [r pattern wrap-form]
   (tx r (fn [forms]
-          forms ;TODO
-          )))
+          (a/wrap-with forms pattern wrap-form))))
 
 (comment
 
