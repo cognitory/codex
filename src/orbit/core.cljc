@@ -47,18 +47,15 @@
 
 (defn before [r pattern form]
   (tx r (fn [forms]
-          forms ;TODO
-          )))
+          (a/insert-before forms pattern form))))
 
 (defn after [r pattern form]
   (tx r (fn [forms]
-          forms ;TODO
-          )))
+          (a/insert-after forms pattern form))))
 
 (defn append [r pattern form]
   (tx r (fn [forms]
-          forms ;TODO
-          )))
+          (a/append-at forms pattern form))))
 
 (defn prepend [r pattern form]
   (tx r (fn [forms]

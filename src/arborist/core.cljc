@@ -13,13 +13,68 @@
 
 (defn zipper
   [data]
-  (z/zipper coll? seq (fn [_ c] c) data))
+  (z/zipper
+    coll?
+    seq
+    (fn [n c]
+      (-> (cond
+            (vector? n) (vec c)
+            (map? n) (into {} c)
+            true c)
+        (with-meta (meta n))))
+    data))
+
+(defn matches-at?
+  [z sz]
+  (println "z" z "sz" sz)
+  (cond
+    (nil? z) true
+    (z/end? z) true
+
+    (nil? sz) nil
+    (z/end? sz) nil
+
+    (not-any? (comp coll? z/node) [z sz])
+    (and (= (z/node z) (z/node sz))
+      (recur (z/right z) (z/right sz)))
+
+    (every? (comp coll? z/node) [z sz])
+    (recur (z/down z) (z/down sz)) ))
 
 (defn follow-selector
   [data sel]
-  (loop [zp (zipper data)
-         s sel]
-    (if (empty? s)
-      zp
+  (let [initial-sel (-> (zipper sel) z/leftmost z/down)]
+    (loop [zp (zipper data)
+           s initial-sel]
+      (cond
+        (z/end? zp) nil
+        (z/end? s) zp
 
-      )))
+        (not= (z/node zp) (z/node s))
+        (recur (z/next zp) initial-sel)
+
+        (z/end? (z/next s)) zp
+        (coll? (z/node (z/next s))) (recur (-> zp z/rightmost z/down)
+                                           (-> s z/next z/down))
+        true (recur (z/next zp) (z/next s))))))
+
+(defn append-at
+  [data sel to-insert]
+  (-> (follow-selector data sel)
+      z/rightmost
+      (z/insert-right to-insert)
+      z/root))
+
+(defn insert-after
+  [data sel to-insert]
+  (-> (follow-selector data sel)
+      z/up
+      (z/insert-right to-insert)
+      z/root))
+
+(defn insert-before
+  [data sel to-insert]
+  (-> (follow-selector data sel)
+      z/up
+      (z/insert-left to-insert)
+      z/root))
