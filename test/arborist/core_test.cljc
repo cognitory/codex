@@ -125,7 +125,5 @@
       (is (= (a/wrap-with data sel identity)
              '[(ns foo) (defn app-view [] (inc x))]
              ))
-      #_(is (= (a/wrap-with data sel (fn [e] (list '* e 2)))
-             '[(ns foo) (defn app-view [] (inc x))]
-             ))
-      )))
+      (is (= (a/wrap-with data sel (fn [e] (list '* e 2)))
+             '[(ns foo) (defn app-view [] (inc (* x 2)))])))))
