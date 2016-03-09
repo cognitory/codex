@@ -37,11 +37,9 @@
 (defn matches-at?
   [z sz]
   (cond
-    (nil? sz) true
-    (z/end? sz) true
+    (or (nil? sz) (z/end? sz)) (z/prev z)
 
-    (nil? z) nil
-    (z/end? z) nil
+    (or (nil? z) (z/end? z)) nil
 
     (not-any? (comp coll? z/node) [z sz])
     (and (= (z/node z) (z/node sz))
@@ -59,13 +57,10 @@
         (z/end? zp) nil
         (z/end? s) zp
 
-        (not= (z/node zp) (z/node s))
-        (recur (z/next zp) initial-sel)
-
-        (z/end? (z/next s)) zp
-        (coll? (z/node (z/next s))) (recur (-> zp z/rightmost z/down)
-                                           (-> s z/next z/down))
-        true (recur (z/next zp) (z/next s))))))
+        true
+        (if-let [match (matches-at? zp s)]
+          match
+          (recur (z/next zp) initial-sel))))))
 
 (defn append-at
   [data sel to-insert]

@@ -72,7 +72,11 @@
                      [:li
                       [:div.name (r :name)]
                       [:div.address (r :address)]
-                      [:div.rating (r :rating)]])]])]))))
+                      [:div.rating (r :rating)]])]])])))
+    (testing "with a multi-branch query"
+      (let [data '[(foo [bar 1] [baz 2] [quux 3])]]
+        (is (= (a/append-at data '(foo [baz]) '[zzz 9])
+               '[(foo [bar 1] [baz 2 [zzz 9]] [quux 3])])))))
   (testing "can insert after"
     (let [sel '(defn app-view)
           data '[(ns foo) (defn app-view [x] (inc x))]]
