@@ -30,6 +30,28 @@
       (is (= (z/node (z/up (a/follow-selector data sel)))
              '[:li
                [:div.name (r :name)]
-               [:div.address (r :address)]]
-             )))
-    ))
+               [:div.address (r :address)]])))))
+
+(deftest modifying-tree
+  (testing "can insert things"
+    (let [sel '(defn app-view [:div [:ul (for (:li))]])
+          data '[(ns foo)
+                 (def foo {:x 1 :bar ["foo" "bar"]})
+                 (defn app-view []
+                   [:div
+                    [:ul
+                     (for [r restaurants]
+                       [:li
+                        [:div.name (r :name)]
+                        [:div.address (r :address)]])]])]]
+      (is (= (a/insert-after data sel '[:div.rating (r :rating)])
+             '[(ns foo)
+               (def foo {:x 1 :bar ["foo" "bar"]})
+               (defn app-view []
+                 [:div
+                  [:ul
+                   (for [r restaurants]
+                     [:li
+                      [:div.name (r :name)]
+                      [:div.address (r :address)]
+                      [:div.rating (r :rating)]])]])])))))

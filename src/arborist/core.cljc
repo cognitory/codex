@@ -13,7 +13,16 @@
 
 (defn zipper
   [data]
-  (z/zipper coll? seq (fn [n c] (with-meta c n)) data))
+  (z/zipper
+    coll?
+    seq
+    (fn [n c]
+      (-> (cond
+            (vector? n) (vec c)
+            (map? n) (into {} c)
+            true c)
+        (with-meta (meta n))))
+    data))
 
 (defn follow-selector
   [data sel]
@@ -31,3 +40,10 @@
         (coll? (z/node (z/next s))) (recur (-> zp z/rightmost z/down)
                                            (-> s z/next z/down))
         true (recur (z/next zp) (z/next s))))))
+
+(defn insert-after
+  [data sel to-insert]
+  (-> (follow-selector data sel)
+      z/rightmost
+      (z/insert-right to-insert)
+      z/root))
