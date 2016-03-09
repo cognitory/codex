@@ -77,6 +77,28 @@
       (let [data '[(foo [bar 1] [baz 2] [quux 3])]]
         (is (= (a/append-at data '(foo [baz]) '[zzz 9])
                '[(foo [bar 1] [baz 2 [zzz 9]] [quux 3])])))))
+  (testing "can prepend things"
+    (let [data '[(ns foo)
+                 (def foo {:x 1 :bar ["foo" "bar"]})
+                 (defn app-view []
+                   [:div
+                    [:ul
+                     (for [r restaurants]
+                       [:li
+                        [:div.name (r :name)]
+                        [:div.address (r :address)]])]])]
+          sel '(defn app-view [:div [:ul (for [:li])]])]
+      (is (= (a/prepend-at data sel '[:img {:src (r :img)}])
+             '[(ns foo)
+               (def foo {:x 1 :bar ["foo" "bar"]})
+               (defn app-view []
+                 [:div
+                  [:ul
+                   (for [r restaurants]
+                     [:li
+                      [:img {:src (r :img)}]
+                      [:div.name (r :name)]
+                      [:div.address (r :address)]])]])]))))
   (testing "can insert after"
     (let [sel '(defn app-view)
           data '[(ns foo) (defn app-view [x] (inc x))]]
