@@ -101,7 +101,10 @@
                     (o/step "enhance view fn"
                             (o/append "core.cljs"
                               '(defn app-view [:div])
-                              '[:p "This is some stuff"])))]
+                              '[:p "This is some stuff"])
+                            (o/append "core.cljs"
+                              '(defn app-view [:div])
+                              '[:p "This is some more stuff"])))]
         (testing "can append things"
           (is (= (get-in orb [:history 4 :resources "core.cljs"])
                  '[(ns rustyspoon.core
@@ -116,6 +119,53 @@
                        :rating 10.0}])
                    (defn app-view []
                      [:div "Hello world"
-                      [:p "This is some stuff"]])
+                      [:p "This is some stuff"]
+                      [:p "This is some more stuff"]])
                    (println "Starting stuff!")])))
-        ))))
+        (testing "can prepend things"
+          (let [orb (-> orb
+                        (o/step "add more stuff"
+                                (o/prepend "core.cljs"
+                                           '(defn app-view [:div])
+                                           '[:h1 "Things"])))]
+            (is (= (get-in orb [:history 5 :resources "core.cljs"])
+                   '[(ns rustyspoon.core
+                       (:require [reagent.core :as r]))
+                     (enable-console-print!)
+                     (def restaurants
+                       [{:name "You Eat"
+                         :address "1 Street St"
+                         :rating -5}
+                        {:name "Yes Yes Yes"
+                         :address "55 Fancy Ave"
+                         :rating 10.0}])
+                     (defn app-view []
+                       [:div [:h1 "Things"]
+                        "Hello world"
+                        [:p "This is some stuff"]
+                        [:p "This is some more stuff"]])
+                     (println "Starting stuff!")]))))
+        (testing "can wrap things"
+          (let [orb (-> orb
+                        (o/step "wrap text"
+                                (o/wrap "core.cljs"
+                                        '(defn app-view [:div "Hello world"])
+                                        (fn [e] [:h1 e]))))]
+            (is (= (get-in orb [:history 5 :resources "core.cljs"])
+                   '[(ns rustyspoon.core
+                       (:require [reagent.core :as r]))
+                     (enable-console-print!)
+                     (def restaurants
+                       [{:name "You Eat"
+                         :address "1 Street St"
+                         :rating -5}
+                        {:name "Yes Yes Yes"
+                         :address "55 Fancy Ave"
+                         :rating 10.0}])
+                     (defn app-view []
+                       [:div
+                        [:h1 "Hello world"]
+                        [:p "This is some stuff"]
+                        [:p "This is some more stuff"]])
+                     (println "Starting stuff!")]))
+            ))))))

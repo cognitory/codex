@@ -8,10 +8,13 @@
   (testing "can see if selector matches at location"
     (let [zp (z/next (a/zipper '(defn foo [x] (inc y))))
           s (z/next (a/zipper '(defn foo (inc))))]
-     (is (some? (a/matches-at? zp s))))
+      (is (some? (a/matches-at? zp s))))
     (let [zp (z/next (a/zipper '(defn foo [x] inc x)))
           s (z/next (a/zipper '(defn foo (inc))))]
-      (is (nil? (a/matches-at? zp s))))))
+      (is (nil? (a/matches-at? zp s))))
+    (let [zp (z/next (a/zipper '(defn foo [x] (inc x))))
+          s (z/next (a/zipper '(defn foo (inc x))))]
+      (is (a/matches-at? zp s)))))
 
 (deftest selector-finding
   (testing "failing query"
@@ -30,7 +33,10 @@
                  (def foo {:x 1 :bar ["foo" "bar"]})
                  (defn app-view [stuff] stuff)]]
       (is (= (a/follow-selector data sel)
-             (-> (a/zipper data) z/down z/right z/right z/down z/next)))))
+             (-> (a/zipper data) z/down z/right z/right z/down z/next))))
+    (let [data '[(def foo {:x 1 :y 2})]
+          sel '(def foo {:y 2})]
+      (is (a/follow-selector data sel))))
   (testing "nested query"
     (let [sel '(defn app-view [:div [:ul (for [:li])]])
           data '[(ns foo)
@@ -77,7 +83,29 @@
       (let [data '[(foo [bar 1] [baz 2] [quux 3])]]
         (is (= (a/append-at data '(foo [baz]) '[zzz 9])
                '[(foo [bar 1] [baz 2 [zzz 9]] [quux 3])])))))
-  (testing "can insert after"
+  (testing "can prepend things"
+    (let [data '[(ns foo)
+                 (def foo {:x 1 :bar ["foo" "bar"]})
+                 (defn app-view []
+                   [:div
+                    [:ul
+                     (for [r restaurants]
+                       [:li
+                        [:div.name (r :name)]
+                        [:div.address (r :address)]])]])]
+          sel '(defn app-view [:div [:ul (for [:li])]])]
+      (is (= (a/prepend-at data sel '[:img {:src (r :img)}])
+             '[(ns foo)
+               (def foo {:x 1 :bar ["foo" "bar"]})
+               (defn app-view []
+                 [:div
+                  [:ul
+                   (for [r restaurants]
+                     [:li
+                      [:img {:src (r :img)}]
+                      [:div.name (r :name)]
+                      [:div.address (r :address)]])]])]))))
+   (testing "can insert after"
     (let [sel '(defn app-view)
           data '[(ns foo) (defn app-view [x] (inc x))]]
       (is (= (a/insert-after data sel '(println "okay!"))
@@ -91,6 +119,18 @@
                  (defn app-view [] [:div "hello"])]]
       (is (= (a/insert-before data sel '(def stuff [{:a 1 :b 2} {:a 7 :b 12}]))
              '[(ns foo)
-              (enable-console-print!)
-              (def stuff [{:a 1 :b 2} {:a 7 :b 12}])
-              (defn app-view [] [:div "hello"])])))))
+               (enable-console-print!)
+               (def stuff [{:a 1 :b 2} {:a 7 :b 12}])
+               (defn app-view [] [:div "hello"])]))))
+  (testing "can wrap things"
+    (let [sel '(defn app-view (inc x))
+          data '[(ns foo) (defn app-view [] (inc x))]]
+      (is (= (a/wrap-with data sel identity)
+             '[(ns foo) (defn app-view [] (inc x))]))
+      (is (= (a/wrap-with data sel (fn [e] (list '* e 2)))
+             '[(ns foo) (defn app-view [] (inc (* x 2)))]))))
+  (testing "can replace things"
+    (let [data '[(def foo {:x 1 :y 2})]
+          sel '(def foo {:y 2})]
+      (is (= (a/replace-with data sel 3)
+             '[(def foo {:x 1 :y 3})])))))

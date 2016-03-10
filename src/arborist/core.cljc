@@ -43,7 +43,9 @@
 
     (not-any? (comp coll? z/node) [z sz])
     (and (= (z/node z) (z/node sz))
-      (recur (z/right z) (z/right sz)))
+      (if (nil? (z/right sz))
+        z
+        (recur (z/right z) (z/right sz))))
 
     (coll? (z/node sz))
     (some #(matches-at? % (z/down sz)) (right-colls z))))
@@ -64,21 +66,39 @@
 
 (defn append-at
   [data sel to-insert]
-  (-> (follow-selector data sel)
-      z/rightmost
-      (z/insert-right to-insert)
-      z/root))
+  (some-> (follow-selector data sel)
+          z/rightmost
+          (z/insert-right to-insert)
+          z/root))
+
+(defn prepend-at
+  [data sel to-insert]
+  (some-> (follow-selector data sel)
+          (z/insert-right to-insert)
+          z/root))
 
 (defn insert-after
   [data sel to-insert]
-  (-> (follow-selector data sel)
-      z/up
-      (z/insert-right to-insert)
-      z/root))
+  (some-> (follow-selector data sel)
+          z/up
+          (z/insert-right to-insert)
+          z/root))
 
 (defn insert-before
   [data sel to-insert]
-  (-> (follow-selector data sel)
-      z/up
-      (z/insert-left to-insert)
-      z/root))
+  (some-> (follow-selector data sel)
+          z/up
+          (z/insert-left to-insert)
+          z/root))
+
+(defn wrap-with
+  [data sel wrap-fn]
+  (some-> (follow-selector data sel)
+          (z/edit wrap-fn)
+          (z/root)))
+
+(defn replace-with
+  [data sel replacement]
+  (some-> (follow-selector data sel)
+          (z/replace replacement)
+          (z/root)))

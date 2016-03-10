@@ -59,13 +59,11 @@
 
 (defn prepend [r pattern form]
   (tx r (fn [forms]
-          forms ;TODO
-          )))
+          (a/prepend-at forms pattern form))))
 
-(defn wrap [r pattern form]
+(defn wrap [r pattern wrap-form]
   (tx r (fn [forms]
-          forms ;TODO
-          )))
+          (a/wrap-with forms pattern wrap-form))))
 
 (comment
 
