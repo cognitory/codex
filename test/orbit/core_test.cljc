@@ -167,5 +167,4 @@
                         [:h1 "Hello world"]
                         [:p "This is some stuff"]
                         [:p "This is some more stuff"]])
-                     (println "Starting stuff!")]))
-            ))))))
+                     (println "Starting stuff!")]))))))))

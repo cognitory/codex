@@ -6,10 +6,10 @@
 
 (deftest searching-by-id
   (testing "can find nodes by annotated metadata"
-    (let [data (a/zipper '(defn foo [x] ^{:id "foo"} (inc x)))]
+    (let [data '(defn foo [x] ^{:id "foo"} (inc x))]
       (is (a/find-by-id data "foo"))
       (is (= '(inc x) (z/node (a/find-by-id data "foo")))))
-    (let [data (a/zipper '(defn foo [x] (inc ^{:id "foo"} x)))]
+    (let [data '(defn foo [x] (inc ^{:id "foo"} x))]
       (is (a/find-by-id data "foo"))
       (is (= 'x (z/node (a/find-by-id data "foo"))))
       (is (= (-> (a/find-by-id data "foo") (z/replace 'y) z/root)
@@ -67,7 +67,7 @@
     (let [data '[(foo [bar 1] [baz 2] [quux 3])]]
       (is (some? (a/zipper-at data '(foo [baz])))))))
 
-(deftest modifying-tree
+(deftest modifying-tree-by-selector
   (testing "can append things"
     (let [sel '(defn app-view [:div [:ul (for (:li))]])
           data '[(ns foo)
@@ -146,3 +146,8 @@
       (is (= (a/replace-with data sel 3)
              '[(def foo {:x 1 :y 3})])))))
 
+(deftest modifying-tree-by-id
+  (testing "can replace things"
+    (let [data '(defn foo [x] (inc ^{:id "foo"} x))]
+      (is (= (a/replace-with data "foo" 'y)
+             '(defn foo [x] (inc y)))))))

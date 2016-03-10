@@ -44,8 +44,10 @@
     (some #(matches-at? % (z/down sz)) (right-colls z))))
 
 (defn find-by-id
-  [z id]
-  (loop [z z]
+  "Given a clojure data struture and an id, return a zipper to the node with
+  the metadata `{:id id}`"
+  [data id]
+  (loop [z (zipper data)]
     (cond
       (z/end? z) nil
       (= id (:id (meta (z/node z)))) z
