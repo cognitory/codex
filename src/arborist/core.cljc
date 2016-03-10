@@ -95,5 +95,4 @@
   [data sel wrap-fn]
   (some-> (follow-selector data sel)
           (z/edit wrap-fn)
-          (z/root))
-  )
+          (z/root)))
