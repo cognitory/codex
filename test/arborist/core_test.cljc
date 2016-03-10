@@ -4,6 +4,17 @@
             [clojure.zip :as z]
             [arborist.core :as a]))
 
+(deftest searching-by-id
+  (testing "can find nodes by annotated metadata"
+    (let [data '(defn foo [x] ^{:id "foo"} (inc x))]
+      (is (a/find-by-id data "foo"))
+      (is (= '(inc x) (z/node (a/find-by-id data "foo")))))
+    (let [data '(defn foo [x] (inc ^{:id "foo"} x))]
+      (is (a/find-by-id data "foo"))
+      (is (= 'x (z/node (a/find-by-id data "foo"))))
+      (is (= (-> (a/find-by-id data "foo") (z/replace 'y) z/root)
+             '(defn foo [x] (inc y)))))))
+
 (deftest matching-test
   (testing "can see if selector matches at location"
     (let [zp (z/next (a/zipper '(defn foo [x] (inc y))))
@@ -18,25 +29,25 @@
 
 (deftest selector-finding
   (testing "failing query"
-    (is (nil? (a/follow-selector '[(ns foo) (defn app-view [x] x)]
+    (is (nil? (a/zipper-at '[(ns foo) (defn app-view [x] x)]
                                  '(defn foobar))))
-    (is (nil? (a/follow-selector '[(ns foo) (defn app-view [x] (inc x))]
+    (is (nil? (a/zipper-at '[(ns foo) (defn app-view [x] (inc x))]
                                  '(defn app-view (dec))))))
   (testing "simple search"
     (let [sel '(defn app-view)
           data '[(ns foo)
                  (defn app-view [stuff] stuff)]]
-      (is (= (a/follow-selector data sel)
+      (is (= (a/zipper-at data sel)
              (-> (a/zipper data) z/down z/right z/down z/next))))
     (let [sel '(defn app-view)
           data '[(ns foo)
                  (def foo {:x 1 :bar ["foo" "bar"]})
                  (defn app-view [stuff] stuff)]]
-      (is (= (a/follow-selector data sel)
+      (is (= (a/zipper-at data sel)
              (-> (a/zipper data) z/down z/right z/right z/down z/next))))
     (let [data '[(def foo {:x 1 :y 2})]
           sel '(def foo {:y 2})]
-      (is (a/follow-selector data sel))))
+      (is (a/zipper-at data sel))))
   (testing "nested query"
     (let [sel '(defn app-view [:div [:ul (for [:li])]])
           data '[(ns foo)
@@ -48,15 +59,15 @@
                        [:li
                         [:div.name (r :name)]
                         [:div.address (r :address)]])]])]]
-      (is (= (z/node (z/up (a/follow-selector data sel)))
+      (is (= (z/node (z/up (a/zipper-at data sel)))
              '[:li
                [:div.name (r :name)]
                [:div.address (r :address)]]))))
   (testing "multi-branch query"
     (let [data '[(foo [bar 1] [baz 2] [quux 3])]]
-      (is (some? (a/follow-selector data '(foo [baz])))))))
+      (is (some? (a/zipper-at data '(foo [baz])))))))
 
-(deftest modifying-tree
+(deftest modifying-tree-by-selector
   (testing "can append things"
     (let [sel '(defn app-view [:div [:ul (for (:li))]])
           data '[(ns foo)
@@ -134,3 +145,55 @@
           sel '(def foo {:y 2})]
       (is (= (a/replace-with data sel 3)
              '[(def foo {:x 1 :y 3})])))))
+
+(deftest modifying-tree-by-id
+  (testing "can insert after"
+    (let [data '[(ns foo) (defn ^{:id "view"} app-view [x] (inc x))]]
+      (is (= (a/insert-after data "view" '(println "okay!"))
+             '[(ns foo)
+               (defn app-view [x] (inc x))
+               (println "okay!")]))))
+  (testing "can replace things"
+    (let [data '(defn foo [x] (inc ^{:id "foo"} x))]
+      (is (= (a/replace-with data "foo" 'y)
+             '(defn foo [x] (inc y))))))
+  (testing "can append things"
+    (let [data '[(defn app-view [] [:div ^{:id "content"} [:h1 "Hello!"]])]]
+      (is (= (a/append-at data "content" [:p "stuff"])
+             '[(defn app-view [] [:div ^{:id "content"}
+                                  [:h1 "Hello!"]
+                                  [:p "stuff"]])]))))
+  (testing "metadata stays in the tree"
+    (let [data '[(defn app-view []
+                   [:div ^{:id "content"}
+                    [:h1 "Hello!"]])]]
+      (is (= (-> data
+                 (a/append-at "content" [:p "stuff"])
+                 (a/append-at "content" [:p "more stuff"]))
+             '[(defn app-view [] [:div ^{:id "content"}
+                                  [:h1 "Hello!"]
+                                  [:p "stuff"]
+                                  [:p "more stuff"]])]))))
+  (testing "can add metadata"
+    (let [data '[(defn app-view []
+                   [:div ^{:id "content"}
+                    [:h1 "Hello!"]])]]
+      (is (= (-> data
+                 (a/replace-with "content"
+                                 ^{:id "new-content"} [:h2 "things"])
+                 (a/append-at "new-content" [:p "things"]))
+             '[(defn app-view [] [:div ^{:id "content"}
+                                  [:h2 "things"]
+                                  [:p "things"]])])))
+    (let [data '[(defn app-view []
+                   ^{:id "content"}
+                   [:div
+                    [:h1 "Hello!"]])]]
+      (is (= (-> data
+                 (a/replace-with "content"
+                                 [:section ^{:id "content"}
+                                  [:p "stuff"]])
+                 (a/append-at "content" [:p "things"]))
+             '[(defn app-view [] [:section
+                                  [:p "stuff"]
+                                  [:p "things"]])])))))

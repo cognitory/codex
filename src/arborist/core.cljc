@@ -1,16 +1,6 @@
 (ns arborist.core
   (:require [clojure.zip :as z]))
 
-(comment (defn map-zipper [m]
-  (z/zipper
-    (fn [x] (or (map? x) (map? (nth x 1))))
-    (fn [x] (seq (if (map? x) x (nth x 1))))
-    (fn [x children]
-      (if (map? x)
-        (into {} children)
-        (assoc x 1 (into {} children))))
-    m)))
-
 (defn zipper
   [data]
   (z/zipper
@@ -25,7 +15,8 @@
     data))
 
 (defn right-colls
-  "Find all subtrees right of the current zipper location that are collections"
+  "Find all subtrees right of the current zipper location that are collections
+  as zippers (note that z/rights returns the nodes, not zippers)"
   [z]
   (loop [z z
          r []]
@@ -35,6 +26,8 @@
       true (recur (z/right z) r))))
 
 (defn matches-at?
+  "Helper function for zipper-at. Determines if a given selector-zipper matches
+  the zipper 'z' at the current location"
   [z sz]
   (cond
     (or (nil? sz) (z/end? sz)) (z/prev z)
@@ -50,7 +43,19 @@
     (coll? (z/node sz))
     (some #(matches-at? % (z/down sz)) (right-colls z))))
 
-(defn follow-selector
+(defn find-by-id
+  "Given a clojure data struture and an id, return a zipper to the node with
+  the metadata `{:id id}`"
+  [data id]
+  (loop [z (zipper data)]
+    (cond
+      (z/end? z) nil
+      (= id (:id (meta (z/node z)))) z
+      true (recur (z/next z)))))
+
+(defn find-by-selector
+  "Given a clojure data structure and a 'selector', return a zipper to the
+  location in 'data' that matches 'sel'."
   [data sel]
   (let [initial-sel (-> (zipper sel) z/leftmost z/down)]
     (loop [zp (zipper data)
@@ -64,41 +69,49 @@
           match
           (recur (z/next zp) initial-sel))))))
 
+(defn zipper-at
+  [data sel-or-id]
+  (if (coll? sel-or-id)
+    (find-by-selector data sel-or-id)
+    (find-by-id data sel-or-id)))
+
+;; replacments
+
 (defn append-at
   [data sel to-insert]
-  (some-> (follow-selector data sel)
+  (some-> (zipper-at data sel)
           z/rightmost
           (z/insert-right to-insert)
           z/root))
 
 (defn prepend-at
   [data sel to-insert]
-  (some-> (follow-selector data sel)
+  (some-> (zipper-at data sel)
           (z/insert-right to-insert)
           z/root))
 
 (defn insert-after
   [data sel to-insert]
-  (some-> (follow-selector data sel)
+  (some-> (zipper-at data sel)
           z/up
           (z/insert-right to-insert)
           z/root))
 
 (defn insert-before
   [data sel to-insert]
-  (some-> (follow-selector data sel)
+  (some-> (zipper-at data sel)
           z/up
           (z/insert-left to-insert)
           z/root))
 
 (defn wrap-with
   [data sel wrap-fn]
-  (some-> (follow-selector data sel)
+  (some-> (zipper-at data sel)
           (z/edit wrap-fn)
           (z/root)))
 
 (defn replace-with
   [data sel replacement]
-  (some-> (follow-selector data sel)
+  (some-> (zipper-at data sel)
           (z/replace replacement)
           (z/root)))

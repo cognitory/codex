@@ -1,4 +1,5 @@
 (ns orbit.core
+  (:refer-clojure :exclude [replace])
   (:require [arborist.core :as a]))
 
 (defn init []
@@ -65,6 +66,10 @@
   (tx r (fn [forms]
           (a/wrap-with forms pattern wrap-form))))
 
+(defn replace [r pattern form]
+  (tx r (fn [forms]
+          (a/replace-with forms pattern form))))
+
 (comment
 
 (defn remove [r pattern]
@@ -72,12 +77,7 @@
           forms ;TODO
           )))
 
-(defn replace [r pattern form]
-  (tx r (fn [forms]
-          forms ;TODO
-          )))
-
- (defn assoc [r pattern k v]
+(defn assoc [r pattern k v]
    (tx r (fn [forms]
            forms ;TODO
            )))
