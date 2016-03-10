@@ -156,4 +156,44 @@
   (testing "can replace things"
     (let [data '(defn foo [x] (inc ^{:id "foo"} x))]
       (is (= (a/replace-with data "foo" 'y)
-             '(defn foo [x] (inc y)))))))
+             '(defn foo [x] (inc y))))))
+  (testing "can append things"
+    (let [data '[(defn app-view [] [:div ^{:id "content"} [:h1 "Hello!"]])]]
+      (is (= (a/append-at data "content" [:p "stuff"])
+             '[(defn app-view [] [:div ^{:id "content"}
+                                  [:h1 "Hello!"]
+                                  [:p "stuff"]])]))))
+  (testing "metadata stays in the tree"
+    (let [data '[(defn app-view []
+                   [:div ^{:id "content"}
+                    [:h1 "Hello!"]])]]
+      (is (= (-> data
+                 (a/append-at "content" [:p "stuff"])
+                 (a/append-at "content" [:p "more stuff"]))
+             '[(defn app-view [] [:div ^{:id "content"}
+                                  [:h1 "Hello!"]
+                                  [:p "stuff"]
+                                  [:p "more stuff"]])]))))
+  (testing "can add metadata"
+    (let [data '[(defn app-view []
+                   [:div ^{:id "content"}
+                    [:h1 "Hello!"]])]]
+      (is (= (-> data
+                 (a/replace-with "content"
+                                 ^{:id "new-content"} [:h2 "things"])
+                 (a/append-at "new-content" [:p "things"]))
+             '[(defn app-view [] [:div ^{:id "content"}
+                                  [:h2 "things"]
+                                  [:p "things"]])])))
+    (let [data '[(defn app-view []
+                   ^{:id "content"}
+                   [:div
+                    [:h1 "Hello!"]])]]
+      (is (= (-> data
+                 (a/replace-with "content"
+                                 [:section ^{:id "new-content"}
+                                  [:p "stuff"]])
+                 (a/append-at "new-content" [:p "things"]))
+             '[(defn app-view [] [:section
+                                  [:p "stuff"]
+                                  [:p "things"]])])))))
