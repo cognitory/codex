@@ -209,4 +209,38 @@
                                          [{:name "foo"
                                            :addres "bar"}
                                           {:name "baz"
-                                           :address "quux"}]))))]))))
+                                           :address "quux"}]))))]))
+    (let [orb (-> (o/init)
+                  (o/step "setup stuff"
+                          (o/resource "core.cljs")
+                          (o/add "core.cljs"
+                            '(ns rustyspoon.core
+                               (:require [reagent.core :as r])))
+                          (o/add "core.cljs"
+                            '(enable-console-print!))
+                          (o/add "core.cljs"
+                            (quote
+                              ^{:id "app-view"}
+                              (defn app-view []
+                                ^{:id "content"}
+                                [:div "Hello world"]))))
+                  (o/step "add array"
+                          (o/replace "core.cljs"
+                                     "app-view"
+                                     (quote
+                                       ^{:id "app-view"}
+                                       (defn primary-view []
+                                         (let [_ @(...)]
+                                           ^{:id "content"}
+                                           [:li
+                                            [:div
+                                             [:h1 "Things"]]]))))))]
+      (is (= (get-in (last (orb :history)) [:resources "core.cljs"])
+             '[(ns rustyspoon.core
+                 (:require [reagent.core :as r]))
+               (enable-console-print!)
+               (defn primary-view []
+                 (let [_ @(...)]
+                   [:li
+                    [:div
+                     [:h1 "Things"]]]))])))))
