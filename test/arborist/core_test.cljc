@@ -4,6 +4,17 @@
             [clojure.zip :as z]
             [arborist.core :as a]))
 
+(deftest searching-by-id
+  (testing "can find nodes by annotated metadata"
+    (let [data (a/zipper '(defn foo [x] ^{:id "foo"} (inc x)))]
+      (is (a/find-by-id data "foo"))
+      (is (= '(inc x) (z/node (a/find-by-id data "foo")))))
+    (let [data (a/zipper '(defn foo [x] (inc ^{:id "foo"} x)))]
+      (is (a/find-by-id data "foo"))
+      (is (= 'x (z/node (a/find-by-id data "foo"))))
+      (is (= (-> (a/find-by-id data "foo") (z/replace 'y) z/root)
+             '(defn foo [x] (inc y)))))))
+
 (deftest matching-test
   (testing "can see if selector matches at location"
     (let [zp (z/next (a/zipper '(defn foo [x] (inc y))))
@@ -134,3 +145,4 @@
           sel '(def foo {:y 2})]
       (is (= (a/replace-with data sel 3)
              '[(def foo {:x 1 :y 3})])))))
+
