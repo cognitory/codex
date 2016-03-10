@@ -191,9 +191,9 @@
                     [:h1 "Hello!"]])]]
       (is (= (-> data
                  (a/replace-with "content"
-                                 [:section ^{:id "new-content"}
+                                 [:section ^{:id "content"}
                                   [:p "stuff"]])
-                 (a/append-at "new-content" [:p "things"]))
+                 (a/append-at "content" [:p "things"]))
              '[(defn app-view [] [:section
                                   [:p "stuff"]
                                   [:p "things"]])])))))
