@@ -147,6 +147,12 @@
              '[(def foo {:x 1 :y 3})])))))
 
 (deftest modifying-tree-by-id
+  (testing "can insert after"
+    (let [data '[(ns foo) (defn ^{:id "view"} app-view [x] (inc x))]]
+      (is (= (a/insert-after data "view" '(println "okay!"))
+             '[(ns foo)
+               (defn app-view [x] (inc x))
+               (println "okay!")]))))
   (testing "can replace things"
     (let [data '(defn foo [x] (inc ^{:id "foo"} x))]
       (is (= (a/replace-with data "foo" 'y)
