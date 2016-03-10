@@ -96,3 +96,9 @@
   (some-> (follow-selector data sel)
           (z/edit wrap-fn)
           (z/root)))
+
+(defn replace-with
+  [data sel replacement]
+  (some-> (follow-selector data sel)
+          (z/replace replacement)
+          (z/root)))

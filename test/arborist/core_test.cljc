@@ -33,7 +33,10 @@
                  (def foo {:x 1 :bar ["foo" "bar"]})
                  (defn app-view [stuff] stuff)]]
       (is (= (a/follow-selector data sel)
-             (-> (a/zipper data) z/down z/right z/right z/down z/next)))))
+             (-> (a/zipper data) z/down z/right z/right z/down z/next))))
+    (let [data '[(def foo {:x 1 :y 2})]
+          sel '(def foo {:y 2})]
+      (is (a/follow-selector data sel))))
   (testing "nested query"
     (let [sel '(defn app-view [:div [:ul (for [:li])]])
           data '[(ns foo)
@@ -102,7 +105,7 @@
                       [:img {:src (r :img)}]
                       [:div.name (r :name)]
                       [:div.address (r :address)]])]])]))))
-  (testing "can insert after"
+   (testing "can insert after"
     (let [sel '(defn app-view)
           data '[(ns foo) (defn app-view [x] (inc x))]]
       (is (= (a/insert-after data sel '(println "okay!"))
@@ -125,4 +128,9 @@
       (is (= (a/wrap-with data sel identity)
              '[(ns foo) (defn app-view [] (inc x))]))
       (is (= (a/wrap-with data sel (fn [e] (list '* e 2)))
-             '[(ns foo) (defn app-view [] (inc (* x 2)))])))))
+             '[(ns foo) (defn app-view [] (inc (* x 2)))]))))
+  (testing "can replace things"
+    (let [data '[(def foo {:x 1 :y 2})]
+          sel '(def foo {:y 2})]
+      (is (= (a/replace-with data sel 3)
+             '[(def foo {:x 1 :y 3})])))))
