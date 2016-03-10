@@ -50,7 +50,7 @@
     (coll? (z/node sz))
     (some #(matches-at? % (z/down sz)) (right-colls z))))
 
-(defn follow-selector
+(defn zipper-at
   [data sel]
   (let [initial-sel (-> (zipper sel) z/leftmost z/down)]
     (loop [zp (zipper data)
@@ -66,39 +66,39 @@
 
 (defn append-at
   [data sel to-insert]
-  (some-> (follow-selector data sel)
+  (some-> (zipper-at data sel)
           z/rightmost
           (z/insert-right to-insert)
           z/root))
 
 (defn prepend-at
   [data sel to-insert]
-  (some-> (follow-selector data sel)
+  (some-> (zipper-at data sel)
           (z/insert-right to-insert)
           z/root))
 
 (defn insert-after
   [data sel to-insert]
-  (some-> (follow-selector data sel)
+  (some-> (zipper-at data sel)
           z/up
           (z/insert-right to-insert)
           z/root))
 
 (defn insert-before
   [data sel to-insert]
-  (some-> (follow-selector data sel)
+  (some-> (zipper-at data sel)
           z/up
           (z/insert-left to-insert)
           z/root))
 
 (defn wrap-with
   [data sel wrap-fn]
-  (some-> (follow-selector data sel)
+  (some-> (zipper-at data sel)
           (z/edit wrap-fn)
           (z/root)))
 
 (defn replace-with
   [data sel replacement]
-  (some-> (follow-selector data sel)
+  (some-> (zipper-at data sel)
           (z/replace replacement)
           (z/root)))

@@ -18,25 +18,25 @@
 
 (deftest selector-finding
   (testing "failing query"
-    (is (nil? (a/follow-selector '[(ns foo) (defn app-view [x] x)]
+    (is (nil? (a/zipper-at '[(ns foo) (defn app-view [x] x)]
                                  '(defn foobar))))
-    (is (nil? (a/follow-selector '[(ns foo) (defn app-view [x] (inc x))]
+    (is (nil? (a/zipper-at '[(ns foo) (defn app-view [x] (inc x))]
                                  '(defn app-view (dec))))))
   (testing "simple search"
     (let [sel '(defn app-view)
           data '[(ns foo)
                  (defn app-view [stuff] stuff)]]
-      (is (= (a/follow-selector data sel)
+      (is (= (a/zipper-at data sel)
              (-> (a/zipper data) z/down z/right z/down z/next))))
     (let [sel '(defn app-view)
           data '[(ns foo)
                  (def foo {:x 1 :bar ["foo" "bar"]})
                  (defn app-view [stuff] stuff)]]
-      (is (= (a/follow-selector data sel)
+      (is (= (a/zipper-at data sel)
              (-> (a/zipper data) z/down z/right z/right z/down z/next))))
     (let [data '[(def foo {:x 1 :y 2})]
           sel '(def foo {:y 2})]
-      (is (a/follow-selector data sel))))
+      (is (a/zipper-at data sel))))
   (testing "nested query"
     (let [sel '(defn app-view [:div [:ul (for [:li])]])
           data '[(ns foo)
@@ -48,13 +48,13 @@
                        [:li
                         [:div.name (r :name)]
                         [:div.address (r :address)]])]])]]
-      (is (= (z/node (z/up (a/follow-selector data sel)))
+      (is (= (z/node (z/up (a/zipper-at data sel)))
              '[:li
                [:div.name (r :name)]
                [:div.address (r :address)]]))))
   (testing "multi-branch query"
     (let [data '[(foo [bar 1] [baz 2] [quux 3])]]
-      (is (some? (a/follow-selector data '(foo [baz])))))))
+      (is (some? (a/zipper-at data '(foo [baz])))))))
 
 (deftest modifying-tree
   (testing "can append things"
