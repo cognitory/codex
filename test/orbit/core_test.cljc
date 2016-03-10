@@ -1,6 +1,7 @@
 (ns orbit.core-test
   (:require #?(:cljs [cljs.test :refer-macros [is deftest testing]]
                :clj [clojure.test :refer :all])
+            [clojure.pprint :refer [pprint]]
             [orbit.core :as o]))
 
 #?(:cljs (enable-console-print!))
@@ -168,3 +169,44 @@
                         [:p "This is some stuff"]
                         [:p "This is some more stuff"]])
                      (println "Starting stuff!")]))))))))
+
+(deftest steps-with-id
+  (testing "can use ids to select & replace"
+    (let [orb (-> (o/init)
+                  (o/step "setup stuff"
+                          (o/resource "core.cljs")
+                          (o/add "core.cljs"
+                            '(ns rustyspoon.core
+                               (:require [reagent.core :as r])))
+                          (o/add "core.cljs"
+                            '(enable-console-print!))
+                          (o/add "core.cljs"
+                            ^{:id "app-view"}
+                            '(defn app-view []
+                               ^{:id "content"}
+                               [:div "Hello world"])))
+                  (o/step "add array"
+                          (o/replace "core.cljs"
+                                     "content"
+                                     ^{:id "content"}
+                                     [:li
+                                      [:div
+                                       [:h1 "Things"]]])))]
+      (is (= (get-in (last (orb :history)) [:resources "core.cljs"])
+             '[(ns rustyspoon.core
+                 (:require [reagent.core :as r]))
+               (enable-console-print!)
+               (defn app-view []
+                 [:li
+                  [:div
+                   [:h1 "Things"]]])]))
+      (let [orb (-> orb
+                    (o/step "add dict"
+                            (o/before "core.cljs"
+                                      "app-view"
+                                      ^{:id "restaurant-data"}
+                                      '(def restaurants
+                                         [{:name "foo"
+                                           :addres "bar"}
+                                          {:name "baz"
+                                           :address "quux"}]))))]))))
