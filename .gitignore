@@ -1,6 +1,7 @@
 resources/public/js/dev.js
 resources/public/js/dev/**
 resources/public/js/release/**
+resources/public/js/rustyspoon/**
 *.log
 target/**
 .lein-repl-history

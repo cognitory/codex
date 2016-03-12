@@ -26,6 +26,14 @@
                            :output-to "resources/public/js/dev.js"
                            :output-dir "resources/public/js/dev"
                            :verbose true}}
+               {:id "rustyspoon"
+                :figwheel true
+                :source-paths ["src"]
+                :compiler {:main rustyspoon.orbit
+                           :asset-path "/js/rustyspoon"
+                           :output-to "resources/public/js/rustyspoon.js"
+                           :output-dir "resources/public/js/rustyspoon"
+                           :verbose true}}
                {:id "release"
                 :source-paths ["src"]
                 :compiler {:main codex.core
