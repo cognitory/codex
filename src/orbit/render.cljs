@@ -3,6 +3,7 @@
             [reagent.ratom :include-macros true :refer-macros [reaction]]
             [re-frame.core :as rf]
             [clojure.string :as string]
+            [fipp.clojure :as fipp]
             [cljs.pprint :refer [pprint]]
             [garden.core :refer [css]]
             [garden.stylesheet :refer [at-import]]))
@@ -14,6 +15,7 @@
          {:font-family "Source Code Pro"
           :border-radius "5px"
           :white-space "pre-wrap"
+          :line-height "1.25"
 
           :font-size "0.85em"
           :background "#2B2852"
@@ -68,9 +70,10 @@
 (defn- file-view [file-name code]
   [:div
    [:div.name file-name]
-   [:div.code (string/replace-first (with-out-str (pprint code))
-                                    #"\[(.*)\]"
-                                    "$1")]])
+   [:div.code
+    (->> (map (fn [part]
+                (with-out-str (fipp/pprint part {:width 50}))) code)
+         (string/join "\n"))]])
 
 (defn code-view []
   (let [resources (rf/subscribe [:get-current-resources]) ]
@@ -105,4 +108,4 @@
 
 (defn render [orbit dom-target]
   (rf/dispatch-sync [:init! orbit])
-  (r/render [orbit-view] dom-target))
+  (r/render-component [orbit-view] dom-target))
