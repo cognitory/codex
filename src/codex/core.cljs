@@ -5,7 +5,8 @@
             [secretary.core :as secretary :include-macros true :refer-macros [defroute]]
             [markdown.core :as md]
             [cljsjs.js-yaml]
-            [codex.router :as router]))
+            [codex.router :as router]
+            [codex.style :refer [styles]]))
 
 (enable-console-print!)
 
@@ -21,10 +22,12 @@
                             :tldrs {}}))
 
 (defonce REPO_URL "https://api.github.com/repos/cognitory/codex/")
+
 (defonce CONTENT_URL
   (if (= js/window.location.hostname "localhost")
     "/"
     "https://raw.githubusercontent.com/cognitory/codex/gh-pages/"))
+
 (defonce RESOURCE_URL
   (if (= js/window.location.hostname "localhost")
     "/"
@@ -121,32 +124,33 @@
 
 (defn index-view []
   [:div
-   [:h1 "Index"]])
+   [:h1 "Index"]
+   [:div.guides
+    [:h2 "Guides"]
+    (for [guide (->> (@app-state :guides)
+                     vals
+                     (remove (fn [g] (string/blank? (g :content)))))]
+      [:a {:key (guide :id)
+           :style {:display "block"}
+           :href (guide-path guide)}
+       (guide :id)])]
+
+   [:div.tldrs
+    [:h2 "TLDRs"]
+    (for [tldr (->> (@app-state :tldrs)
+                    vals
+                    (remove (fn [t] (and
+                                      (empty? (t :resources))
+                                      (string/blank? (t :content))))))]
+      [:a {:key (tldr :id)
+           :style {:display "block"}
+           :href (tldr-path tldr)}
+       (tldr :id)])]])
 
 (defn app-view []
   [:div
-   [:div.sidebar
-    [:h1 [:a {:href (index-path)} "Codex"]]
-    [:h2 "Guides"]
-    [:div.guides
-     (for [guide (->> (@app-state :guides)
-                      vals
-                      (remove (fn [g] (string/blank? (g :content)))))]
-       [:a {:key (guide :id)
-            :style {:display "block"}
-            :href (guide-path guide)}
-        (guide :id)]) ]
-    [:h2 "TLDRs"]
-    [:div.tldrs
-     (for [tldr (->> (@app-state :tldrs)
-                     vals
-                     (remove (fn [t] (and
-                                       (empty? (t :resources))
-                                       (string/blank? (t :content))))))]
-       [:a {:key (tldr :id)
-            :style {:display "block"}
-            :href (tldr-path tldr)}
-        (tldr :id)])]]
+   [:h1.logo [:a {:href (index-path)} "(codex)"]]
+   [:style {:type "text/css"} styles]
    [:div.main {:style {:max-width "40em"
                        :margin "0 auto"}}
     (case (get-in @app-state [:page :type])

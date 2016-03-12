@@ -66,16 +66,16 @@
   {
     "name": "cdn.md",
     "path": "tldrs/cdn.md",
-    "sha": "966178f05980ffffc230c334766507cd02701173",
-    "size": 234,
+    "sha": "98b9cfcf3eed7b4cc50f37399ad0c5cbbf13dc21",
+    "size": 264,
     "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/cdn.md?ref=gh-pages",
     "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/cdn.md",
-    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/966178f05980ffffc230c334766507cd02701173",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/98b9cfcf3eed7b4cc50f37399ad0c5cbbf13dc21",
     "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/cdn.md",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/cdn.md?ref=gh-pages",
-      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/966178f05980ffffc230c334766507cd02701173",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/98b9cfcf3eed7b4cc50f37399ad0c5cbbf13dc21",
       "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/cdn.md"
     }
   },
@@ -674,16 +674,16 @@
   {
     "name": "s3.md",
     "path": "tldrs/s3.md",
-    "sha": "9384bbf65abf7f6213ee1fe00ac42b1f1dc57f6b",
-    "size": 155,
+    "sha": "102759a05cb1194d81eaed5f2c72f1cd2422d70b",
+    "size": 190,
     "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/s3.md?ref=gh-pages",
     "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/s3.md",
-    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/9384bbf65abf7f6213ee1fe00ac42b1f1dc57f6b",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/102759a05cb1194d81eaed5f2c72f1cd2422d70b",
     "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/s3.md",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/s3.md?ref=gh-pages",
-      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/9384bbf65abf7f6213ee1fe00ac42b1f1dc57f6b",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/102759a05cb1194d81eaed5f2c72f1cd2422d70b",
       "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/s3.md"
     }
   },
