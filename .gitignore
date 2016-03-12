@@ -7,3 +7,4 @@ target/**
 .nrepl-port
 *-init.clj
 .lein-failures
+Session.vim
