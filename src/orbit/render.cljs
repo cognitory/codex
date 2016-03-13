@@ -198,7 +198,7 @@
     (fn []
       [:div.resources
        (for [[file-name code] @resources]
-         ^ {:key file-name} [file-view file-name code])])))
+         ^{:key file-name} [file-view file-name code])])))
 
 (defn- steps-view []
   (let [steps (rf/subscribe [:get-steps])
@@ -217,22 +217,25 @@
 
 (rf/register-sub
   :get-code-for-step
-  (fn [app-state [_ step-id resource-id index-start index-end]]
-    (let [code (-> (get-in @app-state [:orbit :history])
+  (fn [app-state [_ step-id index-start index-end]]
+    (let [index-end (if (js/isNaN index-end) index-start index-end)
+          code (-> (get-in @app-state [:orbit :history])
                    (->> (filter (fn [s] (= step-id (s :step)))))
                    first
-                   (get :resources)
-                   (get resource-id)
-                   (subvec index-start index-end)
+                   (get :step-actions)
+                   tee
+                   (subvec index-start (inc index-end))
                    (->> (map #(with-out-str (fipp/pprint %1 {:width 50}))))
                    (->> (string/join "\n")))]
     (reaction code))))
 
 (defn- md-add-snippets [text state]
   [(string/replace text
-                   #"!!!([a-z \-]*?)/([a-z\.]*?)/([0-9]*?)-([0-9]*?)!!!"
-                   (fn [[_ step-id resource-id index-start index-end]]
-                     (let [code (rf/subscribe [:get-code-for-step step-id resource-id (js/parseInt index-start) (js/parseInt index-end)])]
+                   #"!!!([a-z \-]*?)/([0-9]*?)-([0-9]*?)!!!"
+                   (fn [[_ step-id index-start index-end]]
+                     (let [code (rf/subscribe [:get-code-for-step step-id
+                                               (js/parseInt index-start)
+                                               (js/parseInt index-end)])]
                        (str "<pre><code>" @code "</code></pre>"))))
    state])
 

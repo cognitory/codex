@@ -50,7 +50,7 @@ Edit `project.clj` to have the following content:
 
 Edit `core.cljs` to have the following content:
 
-!!!hello world/core.cljs/0-5!!!
+!!!hello world/0-4!!!
 
 @@@hello world@@@
 
@@ -93,7 +93,7 @@ Let's start by displaying a list of restaurants. To do that, we first need infor
 
 Inside of `core.cljs` add the following below `(enable-console-print!)`:
 
-!!!define restaurants array/core.cljs/3-4!!!
+!!!define restaurants array/0-!!!
 
 @@@define restaurants array@@@
 
@@ -116,7 +116,7 @@ Let's get these restaurants showing!
 
 Replace your `(defn app-view ...)` with the following:
 
-!!!update app-view to show restaurants/core.cljs/4-5!!!
+!!!update app-view to show restaurants/0-!!!
 
 @@@update app-view to show restaurants@@@
 
@@ -181,15 +181,15 @@ This is a slightly more compact way of representing the HTML that also lets us u
 
 The `:image` values in our restaurant data are ids of images taken from Yelp. To display them, we need the full URL, so let's add a little helper function to get the image link for a particular restaurant. Add the following above `(def restaurants ...)`:
 
-!!!add image function/core.cljs/3-4!!!
+!!!add image function/0-!!!
 @@@add image function@@@
 
 This is defining a function called `id->image` that takes one argument called `id`.
 We then use the `str` function to attach that id to the end of the url that will give us a link to the appropriate image.
 
-Now, edit `app-view`:
+Now, edit `app-view` to include:
 
-!!!display image/core.cljs/5-6!!!
+!!!display image/0-!!!
 @@@display image@@@
 
 
@@ -205,7 +205,7 @@ Now, try changing the code to have the other restaurant information show up (`:r
 
 Did you figure it out? Your `app-view` should look like this:
 
-!!!show other restaurant info/core.cljs/5-6!!!
+!!!show other restaurant info/0-1!!!
 @@@show other restaurant info@@@
 
 
@@ -213,11 +213,11 @@ Did you figure it out? Your `app-view` should look like this:
 
 Let's make things a bit prettier. Add the following above `id->image`:
 
-!!!add styles/core.cljs/3-4!!!
+!!!add styles/0-!!!
 
 And change `app-view`:
 
-!!!add styles/core.cljs/6-7!!!
+!!!add styles/1-!!!
 
 @@@add styles@@@
 
