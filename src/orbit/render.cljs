@@ -12,32 +12,43 @@
 (def styles
   (css [
         (at-import "https://fonts.googleapis.com/css?family=Alegreya|Source+Code+Pro")
-        [:#app
+        [:#app-wrapper
          {:position "absolute"
-          :right 0
+          :right "1em"
           :width "30%"
-          :top 0
-          :bottom 0}]
+          :top "1em"
+          :bottom "1em"
+          :background "black"
+          :border-radius "10px"
+          :padding "2em"
+          :box-sizing "border-box"}
+         [:#app
+          {:background "white"
+           :width "100%"
+           :height "100%"
+           :overflow-x "scroll"}]]
+
         [:.code
          {:font-family "Source Code Pro"
           :white-space "pre-wrap"
-          :line-height "1.25"
-          :font-size "0.85em"
+          :line-height "1.2"
+          :font-size "0.8em"
           :padding "1.5em 1em"
           :position "absolute"
-          :top "2rem"
+          :top 0
           :bottom 0
-          :width "28em"
-          :left 0 }]
+          :width "30em"
+          :left 0
+          :box-sizing "border-box"
+          }]
 
         [:.steps
+         {:position "absolute"
+          :top 0
+          :left "24em"}
          [:.step
           [:&.active
-           {:font-weight "bold"}
-
-           ]]]
-
-        ]))
+           {:font-weight "bold"}]]]]))
 
 (enable-console-print!)
 
@@ -87,7 +98,8 @@
      (reaction (get-in @app-state [:orbit :history (:step @app-state) :resources]))))
 
 (defn- demo-view []
-  [:div#app])
+  [:div#app-wrapper
+   [:div#app]])
 
 (defn- file-view [file-name code]
   (let [highlight (fn [this]
