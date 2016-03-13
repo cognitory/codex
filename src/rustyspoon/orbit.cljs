@@ -5,9 +5,10 @@
 (def orbit
   (-> (o/init)
 
-      (o/step "hello world"
-              (o/resource "core.cljs")
+      (o/step "init"
+              (o/resource "core.cljs"))
 
+      (o/step "hello world"
               (o/add "core.cljs"
                 '(ns rustyspoon.core
                    (:require [reagent.core :as r]
@@ -79,15 +80,19 @@
                                  [:div.name (r :name)]
                                  [:div.address (r :address)]])]))))
 
-      (o/step "show other restaurant info"
+      (o/step "add image function"
               (o/before "core.cljs"
                         '(def restaurants)
                         '(defn id->image [id]
-                          (str "https://s3-media2.fl.yelpcdn.com/bphoto/" id "/ls.jpg")))
+                           (str "https://s3-media2.fl.yelpcdn.com/bphoto/" id "/ls.jpg"))))
 
+      (o/step "display image"
               (o/before "core.cljs"
-                '(defn app-view [:div.app (for (:div.restaurant (:div.name)))])
-                '[:img {:src (id->image (r :image))}])
+                        '(defn app-view [:div.app (for (:div.restaurant (:div.name)))])
+                        '[:img {:src (id->image (r :image))}]))
+
+      (o/step "show other restaurant info"
+
 
               (o/append "core.cljs"
                 '(defn app-view [:div.app (for (:div.restaurant))])
