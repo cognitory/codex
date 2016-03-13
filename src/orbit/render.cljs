@@ -66,8 +66,11 @@
              ; NOTE: load does nothing; libs must be reqd by this ns
              :load (fn [name cb] (cb {:lang :clj :source "."}))
              :context :statement}
-            (fn [result]
-              result)))
+            (fn [{:keys [error value] :as x}]
+              (if error
+                (do
+                  (def *er x)
+                  (js/console.log (str error)))))))
 
 (defn- eval-current-code [app-state step]
   (eval-code (get-in app-state [:orbit :history step :resources "core.cljs"])))
