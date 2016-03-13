@@ -2,7 +2,7 @@
   (:require [orbit.core :as o]
             [orbit.render :refer [render]]))
 
-(defonce orbit
+(def orbit
   (-> (o/init)
 
       (o/step "hello world"
@@ -25,7 +25,7 @@
                     [:div "Hello World!"])))
 
               (o/add "core.cljs"
-                '(reagent.core/render-component [app-view] (js/document.getElementById "app"))))
+                '(r/render [app-view] (js/document.getElementById "app"))))
 
       (o/step "define restaurants array"
               (o/before "core.cljs"
@@ -35,32 +35,32 @@
                           (def restaurants
                             [{:name "Byblos"
                               :address "11 Duncan Street"
-                              :image "kgXfBW9csGml_ZicwCB5Xg/ls.jpg"
+                              :image "kgXfBW9csGml_ZicwCB5Xg"
                               :rating 4.5
                               :price-range 3 }
                              {:name "George"
                               :address "111 Queen St. E"
-                              :image "gH783lm_UYR8b78s3Ul5Rg/ls.jpg"
+                              :image "gH783lm_UYR8b78s3Ul5Rg"
                               :rating 4.4
                               :price-range 4 }
                              {:name "Kaiju"
                               :address "384 Yonge St."
-                              :image "WQvsAGnWJcjUQQH3DMw8gA/ls.jpg"
+                              :image "WQvsAGnWJcjUQQH3DMw8gA"
                               :rating 4.3
                               :price-range 1 }
                              {:name "Richmond Station"
                               :address "1 Richmond St West"
-                              :image "AGtyni4gZtoWSRz_U0Axwg/ls.jpg"
+                              :image "AGtyni4gZtoWSRz_U0Axwg"
                               :rating 4.2
                               :price-range 3 }
                              {:name "Banh Mi Boys"
                               :address "392 Queen St. West"
-                              :image "S1JS93tjQLqSwXMeWz0z7g/ls.jpg"
+                              :image "S1JS93tjQLqSwXMeWz0z7g"
                               :rating 4.0
                               :price-range 1 }
                              {:name "Canoe"
                               :address "66 Wellington St."
-                              :image "g0lZAilNKqlfQTNLUtWp3Q/ls.jpg"
+                              :image "g0lZAilNKqlfQTNLUtWp3Q"
                               :rating 3.9
                               :price-range 4 }]))))
 
@@ -72,7 +72,7 @@
                             [:div
                              [:ul
                               (for [r restaurants]
-                                [:li
+                                [:li {:key (r :name)}
                                  [:div.name (r :name)]
                                  [:div.address (r :address)]])]])))
 
@@ -80,7 +80,11 @@
               (o/before "core.cljs"
                         '(def restaurants)
                         '(defn id->image [id]
-                           (str "https://s3-media2.fl.yelpcdn.com/bphoto/" id)))
+                          (str "https://s3-media2.fl.yelpcdn.com/bphoto/" id "/ls.jpg")))
+
+              (o/prepend "core.cljs"
+                '(defn app-view [:div [:ul (for (:li))]])
+                '[:img {:src (id->image (r :image))}])
 
               (o/append "core.cljs"
                 '(defn app-view [:div [:ul (for (:li))]])
@@ -93,5 +97,6 @@
       ;... more steps
 
       ))
+
 (render orbit (.-body js/document))
 

@@ -20,18 +20,15 @@
           :bottom 0}]
         [:.code
          {:font-family "Source Code Pro"
-          :border-radius "5px"
           :white-space "pre-wrap"
           :line-height "1.25"
-
           :font-size "0.85em"
-          :background "#2B2852"
-          :color "white"
-          :padding "0.5em 0.75em"
-          :display "inline-block"
-          :margin "0 1em 1em 0"
-          :max-width "100%"
-          :overflow "scroll"}]
+          :padding "1.5em 1em"
+          :position "absolute"
+          :top "2rem"
+          :bottom 0
+          :width "28em"
+          :left 0 }]
 
         [:.steps
          [:.step
@@ -70,7 +67,7 @@
 
 (defn init! [app-state [_ orbit]]
   (-> (assoc app-state :orbit orbit)
-      #_(set-step! [nil 0])))
+      (set-step! [nil 0])))
 
 (rf/register-handler :init! init!)
 (rf/register-handler :set-step! set-step!)
@@ -94,12 +91,23 @@
   [:div#app])
 
 (defn- file-view [file-name code]
-  [:div.file
-   [:div.name file-name]
-   [:div.code
-    (->> code
-         (map #(with-out-str (fipp/pprint %1 {:width 50})))
-         (string/join "\n")) ]])
+  (let [highlight (fn [this]
+                    (->> this
+                         r/dom-node
+                         (.-firstChild)
+                         (.-nextSibling)
+                         (.highlightBlock js/hljs)))]
+    (r/create-class
+      {:reagent-render
+       (fn [file-name code]
+         [:div.file
+          [:div.name file-name]
+          [:div.code.clojure
+           (->> code
+                (map #(with-out-str (fipp/pprint %1 {:width 50})))
+                (string/join "\n"))]])
+       :component-did-mount highlight
+       :component-did-update highlight })))
 
 (defn- resources-view []
   (let [resources (rf/subscribe [:get-current-resources]) ]
@@ -127,6 +135,7 @@
   [:div
    [:style {:type "text/css"
             :dangerouslySetInnerHTML {:__html styles}}]
+
    [demo-view]
    [steps-view]
    [resources-view]])
