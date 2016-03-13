@@ -74,6 +74,7 @@
                            (defn app-view []
                              [:div.app
                               (for [r restaurants]
+                                ^{:id "restaurant-div"}
                                 [:div.restaurant {:key (r :name)}
                                  [:div.name (r :name)]
                                  [:div.address (r :address)]])]))))
@@ -105,7 +106,7 @@
                                [:.app
                                 [:.restaurant
                                  {:height h
-                                  :margin-bottom "1em"}
+                                  :margin "1em"}
                                  [:img
                                   {:width h
                                    :height h
@@ -120,8 +121,104 @@
                          '(defn app-view [:div.app])
                          '[:style styles]))
 
-      ;... more steps
+(o/step "factor out a restaurant-view"
+        (o/before "core.cljs"
+                  '(defn app-view)
+                  '(defn restaurant-view [r]
+                     [:div.restaurant
+                      [:img {:src (id->image (r :image))}]
+                      [:div.name (r :name)]
+                      [:div.address (r :address)]
+                      [:div.rating (r :rating)]
+                      [:div.price-range
+                       (repeat (r :price-range) "$")]]))
 
+        (o/replace "core.cljs"
+                   "restaurant-div"
+                   (quote
+                     [restaurant-view r])))
+
+(o/step "add a header-view"
+        (o/before "core.cljs"
+                  '(defn restaurant-view)
+                  '(defn header-view []
+                     [:div.header
+                      [:input.search {:placeholder "Search"}]
+                      [:div.price-range
+                       [:button "$"]
+                       [:button "$$"]
+                       [:button "$$$"]
+                       [:button "$$$$"]]
+                      [:div.sort
+                       [:button.name "Name"]
+                       [:button.rating "Rating"]]]))
+
+        (o/before "core.cljs"
+                  '(defn app-view (:div.app (for)))
+                  '[header-view])
+
+        (o/prepend "core.cljs"
+                   '(def styles (garden/css (let (:.app))))
+                   '[:.header
+                     {:background "#CD5C5C"
+                      :margin-bottom "1em"
+                      :padding "1em"}
+                     [:.search
+                      {:width "100%"
+                       :border-radius "5px"
+                       :border "none"
+                       :padding "0.5em"
+                       :margin-bottom "1em"
+                       :box-sizing "border-box"}]]))
+
+(o/step "factor out a restaurant-list view"
+        (o/before "core.cljs"
+                  '(defn app-view)
+                  (quote
+                    ^{:id "restaurant-list-view"}
+                    (defn restaurant-list-view []
+                      [:div.restaurant-list
+                       (for [r restaurants]
+                         [restaurant-view r])])))
+
+        (o/replace "core.cljs"
+                   "app-view"
+                   '(defn app-view []
+                      [:div.app
+                       [:style styles]
+                       [header-view]
+                       [restaurant-list-view]])))
+
+(o/step "implementing sort toggle"
+        (o/before "core.cljs"
+                  '(def styles)
+                  (quote
+                    ^{:id "app-state"}
+                    (def app-state (r/atom {:sort :rating}))))
+
+        (o/replace "core.cljs"
+                   "restaurant-list-view"
+                   '(defn restaurant-list-view []
+                      [:div.restaurant-list
+                       (let [sort-key (@app-state :sort)]
+                         (for [r (sort-by sort-key restaurants)]
+                           [restaurant-view r]))]))
+
+        (o/before "core.cljs"
+                  '(def styles)
+                  '(defn set-sort! [sort]
+                     (swap! app-state assoc :sort sort)))
+
+        (o/prepend "core.cljs"
+                   '(defn header-view (:div.header (:div.sort (:button.name))))
+                   '{:on-click (fn [_] (set-sort! :name))})
+
+        (o/prepend "core.cljs"
+                   '(defn header-view (:div.header (:div.sort (:button.rating))))
+                   '{:on-click (fn [_] (set-sort! :rating))})
+        )
+
+      ;... more steps
       ))
 
 (render orbit (.-body js/document))
