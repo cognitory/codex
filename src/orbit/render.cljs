@@ -55,6 +55,7 @@
              :static-fns true
              :def-emits-var false
              :eval js-eval
+             ; NOTE: load does nothing; libs must be reqd by this ns
              :load (fn [name cb] (cb {:lang :clj :source "."}))
              :context :statement}
             (fn [result]
