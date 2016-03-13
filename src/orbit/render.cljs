@@ -12,40 +12,54 @@
 (def styles
   (css [
         (at-import "https://fonts.googleapis.com/css?family=Alegreya|Source+Code+Pro")
+        [:.orbit
+         {:display "flex"
+          :position "absolute"
+          :top 0
+          :left 0
+          :right 0
+          :bottom 0
+          :justify-content "space-between"}]
+
+        [:.tutorial
+         {:min-width "25em"
+          :flex-grow 1}]
+
+        [:.resources
+         {:min-width "25em"
+          :overflow-x "scroll"
+          :flex-grow 1}
+         [:.name
+          {:display "none"}]
+         [:.code
+          {:font-family "Source Code Pro"
+           :white-space "pre-wrap"
+           :line-height "1.2"
+           :font-size "0.8em"
+           :padding "1.5em 1em"
+           :box-sizing "border-box"}]]
+
         [:#app-wrapper
-         {:position "absolute"
-          :right "1em"
-          :width "30%"
-          :top "1em"
-          :bottom "1em"
+         {:min-width "25em"
           :background "black"
-          :border-radius "10px"
           :padding "2em"
-          :box-sizing "border-box"}
+          :box-sizing "border-box"
+          :height "100%"}
+
          [:#app
           {:background "white"
+           :min-width "20em"
+           :min-height "20em"
            :width "100%"
            :height "100%"
            :overflow-x "scroll"}]]
 
-        [:.code
-         {:font-family "Source Code Pro"
-          :white-space "pre-wrap"
-          :line-height "1.2"
-          :font-size "0.8em"
-          :padding "1.5em 1em"
-          :position "absolute"
-          :top 0
-          :bottom 0
-          :width "30em"
-          :left 0
-          :box-sizing "border-box"
-          }]
-
         [:.steps
          {:position "absolute"
           :top 0
-          :left "24em"}
+          :left 0
+          :z-index 1
+          }
          [:.step
           [:&.active
            {:font-weight "bold"}]]]]))
@@ -145,14 +159,17 @@
                          :class (when (= index @current-step) "active")}
               name])))])))
 
+(defn- tutorial-view []
+  [:div.tutorial])
+
 (defn orbit-view []
-  [:div
+  [:div.orbit
    [:style {:type "text/css"
             :dangerouslySetInnerHTML {:__html styles}}]
-
-   [demo-view]
    [steps-view]
-   [resources-view]])
+   [tutorial-view]
+   [resources-view]
+   [demo-view]])
 
 (defn render [orbit dom-target]
   (rf/dispatch-sync [:init! orbit])
