@@ -6,11 +6,18 @@
             [fipp.clojure :as fipp]
             [cljs.pprint :refer [pprint]]
             [garden.core :refer [css]]
-            [garden.stylesheet :refer [at-import]]))
+            [garden.stylesheet :refer [at-import]]
+            [cljs.js :refer [empty-state eval js-eval]]))
 
 (def styles
   (css [
         (at-import "https://fonts.googleapis.com/css?family=Alegreya|Source+Code+Pro")
+        [:#app
+         {:position "absolute"
+          :right 0
+          :width "30%"
+          :top 0
+          :bottom 0}]
         [:.code
          {:font-family "Source Code Pro"
           :border-radius "5px"
@@ -40,12 +47,26 @@
 (defn tee [x]
   (println x) x)
 
+(defn- eval-code [code]
+  (doseq [part code]
+    (let [result (eval (empty-state)
+                       part
+                       {:eval js-eval
+                        :source-map true
+                        :context :expr}
+                       (fn [result]
+                         result))])))
+
+(defn- eval-current-code [app-state step]
+  (eval-code (get-in app-state [:orbit :history step :resources "core.cljs"])))
+
 (defn set-step! [app-state [_ step]]
+  (eval-current-code app-state step)
   (assoc app-state :step step))
 
 (defn init! [app-state [_ orbit]]
   (-> (assoc app-state :orbit orbit)
-      (set-step! [nil 0])))
+      #_(set-step! [nil 0])))
 
 (rf/register-handler :init! init!)
 (rf/register-handler :set-step! set-step!)
@@ -65,23 +86,23 @@
   (fn [app-state _]
      (reaction (get-in @app-state [:orbit :history (:step @app-state) :resources]))))
 
-(defn- demo-view [])
+(defn- demo-view []
+  [:div#app])
 
 (defn- file-view [file-name code]
   [:div.file
    [:div.name file-name]
    [:div.code
-    (->> (map (fn [part]
-                (with-out-str (fipp/pprint part {:width 50}))) code)
-         (string/join "\n"))]])
+    (->> code
+         (map #(with-out-str (fipp/pprint %1 {:width 50})))
+         (string/join "\n")) ]])
 
 (defn- resources-view []
   (let [resources (rf/subscribe [:get-current-resources]) ]
     (fn []
       [:div.resources
        (for [[file-name code] @resources]
-         ^ {:key file-name} [file-view file-name code]
-         )])))
+         ^ {:key file-name} [file-view file-name code])])))
 
 (defn- steps-view []
   (let [steps (rf/subscribe [:get-steps])
@@ -102,7 +123,7 @@
   [:div
    [:style {:type "text/css"
             :dangerouslySetInnerHTML {:__html styles}}]
-   ;[demo-view]
+   [demo-view]
    [steps-view]
    [resources-view]])
 

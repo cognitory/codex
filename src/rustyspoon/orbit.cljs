@@ -25,11 +25,11 @@
                     [:div "Hello World!"])))
 
               (o/add "core.cljs"
-                '(r/render-component [app-view] (.-body js/document))))
+                '(reagent.core/render-component [app-view] (js/document.getElementById "app"))))
 
       (o/step "define restaurants array"
               (o/before "core.cljs"
-                        "app-view"
+                        '(defn app-view)
                         (quote
                           ^{:id "restaurants-data"}
                           (def restaurants
