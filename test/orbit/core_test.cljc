@@ -12,11 +12,9 @@
                   (o/step "add-files"
                           (o/resource "core.cljs")))]
       (is (= (keys orb) [:history]))
-      (is (= 2 (count (orb :history))))
-      (is (= {:step "init" :resources {}}
-             (first (orb :history))))
+      (is (= 1 (count (orb :history))))
       (is (= {:step "add-files" :resources {"core.cljs" []}}
-             (second (orb :history))))
+             (first (orb :history))))
       (testing "can add things to files"
         (let [orb (-> orb
                       (o/step "hello world"
@@ -27,7 +25,7 @@
                                 '(enable-console-print!))
                               (o/add "core.cljs"
                                 '(defn sq [x] (* x x)))))]
-          (is (= 3 (count (orb :history))))
+          (is (= 2 (count (orb :history))))
           (is (= (last (orb :history))
                  {:step "hello world"
                   :resources
@@ -60,13 +58,13 @@
                                        :address "55 Fancy Ave"
                                        :rating 10.0}]))))]
     (testing "can insert things before"
-      (is (= 3 (count (orb :history))))
-      (is (= (get-in orb [:history 1 :resources "core.cljs"])
+      (is (= 2 (count (orb :history))))
+      (is (= (get-in orb [:history 0 :resources "core.cljs"])
              '[(ns rustyspoon.core
                  (:require [reagent.core :as r]))
                (enable-console-print!)
                (defn app-view [] [:div "Hello world"])]))
-      (is (= (get-in orb [:history 2 :resources "core.cljs"])
+      (is (= (get-in orb [:history 1 :resources "core.cljs"])
              '[(ns rustyspoon.core
                  (:require [reagent.core :as r]))
                (enable-console-print!)
@@ -85,7 +83,7 @@
                             '(defn app-view)
                             '(println "Starting stuff!"))))]
       (testing "can insert things after"
-        (is (= (get-in orb [:history 3 :resources "core.cljs"])
+        (is (= (get-in orb [:history 2 :resources "core.cljs"])
                '[(ns rustyspoon.core
                    (:require [reagent.core :as r]))
                  (enable-console-print!)
@@ -107,7 +105,7 @@
                               '(defn app-view [:div])
                               '[:p "This is some more stuff"])))]
         (testing "can append things"
-          (is (= (get-in orb [:history 4 :resources "core.cljs"])
+          (is (= (get-in orb [:history 3 :resources "core.cljs"])
                  '[(ns rustyspoon.core
                      (:require [reagent.core :as r]))
                    (enable-console-print!)
@@ -129,7 +127,7 @@
                                 (o/prepend "core.cljs"
                                            '(defn app-view [:div])
                                            '[:h1 "Things"])))]
-            (is (= (get-in orb [:history 5 :resources "core.cljs"])
+            (is (= (get-in orb [:history 4 :resources "core.cljs"])
                    '[(ns rustyspoon.core
                        (:require [reagent.core :as r]))
                      (enable-console-print!)
@@ -152,7 +150,7 @@
                                 (o/wrap "core.cljs"
                                         '(defn app-view [:div "Hello world"])
                                         (fn [e] [:h1 e]))))]
-            (is (= (get-in orb [:history 5 :resources "core.cljs"])
+            (is (= (get-in orb [:history 4 :resources "core.cljs"])
                    '[(ns rustyspoon.core
                        (:require [reagent.core :as r]))
                      (enable-console-print!)
