@@ -13,7 +13,7 @@
                           (o/resource "core.cljs")))]
       (is (= (keys orb) [:history]))
       (is (= 1 (count (orb :history))))
-      (is (= {:step "add-files" :resources {"core.cljs" []}}
+      (is (= {:step "add-files" :resources {"core.cljs" []} :step-actions []}
              (first (orb :history))))
       (testing "can add things to files"
         (let [orb (-> orb
@@ -28,6 +28,10 @@
           (is (= 2 (count (orb :history))))
           (is (= (last (orb :history))
                  {:step "hello world"
+                  :step-actions '[(ns foo.core
+                                   (:require [foo.core :as f]))
+                                  (enable-console-print!)
+                                  (defn sq [x] (* x x))]
                   :resources
                   {"core.cljs" '[(ns foo.core
                                    (:require [foo.core :as f]))
@@ -241,4 +245,12 @@
                  (let [_ @(...)]
                    [:li
                     [:div
-                     [:h1 "Things"]]]))])))))
+                     [:h1 "Things"]]]))]))
+      (let [actions (:step-actions (last (orb :history)))]
+        (is (= actions
+               '[(defn primary-view []
+                 (let [_ @(...)]
+                   ^{:id "content"}
+                   [:li
+                    [:div
+                     [:h1 "Things"]]]))]))))))
