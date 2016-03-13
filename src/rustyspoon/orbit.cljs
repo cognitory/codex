@@ -10,7 +10,8 @@
 
               (o/add "core.cljs"
                 '(ns rustyspoon.core
-                   (:require [reagent.core :as r])))
+                   (:require [reagent.core :as r]
+                             [garden.core :as garden])))
 
               (o/add "core.cljs"
                 '(enable-console-print!))
@@ -68,13 +69,14 @@
       (o/step "update app-view to show restaurants"
               (o/replace "core.cljs"
                          "app-view"
-                         '(defn app-view []
-                            [:div
-                             [:ul
+                         (quote
+                           ^{:id "app-view"}
+                           (defn app-view []
+                             [:div.app
                               (for [r restaurants]
-                                [:li {:key (r :name)}
+                                [:div.restaurant {:key (r :name)}
                                  [:div.name (r :name)]
-                                 [:div.address (r :address)]])]])))
+                                 [:div.address (r :address)]])]))))
 
       (o/step "show other restaurant info"
               (o/before "core.cljs"
@@ -82,17 +84,41 @@
                         '(defn id->image [id]
                           (str "https://s3-media2.fl.yelpcdn.com/bphoto/" id "/ls.jpg")))
 
-              (o/prepend "core.cljs"
-                '(defn app-view [:div [:ul (for (:li))]])
+              (o/before "core.cljs"
+                '(defn app-view [:div.app (for (:div.restaurant (:div.name)))])
                 '[:img {:src (id->image (r :image))}])
 
               (o/append "core.cljs"
-                '(defn app-view [:div [:ul (for (:li))]])
+                '(defn app-view [:div.app (for (:div.restaurant))])
                 '[:div.rating (r :rating)])
 
               (o/append "core.cljs"
-                '(defn app-view [:div [:ul (for (:li))]])
-                '[:div.price-range (r :price-range)]))
+                '(defn app-view [:div.app (for (:div.restaurant))])
+                '[:div.price-range (repeat (r :price-range) "$")]))
+
+      (o/step "add styles"
+              (o/before "core.cljs"
+                        '(defn id->image)
+                        '(def styles
+                           (garden/css
+                             (let [h "5em"]
+                               [:.app
+                                [:.restaurant
+                                 {:height h
+                                  :margin-bottom "1em"}
+                                 [:img
+                                  {:width h
+                                   :height h
+                                   :float "left"
+                                   :margin-right "0.5em"}]
+                                 [:.name
+                                  {:font-weight "bold"}]
+                                 [:.price-range
+                                  {:color "green"}]]]))))
+
+              (o/prepend "core.cljs"
+                         '(defn app-view [:div.app])
+                         '[:style styles]))
 
       ;... more steps
 
