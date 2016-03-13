@@ -66,8 +66,7 @@
   (assoc app-state :step step))
 
 (defn init! [app-state [_ orbit]]
-  (-> (assoc app-state :orbit orbit)
-      (set-step! [nil 0])))
+  (assoc app-state :orbit orbit))
 
 (rf/register-handler :init! init!)
 (rf/register-handler :set-step! set-step!)
@@ -142,4 +141,5 @@
 
 (defn render [orbit dom-target]
   (rf/dispatch-sync [:init! orbit])
-  (r/render-component [orbit-view] dom-target))
+  (r/render [orbit-view] dom-target)
+  (rf/dispatch [:set-step! 0]))
