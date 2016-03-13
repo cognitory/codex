@@ -29,7 +29,7 @@
 
       (o/step "define restaurants array"
               (o/before "core.cljs"
-                        '(defn app-view)
+                        "app-view"
                         (quote
                           ^{:id "restaurants-data"}
                           (def restaurants

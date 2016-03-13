@@ -68,22 +68,22 @@
 (defn- demo-view [])
 
 (defn- file-view [file-name code]
-  [:div
+  [:div.file
    [:div.name file-name]
    [:div.code
     (->> (map (fn [part]
                 (with-out-str (fipp/pprint part {:width 50}))) code)
          (string/join "\n"))]])
 
-(defn code-view []
+(defn- resources-view []
   (let [resources (rf/subscribe [:get-current-resources]) ]
     (fn []
-      [:div
+      [:div.resources
        (for [[file-name code] @resources]
          ^ {:key file-name} [file-view file-name code]
          )])))
 
-(defn steps-view []
+(defn- steps-view []
   (let [steps (rf/subscribe [:get-steps])
         current-step (rf/subscribe [:get-current-step])]
     (fn []
@@ -104,7 +104,7 @@
             :dangerouslySetInnerHTML {:__html styles}}]
    ;[demo-view]
    [steps-view]
-   [code-view]])
+   [resources-view]])
 
 (defn render [orbit dom-target]
   (rf/dispatch-sync [:init! orbit])

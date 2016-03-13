@@ -3,8 +3,7 @@
   (:require [arborist.core :as a]))
 
 (defn init []
-  {:history [{:resources {}
-              :step "init"}]})
+  {:history []})
 
 (comment
   "a state is:"
