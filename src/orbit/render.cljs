@@ -7,7 +7,7 @@
             [cljs.pprint :refer [pprint]]
             [garden.core :refer [css]]
             [garden.stylesheet :refer [at-import]]
-            [cljs.js :refer [empty-state eval js-eval]]))
+            [cljs.js :refer [empty-state eval-str js-eval]]))
 
 (def styles
   (css [
@@ -48,14 +48,17 @@
   (println x) x)
 
 (defn- eval-code [code]
-  (doseq [part code]
-    (let [result (eval (empty-state)
-                       part
-                       {:eval js-eval
-                        :source-map true
-                        :context :expr}
-                       (fn [result]
-                         result))])))
+  (eval-str (empty-state)
+            (string/join "\n" code)
+            'dummy-symbol
+            {:ns 'cljs.user
+             :static-fns true
+             :def-emits-var false
+             :eval js-eval
+             :load (fn [name cb] (cb {:lang :clj :source "."}))
+             :context :statement}
+            (fn [result]
+              result)))
 
 (defn- eval-current-code [app-state step]
   (eval-code (get-in app-state [:orbit :history step :resources "core.cljs"])))
