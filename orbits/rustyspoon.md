@@ -1,11 +1,10 @@
 # Rustyspoon
 
-Demo of what we're going to build:
-  [Rustyspoon Demo](http://cognitory.github.io/rustyspoon/index.html)
+Demo of the final result:
+
+@@@search@@@
 
 ## Hello World
-
-First, make sure you have set up your system, as per: [[guides/setup-env]].
 
 Create a folder `rustyspoon` for your project someplace, for example, on your Desktop.
 
@@ -179,6 +178,7 @@ This is a more compact way of representing the HTML that also lets us use Clojur
 The `:image` values in our restaurant data are ids of images taken from Yelp. To display them, we need the full URL, so let's add a little helper function to get the image link for a particular restaurant. Add the following above `(def restaurants ...)`:
 
 !!!add image function/0-!!!
+
 @@@add image function@@@
 
 This is defining a function called `id->image` that takes one argument called `id`.
@@ -187,6 +187,7 @@ We then use the `str` function to attach that id to the end of the url that will
 Now, edit `app-view` to include:
 
 !!!display image/0-!!!
+
 @@@display image@@@
 
 Now your page should be showing an image for each restaurant.

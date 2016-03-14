@@ -28,8 +28,8 @@
           :justify-content "space-between"}]
 
         [:.tutorial
-         {:min-width "25em"
-          :flex-grow 1
+         {:min-width "20em"
+          :flex-grow 2
           :height "100%"
           :overflow-x "scroll"
 
@@ -40,13 +40,35 @@
           :white-space "pre-wrap"}
 
          [:h1
-          {:font-size "1.5em"}]
+          {:font-size "1.5em"
+           :margin-top 0}]
 
          [:h2
-          {:font-size "1.25em"}]
+          {:font-size "1.25em"
+           :margin-top "3em"}]
 
-         [:a.play
-          {}]
+         [:h3
+          {:font-size "1em"
+           :margin-top "2em"}]
+
+         [:a.run
+          {:display "block"
+           :background "#208000"
+           :color "white"
+           :padding "0.5em 0.75em"
+           :margin "1em 0"
+           :letter-spacing "0.2em"
+           :font-weight "bold"
+           :text-decoration "none"
+           :border-radius "5px"
+           :text-transform "uppercase"
+           :font-family "Source Code Pro"}
+          [:&:after
+           {:content "\"▶\""
+            :margin-left "0.5em"
+            :font-size "0.75em"}]
+          [:&:hover
+           {:background "#519F50"}]]
 
          [:ol
           {:padding "0 3em"}
@@ -57,16 +79,19 @@
           [:code
            {:font-family "Source Code Pro"
             :font-size "0.8em"
+            :width "100%"
             :background "#2B2852"
             :color "white"
-            :padding "0.5em 0.75em"
-            :display "inline-block"
+            :padding "1em"
+            :border-radius "5px"
+            :box-sizing "border-box"
+            :display "block"
             :max-width "100%"
             :overflow "scroll"}]]]
 
         [:.resources
-         {:min-width "25em"
-          :flex-grow 1
+         {:min-width "30em"
+          :flex-grow 3
           :height "100%"}
          [:.file
           {:height "100%"}
@@ -83,11 +108,10 @@
             :box-sizing "border-box"}]]]
 
         [:#app-wrapper
-         {:min-width "25em"
-          :background "black"
-          :padding "2em"
-          :box-sizing "border-box"
-          :height "100%"}
+         {:min-width "20em"
+          :height "100%"
+          :flex-grow 1
+          }
 
          [:#app
           {:background "white"
@@ -247,7 +271,7 @@
                    #"@@@([a-z \-]*?)@@@"
                    (fn [[_ step-id]]
                      (let [url (step-path {:name step-id})]
-                       (str "<a href='" url "' class='run'>" "Run Step" "</a>"))))
+                       (str "<a href='" url "' class='run'>" "Run" "</a>"))))
    state])
 
 (defn- tutorial-view []

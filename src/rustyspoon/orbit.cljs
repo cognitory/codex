@@ -257,7 +257,7 @@
           '(def styles (garden/css (let (:.app (:.header)))))
           '[:.filter
             {:display "inline-block"
-             :margin-right "4em"}])
+             :margin-right "1em"}])
 
         (o/append "core.cljs"
           '(def styles (garden/css (let (:.app (:.header)))))
