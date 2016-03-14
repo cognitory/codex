@@ -98,16 +98,16 @@
   {
     "name": "clojurescript.md",
     "path": "tldrs/clojurescript.md",
-    "sha": "2e72c98f127dde0dbf2c9c63f24fc4fc37c691d7",
-    "size": 314,
+    "sha": "8b9a45beff4aa65d7589e981518052b2c662219b",
+    "size": 340,
     "url": "https://api.github.com/repos/cognitory/codex/contents/tldrs/clojurescript.md?ref=gh-pages",
     "html_url": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/clojurescript.md",
-    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/2e72c98f127dde0dbf2c9c63f24fc4fc37c691d7",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/8b9a45beff4aa65d7589e981518052b2c662219b",
     "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/tldrs/clojurescript.md",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/cognitory/codex/contents/tldrs/clojurescript.md?ref=gh-pages",
-      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/2e72c98f127dde0dbf2c9c63f24fc4fc37c691d7",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/8b9a45beff4aa65d7589e981518052b2c662219b",
       "html": "https://github.com/cognitory/codex/blob/gh-pages/tldrs/clojurescript.md"
     }
   },

@@ -432,35 +432,19 @@
     }
   },
   {
-    "name": "rustyspoon-hello-world.md",
-    "path": "guides/rustyspoon-hello-world.md",
-    "sha": "0b4b1b3aee878498d1263531e6602dacfa8cbfb1",
-    "size": 2036,
-    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/rustyspoon-hello-world.md?ref=gh-pages",
-    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/rustyspoon-hello-world.md",
-    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/0b4b1b3aee878498d1263531e6602dacfa8cbfb1",
-    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/rustyspoon-hello-world.md",
+    "name": "rustyspoon.md",
+    "path": "guides/rustyspoon.md",
+    "sha": "fb3808fff1c02657157e4b7fbce76545b9e6c69a",
+    "size": 258,
+    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/rustyspoon.md?ref=gh-pages",
+    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/rustyspoon.md",
+    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/fb3808fff1c02657157e4b7fbce76545b9e6c69a",
+    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/rustyspoon.md",
     "type": "file",
     "_links": {
-      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/rustyspoon-hello-world.md?ref=gh-pages",
-      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/0b4b1b3aee878498d1263531e6602dacfa8cbfb1",
-      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/rustyspoon-hello-world.md"
-    }
-  },
-  {
-    "name": "rustyspoon-v0.md",
-    "path": "guides/rustyspoon-v0.md",
-    "sha": "9f6c00c1a16059d13f97a26315672061331f2952",
-    "size": 17127,
-    "url": "https://api.github.com/repos/cognitory/codex/contents/guides/rustyspoon-v0.md?ref=gh-pages",
-    "html_url": "https://github.com/cognitory/codex/blob/gh-pages/guides/rustyspoon-v0.md",
-    "git_url": "https://api.github.com/repos/cognitory/codex/git/blobs/9f6c00c1a16059d13f97a26315672061331f2952",
-    "download_url": "https://raw.githubusercontent.com/cognitory/codex/gh-pages/guides/rustyspoon-v0.md",
-    "type": "file",
-    "_links": {
-      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/rustyspoon-v0.md?ref=gh-pages",
-      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/9f6c00c1a16059d13f97a26315672061331f2952",
-      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/rustyspoon-v0.md"
+      "self": "https://api.github.com/repos/cognitory/codex/contents/guides/rustyspoon.md?ref=gh-pages",
+      "git": "https://api.github.com/repos/cognitory/codex/git/blobs/fb3808fff1c02657157e4b7fbce76545b9e6c69a",
+      "html": "https://github.com/cognitory/codex/blob/gh-pages/guides/rustyspoon.md"
     }
   },
   {
