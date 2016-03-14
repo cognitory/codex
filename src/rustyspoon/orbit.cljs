@@ -12,7 +12,8 @@
               (o/add "core.cljs"
                 '(ns rustyspoon.core
                    (:require [reagent.core :as r]
-                             [garden.core :as garden])))
+                             [garden.core :as garden]
+                             [clojure.string :as string])))
 
               (o/add "core.cljs"
                 '(enable-console-print!))
@@ -93,7 +94,6 @@
 
       (o/step "show other restaurant info"
 
-
               (o/append "core.cljs"
                 '(defn app-view [:div.app (for (:div.restaurant))])
                 '[:div.rating (r :rating)])
@@ -148,12 +148,15 @@
                   '(defn restaurant-view)
                   '(defn header-view []
                      [:div.header
+                      ^{:id "input.search"}
                       [:input.search {:placeholder "Search"}]
-                      [:div.price-range
+                      ^{:id "div.filter"}
+                      [:div.filter
                        [:button "$"]
                        [:button "$$"]
                        [:button "$$$"]
                        [:button "$$$$"]]
+                      ^{:id "div.sort"}
                       [:div.sort
                        [:button.name "Name"]
                        [:button.rating "Rating"]]]))
@@ -183,7 +186,7 @@
                      ^{:id "app-view"}
                      (defn app-view []
                        [:div.app
-                        [:style :styles]
+                        [:style styles]
                         [header-view]
                         (for [r (sort-by :rating restaurants)]
                           [restaurant-view r])]))))
@@ -191,12 +194,14 @@
 (o/step "reverse the sort"
         (o/replace "core.cljs"
                    "app-view"
-                   '(defn app-view []
-                      [:div.app
-                       [:style :styles]
-                       [header-view]
-                       (for [r (reverse (sort-by :rating restaurants))]
-                         [restaurant-view r])])))
+                   (quote
+                     ^{:id "app-view"}
+                     (defn app-view []
+                       [:div.app
+                        [:style styles]
+                        [header-view]
+                        (for [r (reverse (sort-by :rating restaurants))]
+                          [restaurant-view r])]))))
 
 (o/step "implementing sort toggle"
         (o/before "core.cljs"
@@ -209,25 +214,157 @@
                    "app-view"
                    '(defn app-view []
                       [:div.app
-                       [:style :styles]
+                       [:style styles]
                        [header-view]
-                       (let [sort-key (@app-state :sort)]
-                         (for [r (sort-by sort-key restaurants)]
-                           [restaurant-view r]))]))
+                       (for [r ^{:id "restaurants"} (reverse (sort-by (@app-state :sort) restaurants))]
+                         [restaurant-view r])]))
 
         (o/before "core.cljs"
                   '(def styles)
                   '(defn set-sort! [sort]
-                     (swap! app-state assoc :sort sort)))
+                     (swap! app-state (fn [state] (assoc state :sort sort)))))
 
-        (o/prepend "core.cljs"
-                   '(defn header-view (:div.header (:div.sort (:button.name))))
-                   '{:on-click (fn [_] (set-sort! :name))})
+        (o/replace "core.cljs"
+                   "div.sort"
+                   (quote
+                     ^{:id "div.sort"}
+                     [:div.sort
+                      [:button {:on-click (fn [_] (set-sort! :name))} "Name"]
+                      [:button {:on-click (fn [_] (set-sort! :rating))} "Rating"]])))
 
-        (o/prepend "core.cljs"
-                   '(defn header-view (:div.header (:div.sort (:button.rating))))
-                   '{:on-click (fn [_] (set-sort! :rating))})
-        )
+(o/step "styling sort buttons"
+        (o/replace "core.cljs"
+                   "div.sort"
+                   '[:div.sort
+                     [:button {:class (when (= :name (@app-state :sort)) "active")
+                               :on-click (fn [_] (set-sort! :name))}
+                      "Name"]
+                     [:button {:class (when (= :rating (@app-state :sort)) "active")
+                               :on-click (fn [_] (set-sort! :rating))}
+                      "Rating"]])
+
+        (o/append "core.cljs"
+          '(def styles (garden/css (let (:.app (:.header)))))
+          (quote
+            ^{:id "button"}
+            [:button
+             {:background "grey"}
+             [:&.active
+              {:background "red"}]])))
+
+(o/step "styling buttons better"
+        (o/append "core.cljs"
+          '(def styles (garden/css (let (:.app (:.header)))))
+          '[:.filter
+            {:display "inline-block"
+             :margin-right "4em"}])
+
+        (o/append "core.cljs"
+          '(def styles (garden/css (let (:.app (:.header)))))
+          '[:.sort
+            {:display "inline-block"}])
+
+        (o/replace "core.cljs"
+                   "button"
+                   (quote
+                     [:button
+                      {:border-radius "5px"
+                       :border "none"
+                       :margin-right "0.5em"
+                       :background "#D68686"
+                       :outline "none"
+                       :cursor "pointer"}
+                      [:&.active
+                       {:background "#FFF"}]
+                      ])))
+
+(o/step "price range filtering"
+
+        (o/replace "core.cljs"
+                   "app-state"
+                   (quote
+                     ^{:id "app-state"}
+                     (def app-state (r/atom {:sort :rating
+                                             :price-ranges #{1 2 3 4}}))))
+
+        (o/replace "core.cljs"
+                   "restaurants"
+                   (quote
+                     ^{:id "restaurants"}
+                     (->> restaurants
+                          (sort-by (@app-state :sort))
+                          reverse
+                          (filter (fn [r] (contains? (@app-state :price-ranges) (r :price-range)))))))
+
+        (o/after "core.cljs"
+          '(defn set-sort!)
+          '(defn toggle-price-range! [price-range]
+             (if (contains? (@app-state :price-ranges) price-range)
+               (swap! app-state (fn [state] (assoc state :price-ranges (disj (state :price-ranges) price-range))))
+               (swap! app-state (fn [state] (assoc state :price-ranges (conj (state :price-ranges) price-range)))))))
+
+        (o/replace "core.cljs"
+                   "div.filter"
+                   (quote
+                     ^{:id "div.filter"}
+                     [:div.filter
+                      [:button {:on-click (fn [_] (toggle-price-range! 1))} "$"]
+                      [:button {:on-click (fn [_] (toggle-price-range! 2))} "$$"]
+                      [:button {:on-click (fn [_] (toggle-price-range! 3))} "$$$"]
+                      [:button {:on-click (fn [_] (toggle-price-range! 4))} "$$$$"]]))
+
+        (o/replace "core.cljs"
+                   "div.filter"
+                   (quote
+                     ^{:id "div.filter"}
+                     [:div.filter
+                      [:button {:class (when (contains? (@app-state :price-ranges) 1) "active")
+                                :on-click (fn [_] (toggle-price-range! 1))} "$"]
+                      [:button {:class (when (contains? (@app-state :price-ranges) 2) "active")
+                                :on-click (fn [_] (toggle-price-range! 2))} "$$"]
+                      [:button {:class (when (contains? (@app-state :price-ranges) 3) "active")
+                                :on-click (fn [_] (toggle-price-range! 3))} "$$$"]
+                      [:button {:class (when (contains? (@app-state :price-ranges) 4) "active")
+                                :on-click (fn [_] (toggle-price-range! 4))} "$$$$"]])))
+
+(o/step "refactor price range buttons"
+        (o/replace "core.cljs"
+                   "div.filter"
+                   (quote
+                     ^{:id "div.filter"}
+                     [:div.filter
+                      (for [p [1 2 3 4]]
+                        [:button {:class (when (contains? (@app-state :price-ranges) p) "active")
+                                  :on-click (fn [_] (toggle-price-range! p))}
+                         (repeat p "$")]) ])))
+
+(o/step "search"
+        (o/replace "core.cljs"
+                   "app-state"
+                   '(def app-state (r/atom {:sort :rating
+                                            :price-ranges #{1 2 3 4}
+                                            :query ""})))
+        (o/after "core.cljs"
+          '(defn toggle-price-range!)
+          '(defn set-query! [query]
+             (swap! app-state (fn [state] (assoc state :query query)))))
+
+
+        (o/replace "core.cljs"
+                   "input.search"
+                   '[:input.search {:on-change (fn [e]
+                                                (set-query! (.. e -target -value)))
+                                   :placeholder "Search"}])
+
+        (o/replace "core.cljs"
+                   "restaurants"
+                   '(->> restaurants
+                         (sort-by (@app-state :sort))
+                         reverse
+                         (filter (fn [r] (contains? (@app-state :price-ranges) (r :price-range))))
+                         (filter (fn [r] (clojure.string/includes?
+                                           (string/lower-case (r :name))
+                                           (string/lower-case (@app-state :query))))))))
 
       ;... more steps
       ))

@@ -48,17 +48,21 @@
          [:a.play
           {}]
 
-          [:pre
-           [:code
-            {:font-family "Source Code Pro"
-             :font-size "0.8em"
-             :background "#2B2852"
-             :color "white"
-             :padding "0.5em 0.75em"
-             :display "inline-block"
-             :margin "0 1em 1em 0"
-             :max-width "100%"
-             :overflow "scroll"}]]]
+         [:ol
+          {:padding "0 3em"}
+          [:li
+           {:margin "1em 0"}]]
+
+         [:pre
+          [:code
+           {:font-family "Source Code Pro"
+            :font-size "0.8em"
+            :background "#2B2852"
+            :color "white"
+            :padding "0.5em 0.75em"
+            :display "inline-block"
+            :max-width "100%"
+            :overflow "scroll"}]]]
 
         [:.resources
          {:min-width "25em"
@@ -223,7 +227,6 @@
                    (->> (filter (fn [s] (= step-id (s :step)))))
                    first
                    (get :step-actions)
-                   tee
                    (subvec index-start (inc index-end))
                    (->> (map #(with-out-str (fipp/pprint %1 {:width 50}))))
                    (->> (string/join "\n")))]

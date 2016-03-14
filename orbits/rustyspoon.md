@@ -109,7 +109,7 @@ We can look up a value from a map by doing `(some-map :my-key)`.
 For example, if we had `(def my-map {:name "Canoe" :rating 3.9})` then `(my-map :name)` would give `"Canoe"`.
 If the key we're looking up is a *keyword* -- i.e. it starts with a colon, like `:name` and `:rating` above -- then we can also use the opposite order for looking up, like `(:rating my-map)` to get `9.3`.
 
-In our restaurant vector, each map represents a restaurant.-
+In our restaurant vector, each map represents a restaurant.
 Each of these contains the `:name`, `:address`, `:image`, `:rating` and `:price-range` keys, with either strings or numbers as values.
 
 Let's get these restaurants showing!
@@ -122,60 +122,57 @@ Replace your `(defn app-view ...)` with the following:
 
 Save the file. Your browser should immediately update and show a list of restaurants, each with a name and address.
 
-`(defn app-view ...)` defines a *function* called `app-view`. A function is like a mini program that can take in various inputs and, manipulate those inputs, and return an output. For example, the following function will squares an number passed into it: `(defn square [x] (* x x))` This function can be used in other parts of our program by writing: `(square 3)`
+`(defn app-view ...)` defines a *function* called `app-view`. A function is like a mini program that can take in various inputs and, manipulate those inputs, and return an output. For example, the following function will square a number passed into it: `(defn square [x] (* x x))` This function can be used in other parts of our program by writing: `(square 3)`
 
-Our `app-view` function takes no inputs (the `[]` has nothing inside) and will return a data structure similar to:
+Our `app-view` function takes no inputs (the `[]` beside its name has nothing inside). It will return a data structure similar to:
 
 ```clojure
-[:div
-  [:ul
-    [:li
-      [:div.name "Byblos]
-      [:div.address "11 Duncan Street"]]
-    [:li
-      [:div.name "George"]
-      [:div.address "111 Queen St. E"]]
+[:div.app
+  [:div.restaurant
+    [:div.name "Byblos]
+    [:div.address "11 Duncan Street"]]
+  [:div.restaurant
+    [:div.name "George"]
+    [:div.address "111 Queen St. E"]]]
 ```
 
 This structure is a vector with many nested *keywords* and vectors.
 
-The `for` construct provides a way to do the same operation on a collection of data.
-It has two parts: What we're going to loop over and what we're going to do on each thing.
+The `(for [...] ...)` construct provides a way to do the same operation on a collection of data.
+It has two parts: (1) what we're going to loop over, and (2) what we're going to do on each thing.
 
-Above, the "what we're going to loop over" is `[r restaurants]`.
+In our code, the "what we're going to loop over" is `[r restaurants]`.
 This says we will be going over each element in the collection named `restaurants` and we will call the element we're currently looking at `r`.
 In Clojure, we call this a *binding form*.
-We could call the variable anything we want -- we could write `(for [foobar restaurants] [ ... (foobar :name)])` if we wanted.
+We could call the variable anything we want -- we could write `(for [foobar restaurants] ... (foobar :name))` if we wanted.
 The variable name we use in a loop is something we choose based on what will make it clear what's happening when we read the code later.
 
-The "what we're going to do for each thing" part, often called the *loop body* above is the `[:li [:div.name (r :name)] [:div.address (r :address)]]`.
+The "what we're going to do for each thing" part, often called the *loop body* is the `[:li [:div.name (r :name)] [:div.address (r :address)]]`.
 You can see that the variable `r` which we declared above in the *binding form* is being used in the body.
 
 Reagent will take this vector and convert it to the corresponding *HTML*, which the browser understands how to display. The corresponding HTML to the above is:
 
 ```html
-<div>
-  <ul>
-    <li>
-      <div class='name'>Byblos</div>
-      <div class='address'>11 Duncan Street</div>
-    </li>
-    <li>
-      <div class='name'>George</div>
-      <div class='address'>111 Queen St. E</div>
-    </li>
-  </ul>
+<div class='app'>
+  <div class='restaurant'>
+    <div class='name'>Byblos</div>
+    <div class='address'>11 Duncan Street</div>
+  </div>
+  <div class='resturant'>
+    <div class='name'>George</div>
+    <div class='address'>111 Queen St. E</div>
+  </div>
 </div>
 ```
 
-In the above HTML, we see three types of elements -- `div`, `ul`, and `li` -- and one attribute, `class`.
-HTML elements in general look like `<tag attribute="some value" other-attribute="other value">....</tag>`.
+In the above HTML, we see many `div` elements, which are a generic container of other HTML (as opposed to something like `p` should be used for creating paragraphs of text).
+The divs each have a `class` attribute, which will later help us refer to the various elements when we start to style them (the classes also help us remember what that part of the code is displaying).
+HTML elements in general look like `<tag attribute="some value" other-attribute="other value">...</tag>`.
 The `...` part can be more HTML, text, or nothing.
-
 
 We are using a Clojure style called "Hiccup" to represent HTML using vectors.
 The above example in Hiccup would look like `[:tag {:attribute "some value" :other-attribute "other value"} ...]`.
-This is a slightly more compact way of representing the HTML that also lets us use nice Clojure functions to manipulate the HTML we will be generating.
+This is a more compact way of representing the HTML that also lets us use Clojure functions to manipulate the HTML we generate.
 
 ## Displaying Images
 
@@ -192,6 +189,7 @@ Now, edit `app-view` to include:
 !!!display image/0-!!!
 @@@display image@@@
 
+Now your page should be showing an image for each restaurant.
 
 ## Show Other Restaurant Info
 
@@ -203,9 +201,16 @@ Now, try changing the code to have the other restaurant information show up (`:r
 
 .
 
-Did you figure it out? Your `app-view` should look like this:
+Did you figure it out?
 
-!!!show other restaurant info/0-1!!!
+You can show the rating and price-range by adding the following in your `app-view`:
+
+!!!show other restaurant info/0-!!!
+
+!!!show other restaurant info/1-!!!
+
+For the price-range, we used the `repeat` function to show multiple "$". Neat, huh?!
+
 @@@show other restaurant info@@@
 
 
@@ -215,11 +220,13 @@ Let's make things a bit prettier. Add the following above `id->image`:
 
 !!!add styles/0-!!!
 
-And add `[:style styles]` to `app-view`:
+And add the following to `app-view`:
 
 !!!add styles/1-!!!
 
 @@@add styles@@@
+
+Now our images should be a reasonable size 'floating' to the left of the restaurant info. The restaurant names are bold and the price ranges are green.
 
 ## Factor out `restaurant-view`:
 
@@ -227,11 +234,11 @@ Next, lets move all the code related to a single restaurant into its own view.
 
 Create a `restaurant-view` before `app-view` that looks like the following (you can cut/paste most of it from `app-view`):
 
-!!!factor out a restaurant-view/core.cljs/6-7!!!
+!!!factor out a restaurant-view/0-!!!
 
-Now update `app-view` to be:
+Replace what you removed from `app-view` with:
 
-!!!factor out a restaurant-view/core.cljs/7-8!!!
+!!!factor out a restaurant-view/1-!!!
 
 @@@factor out a restaurant-view@@@
 
@@ -246,28 +253,30 @@ First, we'll create a header that doesn't do anything, and we'll gradually make 
 
 Add a `header-view` before `restaurant-view`:
 
-!!!add a header-view/core.cljs/6-7!!!
+!!!add a header-view/0-!!!
 
 Add the `header-view` to `app-view`:
 
-!!!add a header-view/core.cljs/8-9!!!
+!!!add a header-view/1-!!!
 
 Also, let's style the header. Update `styles` to include some `.header` styles:
 
-!!!add a header-view/core.cljs/3-4!!!
+!!!add a header-view/2-!!!
 
 @@@add a header-view@@@
+
+Now you should see a red header above the list of restaurants.
 
 
 ## Implementing Sort Toggle Buttons
 
 Our `header-view` contains two buttons that we will use to change how our list is sorted: "Name" and "Rating". Before we hook them up, let's just sort our existing list.
 
-For sorting, we can use the `sort-by` function, which takes in a list and a function or key to sort with. In our case, we can sort by rating by doing: `(sort-by :rating restaurants)`.
+For sorting, we can use the `sort-by` function, which takes in a list and a function or key to sort with. In our case, we can sort by rating by doing: `(sort-by :rating restaurants)` instead of just `restaurants`.
 
 Update `app-view` to the following:
 
-!!!sorting our list/core.cljs/8-9!!!
+!!!sorting our list/0-!!!
 
 @@@sorting our list@@@
 
@@ -281,7 +290,7 @@ Hmmm... normally we'd want the list to be supported by rating from highest to lo
 
 Add a `(reverse ...)` around our `sort-by`. Your `app-view` should now be:
 
-!!!reverse the sort/core.cljs/8-9!!!
+!!!reverse the sort/0-!!!
 
 @@@reverse the sort@@@
 
@@ -297,43 +306,30 @@ We are going to define an `app-state` 'atom', which will store a map of whatever
 
 Add the following above `styles`:
 
-```clojure
-(def app-state (r/atom {:sort :rating}))
-```
+!!!implementing sort toggle/0-!!!
 
 This defines `app-state` to be an atom whose initial value is `{:sort :rating}` (a map).
 
 Now lets change our `app-view` to use the value from the atom instead of having it preset. In your `app-view`, replace `:rating` with `(@app-state :sort)`. `app-view` should now look like the following:
 
-```clojure
-(defn app-view []
-  [:div.app
-    [:style :styles]
-    [header-view]
-    (for [r (sort-by (@app-state :sort) -key restaurants)]
-      [restaurant-view r])])
-```
+!!!implementing sort toggle/1-!!!
 
 `@app-state` is how we get access to the data in `app-state`. Since it's a map, we can get the value of the `:sort` key by doing `(@app-state :sort)`.
 
+
 ### Wiring Up the Sort Buttons
 
-Now let's make the buttons do something.
+Now let's make the buttons actually do something.
 
 First, create a function to change the value of `:sort` in `app-state`. Add the following below `app-state`:
 
-```clojure
-(defn set-sort! [sort]
-  (swap! app-state (fn [state] (assoc state :sort sort)))
-```
+!!!implementing sort toggle/1-!!!
 
-Next, we will make our buttons use the `set-sort!` function. Swap out the existing `[:div.sort ...]` in your `header-view` with:
+Next, we will make our buttons use the `set-sort!` function we just defined. Swap out the existing `[:div.sort ...]` in your `header-view` with:
 
-```clojure
-[:div.sort
-    [:button {:on-click (fn [_] (set-sort! :name))} "Name"]
-    [:button {:on-click (fn [_] (set-sort! :rating))} "Rating"]]
-```
+!!!implementing sort toggle/3-!!!
+
+@@@implementing sort toggle@@@
 
 Try it out. The buttons should change how the list is sorted now.
 
@@ -343,56 +339,69 @@ It'd be nice if the buttons changed visually depending on which sort was current
 
 Modify the option maps for your `:buttons` in your `header-view` so that you get the following:
 
-```clojure
-   [:div.sort
-      [:button {:class (when (= :name (@app-state :sort)) "active")
-                :on-click (fn [_] (set-sort! :name))}
-               "Name"]
-      [:button {:class (when (= :rating (@app-state :sort)) "active")
-                :on-click (fn [_] (set-sort! :rating))}
-               "Rating"]]
-```
+!!!styling sort buttons/0-!!!
 
-We also need to define some styles for the active class. Add the following inside of your `styles`:
+We also need to define some styles for the active class. Add the following inside of your `.header` styles:
 
-```clojure
-[:.button
- {:background "grey"}
- [&:.active
-  {:background "red"}]]
-```
+!!!styling sort buttons/1-!!!
 
-When you save, one of the buttons should be red and the other grey. When you click on the grey button, it should turn red, the other should turn grey, and the sort should change.
+@@@styling sort buttons@@@
+
+When you save, one of the sort buttons should be red and the other grey. When you click on the grey button, it should turn red, the other should turn grey, and the sort should change.
+
+### Prettier Buttons
+
+While we're here, let's improve the look of the buttons.
+
+Add the following inside of your `.header` styles:
+
+!!!styling buttons better/0-1!!!
+
+Replace your `.button` styles with:
+
+!!!styling buttons better/2-!!!
+
+@@@styling buttons better@@@
 
 ## Price Range Filtering
 
 Now let's make the price range buttons filter the results.
 
-In general, the approach will be very similar. We will need to have:
+The approach will be very similar to making the sort buttons work. We will need to have:
 
- 1. a function to change the `restaurants` list before we loop over it
- 2. a key in `app-state` to keep track of which price range buttons are active (the "state" of the price range filters),
- 3. a function to update `app-state`
- 4. `:on-click` functions to call the function from (3)
- 5. logic to set a `:class` of "active" on the relevant buttons
- 6. styles for active buttons
+1. a key in `app-state` to keep track of which price range buttons are active (the "state" of the price range filters),
 
- Try implementing as much as you can on your own.
+2. a function to change the `restaurants` list before we loop over it
 
- .
+3. a function to update `app-state`
 
- .
+4. `:on-click` functions to call the function from (3)
 
- .
+5. logic to set a `:class` of "active" on the relevant buttons
 
- Need some help? Here are a few hints (they correspond to each requirement above):
+6. styles for active buttons
 
-  1. you can use `filter` to adjust the `restaurants` list
-  2. you can use a `:price-ranges` key in `app-state` with a "set" to keep track of the active sorts (ex. `#{1 2 3 4}`)
-  3. create a `toggle-price-range` function (you can use `conj` and `disj` to update the values stored in a set)
-  4. you just need to use `toggle-price-range` from (3)
-  5. you can use `contains?` to determine if a button should be styled as active
-  6. you shouldn't need to change the styles at all
+Try implementing as much as you can on your own.
+
+.
+
+.
+
+.
+
+Need some help? Here are a few hints (they correspond to each requirement above):
+
+1. you can use a `:price-ranges` key in `app-state` with a "set" to keep track of the active sorts (ex. `#{1 2 3 4}`)
+
+2. you can use `filter` to adjust the `restaurants` list
+
+3. create a `toggle-price-range` function (you can use `conj` and `disj` to update the values stored in a set)
+
+4. you just need to use `toggle-price-range` from (3)
+
+5. you can use `contains?` to determine if a button should be styled as active
+
+6. you shouldn't need to change the styles at all
 
 .
 
@@ -402,218 +411,73 @@ In general, the approach will be very similar. We will need to have:
 
 How'd it go? Here's how we did it (it's okay if your code looks different):
 
-### 1. a function to filter `restaurants`
 
+### 1. a new key in `app-state`
 
+!!!price range filtering/0-!!!
 
-### 2. a new key in `app-state`
+### 2. a function to filter `restaurants`
+
+!!!price range filtering/1-!!!
 
 ### 3. a function to update `app-state`
 
+!!!price range filtering/2-!!!
+
 ### 4. `:on-click` functions
+
+!!!price range filtering/3-!!!
 
 ### 5. setting buttons as active
 
+!!!price range filtering/4-!!!
+
+@@@price range filtering@@@
 
 
+### Refactor Price Range Filters with a Loop
 
+!!!refactor price range buttons/0-!!!
 
-filtering '`:price-ranges` to the `app-state` atom:
+@@@refactor price range buttons@@@
 
-```clojure
-(defonce app-state (r/atom {:sort :rating
-                            :price-ranges #{1 2 3 4}}))
-```
-
-
-Only show restaurants in the price range:
-
-```clojure
-(defn restaurants-view []
-  [:ul {:style {:margin 0
-                :padding 0
-                :list-style "none"}}
-   (let [sort-key (@app-state :sort)
-         price-ranges (@app-state :price-ranges)]
-     (for [r (->> restaurants
-                  (filter (fn [r] (contains? price-ranges (r :price-range))))
-                  (sort-by sort-key))]
-       [:li {:style {:margin-bottom "1em"}
-             :key (r :name)}
-        (restaurant-view r)]))])
-```
-
-TODO: add a way to test this / see the effect immediately
-(Change the initial state of atom to #{1} and refresh)
-
-Add a function to toggle the value of `:price-ranges` given a price-range:
-
-```clojure
-(defn toggle-price-range! [price-range]
-  (if (contains? (@app-state :price-ranges) price-range)
-    (swap! app-state #(assoc %1 :price-ranges (disj (%1 :price-ranges) price-range)))
-    (swap! app-state #(assoc %1 :price-ranges (conj (%1 :price-ranges) price-range)))))
-```
-
-Make buttons change the `:price-ranges` state and display different based on the state:
-
-```clojure
-(defn header-view []
-  [:div.header
-   [:input.search {:placeholder "Search"}]
-   (let [price-ranges (@app-state :price-ranges)]
-     [:div.price-range
-      (let [active? (contains? price-ranges 1)]
-        [:button {:style (if active?
-                           {:background "red"}
-                           {:background "gray"})
-                  :onClick (fn [_]
-                             (toggle-price-range! 1))}
-         "$"])
-      (let [active? (contains? price-ranges 2)]
-        [:button {:style (if active?
-                           {:background "red"}
-                           {:background "gray"})
-                  :onClick (fn [_]
-                             (toggle-price-range! 2))}
-         "$$"])
-      (let [active? (contains? price-ranges 3)]
-        [:button {:style (if active?
-                           {:background "red"}
-                           {:background "gray"})
-                  :onClick (fn [_]
-                             (toggle-price-range! 3))}
-         "$$$"])
-      (let [active? (contains? price-ranges 4)]
-        [:button {:style (if active?
-                           {:background "red"}
-                           {:background "gray"})
-                  :onClick (fn [_]
-                             (toggle-price-range! 4))}
-         "$$$$"])])
-   (let [current-sort (@app-state :sort)]
-     [:div.sort
-      [:button {:style (if (= :name current-sort)
-                         {:background "red"}
-                         {:background "gray"})
-                :onClick (fn [_]
-                           (set-sort! :name))} "Name"]
-      [:button {:style (if (= :rating current-sort)
-                         {:background "red"}
-                         {:background "gray"})
-                :onClick (fn [_]
-                           (set-sort! :rating))} "Rating"]])])
-```
-
-Refactor the filter buttons:
-
-```clojure
-(defn header-view []
-  [:div.header
-   [:input.search {:placeholder "Search"}]
-
-   (let [price-ranges [1 2 3 4]
-         current-price-ranges (@app-state :price-ranges)]
-     [:div.price-range
-      (for [price-range price-ranges]
-        (let [active? (contains? current-price-ranges price-range)]
-          [:button {:style (if active?
-                             {:background "red"}
-                             {:background "gray"})
-                    :onClick (fn [_]
-                               (toggle-price-range! price-range))}
-           (repeat price-range "$")]))])
-
-   (let [current-sort (@app-state :sort)]
-     [:div.sort
-      [:button {:style (if (= :name current-sort)
-                         {:background "red"}
-                         {:background "gray"})
-                :onClick (fn [_]
-                           (set-sort! :name))} "Name"]
-      [:button {:style (if (= :rating current-sort)
-                         {:background "red"}
-                         {:background "gray"})
-                :onClick (fn [_]
-                           (set-sort! :name))} "Rating"]])])
-```
 
 # Implementing Search
 
-Make typing in search field change `:query` in `app-state`:
-
-```clojure
-(defonce app-state (r/atom {:sort :rating
-                            :price-ranges #{1 2 3 4}
-                            :query ""}))
-```
-
-```clojure
-(defn set-query! [query]
-  (swap! app-state assoc :query query))
-```
-
-```clojure
-[:input.search {:on-change (fn [e]
-                                (set-query! (.. e -target -value)))
-                   :placeholder "Search"}]
-```
-
-```clojure
-(defn restaurants-view []
-  [:ul {:style {:margin 0
-                :padding 0
-                :list-style "none"}}
-   (let [sort-key (@app-state :sort)
-         price-ranges (@app-state :price-ranges)
-         query (@app-state :query)]
-     (for [r (->> restaurants
-                  (filter (fn [r] (contains? price-ranges (r :price-range))))
-                  (filter (fn [r] (clojure.string/includes? (r :name) query)))
-                  (sort-by sort-key))]
-       [:li {:style {:margin-bottom "1em"}
-             :key (r :name)}
-        (restaurant-view r)]))])
-```
+Make typing in search field change `:query` in `app-state`.
 
 
+Add `:query` key to `app-state`:
 
+!!!search/0-!!!
 
-You can see we added `:key` to the map for our `:li` tag in the for loop.
-We do this so that React, the underlying system that handles actually displaying things can differentiate each list element.
-Why this is important will be explained later :)
+Add a new function to change the `:query` in `app-state`:
 
+!!!search/1-!!!
 
+Make the search field run the `set-query` function every time the text inside changes:
 
-An `atom` is a piece of data that controls access to some other data and allows it to be updated.
-In this case, the atom is wrapping the map `{:sort :rating}`.
-We will use this atom to have application state that will update as we change things.
+!!!search/2-!!!
 
-`defonce` is like the `def` we used previously, except it only happens once.
-We do this so when the app gets reloaded when changes are made to the code, the state won't get overridden back to the initial value.
-To see this, try changing the `defonce` to a def, do some things in the app, then make a change to your code and save.
-You should see that figwheel will reload the app and your app will go back to its initial state.
+Filter the restaurants in `app-view` by the query in `app-state`:
 
-# Refactor to use Transactions
+!!!search/3-!!!
 
-# Refactor to use Subscriptions
+@@@search@@@
 
-# Move CSS Into a Seperate File
+# That's It For Now
 
-# Make Selecting a Restaraunt Show Its Page
+Coming soon:
 
-# Allow Creating of a New Restaurant
-
-# Pull Restaurants from a Database
-
-# Add New Restaurants to a Database
-
-# Can Leave Comments (+ save to database)
-
-# Users can Register and Login
-
-# Users Can Rate Restaurants
-
-# Users Have Profiles
-
-:# URLs for different pages
+- Refactor to use Transactions
+- Refactor to use Subscriptions
+- Move CSS Into a Seperate File
+- Make Selecting a Restaraunt Show Its Page
+- Allow Creating of a New Restaurant
+- Pull Restaurants from a Database
+- Add New Restaurants to a Database
+- Users Can Leave Comments (+ save to database)
+- Users Can Register and Login
+- Users Can Rate Restaurants
+- Users Have Profiles
+- Different URLs for different pages
