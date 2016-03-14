@@ -154,9 +154,9 @@
    [:div.main {:style {:max-width "40em"
                        :margin "0 auto"}}
     (case (get-in @app-state [:page :type])
-      :tldr (tldr-view)
-      :guide (guide-view)
-      :index (index-view))]])
+      :tldr [tldr-view]
+      :guide [guide-view]
+      :index [index-view])]])
 
 (defonce once
   (do
