@@ -76,7 +76,7 @@
                              [:div.app
                               (for [r restaurants]
                                 ^{:id "restaurant-div"}
-                                [:div.restaurant {:key (r :name)}
+                                [:div.restaurant
                                  [:div.name (r :name)]
                                  [:div.address (r :address)]])]))))
 
@@ -176,23 +176,27 @@
                        :margin-bottom "1em"
                        :box-sizing "border-box"}]]))
 
-(o/step "factor out a restaurant-list view"
-        (o/before "core.cljs"
-                  '(defn app-view)
-                  (quote
-                    ^{:id "restaurant-list-view"}
-                    (defn restaurant-list-view []
-                      [:div.restaurant-list
-                       (for [r restaurants]
-                         [restaurant-view r])])))
+(o/step "sorting our list"
+        (o/replace "core.cljs"
+                   "app-view"
+                   (quote
+                     ^{:id "app-view"}
+                     (defn app-view []
+                       [:div.app
+                        [:style :styles]
+                        [header-view]
+                        (for [r (sort-by :rating restaurants)]
+                          [restaurant-view r])]))))
 
+(o/step "reverse the sort"
         (o/replace "core.cljs"
                    "app-view"
                    '(defn app-view []
                       [:div.app
-                       [:style styles]
+                       [:style :styles]
                        [header-view]
-                       [restaurant-list-view]])))
+                       (for [r (reverse (sort-by :rating restaurants))]
+                         [restaurant-view r])])))
 
 (o/step "implementing sort toggle"
         (o/before "core.cljs"
@@ -202,9 +206,11 @@
                     (def app-state (r/atom {:sort :rating}))))
 
         (o/replace "core.cljs"
-                   "restaurant-list-view"
-                   '(defn restaurant-list-view []
-                      [:div.restaurant-list
+                   "app-view"
+                   '(defn app-view []
+                      [:div.app
+                       [:style :styles]
+                       [header-view]
                        (let [sort-key (@app-state :sort)]
                          (for [r (sort-by sort-key restaurants)]
                            [restaurant-view r]))]))
