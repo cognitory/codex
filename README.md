@@ -1,9 +1,17 @@
+## Codex
 
+`rlwrap lein figwheel codex`
 
-```
-lein figwheel
-```
+`http://localhost:3450/`
 
-```
-lein cljsbuild once release
-```
+## Codex Release
+
+`lein cljsbuild once codex-release`
+
+## Rustyspoon
+
+`rlwrap lein figwheel rustyspoon`
+
+`http://localhost:3450/rustyspoon.html`
+
+## Rustyspoon Release

@@ -6,7 +6,8 @@
                  [secretary "1.2.3"]
                  [cljsjs/js-yaml "3.3.1-0"]
                  [markdown-clj "0.9.86"]
-                 [garden "1.3.2"]]
+                 [garden "1.3.2"]
+                 [fipp "0.6.4"]]
 
   :plugins [[lein-cljsbuild "1.1.2"]
             [lein-figwheel "0.5.0-6"]]
@@ -18,22 +19,39 @@
              :css-dirs ["resources/public/css"]}
 
   :cljsbuild {:builds
-              [{:id "dev"
+              [{:id "codex"
+                :figwheel true
+                :source-paths ["src" "test"]
+                :compiler {:main codex.core
+                           :asset-path "/js/codex"
+                           :output-to "resources/public/js/codex.js"
+                           :output-dir "resources/public/js/codex"
+                           :verbose true}}
+               {:id "codex-release"
                 :figwheel true
                 :source-paths ["src"]
                 :compiler {:main codex.core
-                           :asset-path "/js/dev"
-                           :output-to "resources/public/js/dev.js"
-                           :output-dir "resources/public/js/dev"
-                           :verbose true}}
-               {:id "release"
-                :source-paths ["src"]
-                :compiler {:main codex.core
-                           :asset-path "/codex/resources/public/js/release"
-                           :output-to "resources/public/js/codex.js"
-                           :output-dir "resources/public/js/release"
+                           :asset-path "/codex/resources/public/js/codex-release"
+                           :output-to "resources/public/js/codex-release.js"
+                           :output-dir "resources/public/js/codex-release"
                            :optimizations :advanced
-                           :pretty-print false }}]}
+                           :pretty-print false }}
+               {:id "rustyspoon"
+                :figwheel true
+                :source-paths ["src"]
+                :compiler {:main rustyspoon.orbit
+                           :asset-path "/js/rustyspoon"
+                           :output-to "resources/public/js/rustyspoon.js"
+                           :output-dir "resources/public/js/rustyspoon"
+                           :verbose true}}
+               {:id "rustyspoon-release"
+                :figwheel true
+                :source-paths ["src"]
+                :compiler {:main rustyspoon.orbit
+                           :asset-path "/codex/resources/public/js/rustyspoon-release"
+                           :output-to "resources/public/js/rustyspoon-release.js"
+                           :output-dir "resources/public/js/rustyspoon-release"
+                           :verbose true}}]}
 
   :min-lein-version "2.5.0"
 
