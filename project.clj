@@ -52,7 +52,7 @@
                            :asset-path "/codex/resources/public/js/rustyspoon-release"
                            :output-to "resources/public/js/rustyspoon-release.js"
                            :output-dir "resources/public/js/rustyspoon-release"
-                           :optimizations :advanced
+                           :optimizations :simple
                            :pretty-print false}}]}
 
   :min-lein-version "2.5.0"
