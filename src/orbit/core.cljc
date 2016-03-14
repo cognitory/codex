@@ -1,5 +1,6 @@
 (ns orbit.core
   (:refer-clojure :exclude [replace])
+  #?(:cljs (:require-macros [orbit.core :refer [deftx]]))
   (:require [arborist.core :as a]))
 
 (defn init []
@@ -8,6 +9,7 @@
 (comment
   "a state is:"
   {:resources {"resource-name" '()}
+   :step-actions []
    :step "step name"})
 
 (defn- advance
@@ -20,10 +22,11 @@
   [orbit step-name & txs]
   (advance orbit
     (fn [state]
-      (-> state
-          (assoc :step step-name)
-          (update :resources
-                  #(reduce (fn [st tx] (tx st)) % txs))))))
+      (reduce (fn [st tx] (tx st))
+              (-> state
+                  (assoc :step step-name)
+                  (assoc :step-actions []))
+              txs))))
 
 ; transactions
 
@@ -31,7 +34,7 @@
   "creates a new resource"
   [resource-name]
   (fn [state]
-    (assoc state resource-name [])))
+    (assoc-in state [:resources resource-name] [])))
 
 ; each tx returns a function that modifies state
 
@@ -39,35 +42,49 @@
   "helper fn for creating txs; returns a function that modifies state"
   [r func]
   (fn [state]
-    (update state r func)))
+    (update-in state [:resources r] func)))
 
-(defn add [r form]
-  (tx r (fn [forms]
-          (conj forms form))))
+(defn- action-change
+  "helper fn for keeping track of what an action is adding"
+  [form]
+  (fn [state] (update-in state [:step-actions] conj form)))
 
-(defn before [r pattern form]
-  (tx r (fn [forms]
-          (a/insert-before forms pattern form))))
+#?(:clj
+(defmacro deftx [tx-name args tx-fn]
+  (let [form (last args)]
+    `(defn ~tx-name [r# ~@args]
+       (comp
+         (action-change ~form)
+         (tx r# ~tx-fn)))))
+)
 
-(defn after [r pattern form]
-  (tx r (fn [forms]
-          (a/insert-after forms pattern form))))
+(deftx add [form]
+  (fn [forms]
+    (conj forms form)))
 
-(defn append [r pattern form]
-  (tx r (fn [forms]
-          (a/append-at forms pattern form))))
+(deftx before [pattern form]
+  (fn [forms]
+    (a/insert-before forms pattern form)))
 
-(defn prepend [r pattern form]
-  (tx r (fn [forms]
-          (a/prepend-at forms pattern form))))
+(deftx after [pattern form]
+  (fn [forms]
+    (a/insert-after forms pattern form)))
 
-(defn wrap [r pattern wrap-form]
-  (tx r (fn [forms]
-          (a/wrap-with forms pattern wrap-form))))
+(deftx append [pattern form]
+  (fn [forms]
+    (a/append-at forms pattern form)))
 
-(defn replace [r pattern form]
-  (tx r (fn [forms]
-          (a/replace-with forms pattern form))))
+(deftx prepend [pattern form]
+  (fn [forms]
+    (a/prepend-at forms pattern form)))
+
+(deftx wrap [pattern wrap-form]
+  (fn [forms]
+    (a/wrap-with forms pattern wrap-form)))
+
+(deftx replace [pattern form]
+  (fn [forms]
+    (a/replace-with forms pattern form)))
 
 (comment
 
