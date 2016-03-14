@@ -1,7 +1,9 @@
-resources/public/js/dev.js
-resources/public/js/dev/**
-resources/public/js/release/**
+resources/public/js/codex.js
+resources/public/js/codex/**
+resources/public/js/codex-release/**
+resources/public/js/rustyspoon.js
 resources/public/js/rustyspoon/**
+resources/public/js/rustyspoon-release/**
 *.log
 target/**
 .lein-repl-history

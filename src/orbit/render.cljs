@@ -4,7 +4,6 @@
             [re-frame.core :as rf]
             [clojure.string :as string]
             [fipp.clojure :as fipp]
-            [cljs.pprint :refer [pprint]]
             [garden.core :refer [css]]
             [garden.stylesheet :refer [at-import]]
             [markdown.core :as md]

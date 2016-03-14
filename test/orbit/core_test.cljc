@@ -1,7 +1,6 @@
 (ns orbit.core-test
   (:require #?(:cljs [cljs.test :refer-macros [is deftest testing]]
                :clj [clojure.test :refer :all])
-            [clojure.pprint :refer [pprint]]
             [orbit.core :as o]))
 
 #?(:cljs (enable-console-print!))

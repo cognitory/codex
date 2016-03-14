@@ -1,15 +1,17 @@
+## Codex
 
+`rlwrap lein figwheel codex`
 
-```
-lein figwheel
-```
+`http://localhost:3450/`
 
-```
-lein cljsbuild once release
-```
+## Codex Release
 
-To run the rustyspoon demo app:
+`lein cljsbuild once codex-release`
+
+## Rustyspoon
 
 `rlwrap lein figwheel rustyspoon`
 
-Point browser to `localhost:3450/rustyspoon.html`
+`http://localhost:3450/rustyspoon.html`
+
+## Rustyspoon Release
