@@ -2,4 +2,12 @@
 resources:
  - https://www.codecademy.com/learn/javascript
  - https://learnxinyminutes.com/docs/javascript/
+ - http://jsforcats.com/
+ - http://eloquentjavascript.net/
+ - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
+ - https://github.com/feross/standard
+ - https://github.com/shama/letswritecode
+ - https://github.com/sethvincent/javascripting
+ - http://adripofjavascript.com/blog/drips/variable-and-function-hoisting
+ - http://jargon.js.org/
 ---
